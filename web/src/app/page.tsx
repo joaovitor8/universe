@@ -1,6 +1,9 @@
+import { Apod } from '@/components/Apod'
 
 export default function Home() {
   return (
-    <main></main>
+    <main>
+      <Apod />
+    </main>
   )
 }
