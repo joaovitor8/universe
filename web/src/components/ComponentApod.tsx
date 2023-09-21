@@ -15,20 +15,27 @@ interface Apod {
   url: string
 }
 
-export const Apod = () => {
+export const ComponentApod = () => {
   const [pictureTheDay, setPictureTheDay] = useState<Apod>()
 
-  const PegarImagens = () => {
-    axios.get("https://api.nasa.gov/planetary/apod?api_key=")
+  const PegarImagemDoDia = () => {
+    axios.get("https://api.nasa.gov/planetary/apod?api_key=...")
     .then((res) => setPictureTheDay(res.data))
     .catch((error) => { console.error(error) })
   }
 
+  const PegarImagemPorData = () => {
+    axios.get("https://api.nasa.gov/planetary/apod?api_key=...&date=2023-09-19")
+    .then((res) => console.log(res.data))
+    .catch((error) => { console.error(error) })
+  }
+
   useEffect(() => {
-    PegarImagens()
+    PegarImagemDoDia()
+    PegarImagemPorData()
   }, [])
 
-  console.log(pictureTheDay)
+  // console.log(pictureTheDay)
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -47,6 +54,5 @@ export const Apod = () => {
     </div>
   )
 }
-
 
 // APOD = Astronomy Picture of the Day
