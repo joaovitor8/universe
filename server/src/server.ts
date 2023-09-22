@@ -1,17 +1,17 @@
-const fastify = require("fastify")()
-const cors = require("@fastify/cors")
+import { fastify } from "fastify"
+import { fastifyCors } from "@fastify/cors"
+import { RouteApod } from "./routes/apod"
+import "dotenv/config"
 
-fastify.register(cors, {
-  origin: "*",
+const app = fastify()
+
+app.register(fastifyCors, {
+  origin: "http://localhost:3000",
   methods: ["GET"],
 })
 
+app.register(RouteApod)
 
-fastify.get("/apod", async (request: any, reply: any) => {})
-
-fastify.get("/apod/:id", async (request: any, reply: any) => {})
-
-
-fastify.listen({ port: 3333 }).then(() => {
+app.listen({ port: 3333 }).then(() => {
   console.log("Servidor rodando na porta: http://localhost:3333")
 })

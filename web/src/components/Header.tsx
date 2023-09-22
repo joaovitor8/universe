@@ -5,15 +5,15 @@ import Link from "next/link"
 export const Header = () => {
   return (
     <header className="h-14 px-5 flex items-center justify-between border-b">
-      <h1><Link href={'/'}>Universo</Link></h1>
+      <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
       <Menubar>
         <MenubarMenu>
-          <MenubarTrigger>Midia</MenubarTrigger>
+          <MenubarTrigger>Images</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem> <Link href={'/apod'}>Imagem do Dia</Link> </MenubarItem>
-            <MenubarItem>Todas as Imagens</MenubarItem>
-            <MenubarItem>Videos</MenubarItem>
+            <MenubarItem> <Link href={'/apod'}>Astronomy Picture of the Day</Link> </MenubarItem>
+            <MenubarItem>...</MenubarItem>
+            <MenubarItem>...</MenubarItem>
           </MenubarContent>
         </MenubarMenu>
 
