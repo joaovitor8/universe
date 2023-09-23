@@ -6,10 +6,10 @@ export default function Apod() {
   return (
     <main>
       <AstronomyPictureOfTheDay />
-      <div className="flex items-center justify-center">
+      {/* <div className="flex items-center justify-center">
         <Separator className="w-1/2"/>
       </div>
-      <AstronomyPictureOfTheDayGallery />
+      <AstronomyPictureOfTheDayGallery /> */}
     </main>
   )
 }

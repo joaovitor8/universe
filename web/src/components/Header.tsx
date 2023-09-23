@@ -47,11 +47,11 @@ export const Header = () => {
 
       <Select>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Idioma" />
+          <SelectValue placeholder="Language" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="pt-br">Portugues</SelectItem>
-          <SelectItem value="en">Ingles</SelectItem>
+          <SelectItem value="pt-br">Português</SelectItem>
+          <SelectItem value="en">English</SelectItem>
         </SelectContent>
       </Select>
     </header>
