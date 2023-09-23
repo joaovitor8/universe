@@ -31,13 +31,17 @@ export const AstronomyPictureOfTheDay = () => {
   const GetApod = () => {
     try {
       const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
-      const formatDate = `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}`
+      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
 
-      axios.get(`http://localhost:3333/api/apod?date=${date ? formatDate : formatToday}`)
-        .then((res) => setPictureTheDay(res.data))
-        .catch((error) => { console.error(error) })
+      if (formatDate > formatToday) {
+        alert("Select dates before or equal to today")
+      } else {
+        axios.get(`http://localhost:3333/api/apod?date=${formatDate}`)
+          .then((res) => setPictureTheDay(res.data))
+          .catch((error) => { console.error(error) })
+      }
     } catch (error) {
-      console.error("Erro ao buscar imagem:", error)
+      console.error("Error when searching for image", error)
     }
   }
 
@@ -47,12 +51,12 @@ export const AstronomyPictureOfTheDay = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center space-y-5">
-      <div className=" w-[1020px] flex items-start space-x-5">
+      <div className="w-[1020px] flex items-start space-x-5">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
-              {date ? format(date, "dd/MM/yyyy") : <span>Pick a date</span>}
+              {date ? format(date, "yyyy-MM-dd") : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
@@ -63,16 +67,16 @@ export const AstronomyPictureOfTheDay = () => {
         <Button onClick={GetApod}>Buscar</Button>
       </div>
 
-      <div className="h-[600px] flex space-x-5">
-        <div className="w-[500px]">
+      <div className="flex space-x-5">
+        <div className="h-[500px] w-[500px]">
           <AspectRatio ratio={16 / 9}>
             <a href={pictureTheDay?.hdurl} target="_blank">
-              <img src={pictureTheDay?.url} alt={"image"} className="rounded-md object-cover" />
+              <img src={pictureTheDay?.url} alt={"image"} className="h-[500px] w-[500px] rounded-md object-cover" />
             </a>
           </AspectRatio>
         </div>
 
-        <Card className="w-[500px]">
+        <Card className="h-min w-[500px]">
           <CardHeader>
             <CardTitle>{pictureTheDay?.title}</CardTitle>
             <CardDescription>{pictureTheDay?.date}</CardDescription>

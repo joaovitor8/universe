@@ -9,7 +9,7 @@ export const Header = () => {
 
       <Menubar>
         <MenubarMenu>
-          <MenubarTrigger>Images</MenubarTrigger>
+          <MenubarTrigger>Midia</MenubarTrigger>
           <MenubarContent>
             <MenubarItem> <Link href={'/apod'}>Astronomy Picture of the Day</Link> </MenubarItem>
             <MenubarItem>...</MenubarItem>

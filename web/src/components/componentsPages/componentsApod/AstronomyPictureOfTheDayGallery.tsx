@@ -1,16 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 'use client'
+
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/components/ui/button"
+
+import { CalendarIcon } from "@radix-ui/react-icons"
+import { DateRange } from "react-day-picker"
+import { addDays, format } from "date-fns"
+import { cn } from "@/lib/utils"
 
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-export const AstronomyPictureOfTheDayGallery = () => {
-  const [galleryPictureTheDay, setGalleryPictureTheDay] = useState([])
+interface TypeApodGallery {
+  url: string
+  media_type: string
+}
+
+export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
+  const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+  const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+
+  const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([])
+  const [date, setDate] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
 
   const GetGalleryApod = () => {
-    axios.get("http://localhost:3333/api/apod-gallery")
-    .then((res) => setGalleryPictureTheDay(res.data))
-    .catch((error) => { console.error(error) })
+    try {
+      const formtDateFrom = `${date?.from?.getFullYear()}-${String(Number(date?.from?.getMonth())+1).padStart(2, "0")}-${String(date?.from?.getDate()).padStart(2, "0")}`
+      const formatDateTo = `${date?.to?.getFullYear()}-${String(Number(date?.to?.getMonth())+1).padStart(2, "0")}-${String(date?.to?.getDate()).padStart(2, "0")}`
+
+      if (formtDateFrom > formatToday || formatDateTo > formatToday) {
+        alert("Select dates before or equal to today")
+      } else {
+        axios.get(`http://localhost:3333/api/apod-gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
+          .then((res) => {
+            if (res.data.length > 40) {
+              alert("Maximum requests reached! (maximum 40)")
+            } else {
+              setGalleryPictureTheDay(res.data)
+            }
+          })
+          .catch((error) => { console.error(error) })
+      }
+    } catch (error) {
+      console.error("Error when searching for image", error)
+    }
   }
 
   useEffect(() => {
@@ -18,12 +54,39 @@ export const AstronomyPictureOfTheDayGallery = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="h-4/5 w-4/5 flex flex-wrap justify-center p-5">
-        {galleryPictureTheDay.map((i, key) => (
-          <a href={i.hdurl} target="_blank" key={key} className="h-[400px] w-[400px] m-3">
-            <img src={i.url} alt={i.media_type} className="rounded-md object-cover h-[400px] w-[400px]" />
-          </a>
+    <div className="flex flex-col items-center space-y-5 my-20">
+      <div className="w-[1216px] flex items-start space-x-5">
+        <div className={cn("grid gap-2", className)}>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button id="date" variant={"outline"} className={cn( "w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {date?.from ? (
+                  date.to ? (
+                    <>
+                      {format(date.from, "yyyy-MM-dd")} /{" "}
+                      {format(date.to, "yyyy-MM-dd")}
+                    </>
+                  ) : (
+                    format(date.from, "yyyy-MM-dd")
+                  )
+                ) : (
+                  <span>Pick a date</span>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={2}/>
+            </PopoverContent>
+          </Popover>
+        </div>
+
+        <Button onClick={GetGalleryApod}>Buscar</Button>
+      </div>
+
+      <div className="w-4/5 flex flex-wrap justify-center">
+        {galleryPictureTheDay.map((img, key) => (
+          <img src={img.url} alt={img.media_type} key={key} className="h-[400px] w-[400px] m-1"/>
         ))}
       </div>
     </div>
