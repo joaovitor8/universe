@@ -18,9 +18,9 @@ export const Header = () => {
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger>Em construção</MenubarTrigger>
+          <MenubarTrigger>Space objects</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>Em construção</MenubarItem>
+            <MenubarItem> <Link href={'/neows'}>Near Earth Object Web Service</Link> </MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
           </MenubarContent>
