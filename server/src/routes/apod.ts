@@ -19,9 +19,8 @@ export async function RouteApod(app: FastifyInstance) {
       if (response.status === 200) {
         const data = response.data
 
-        // Aqui você pode realizar qualquer tratamento necessário nos dados antes de enviá-los para o front-end
+        // tratamento dos dados
         delete data.service_version
-        delete data.media_type
 
         // Enviando os dados tratados para o front-end
         reply.send(data)

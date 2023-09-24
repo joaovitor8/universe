@@ -9,16 +9,16 @@ export const Header = () => {
 
       <Menubar>
         <MenubarMenu>
-          <MenubarTrigger>Midia</MenubarTrigger>
+          <MenubarTrigger>Space</MenubarTrigger>
           <MenubarContent>
             <MenubarItem> <Link href={'/apod'}>Astronomy Picture of the Day</Link> </MenubarItem>
-            <MenubarItem>...</MenubarItem>
-            <MenubarItem>...</MenubarItem>
+            <MenubarItem>Em construção</MenubarItem>
+            <MenubarItem>Em construção</MenubarItem>
           </MenubarContent>
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger>Space objects</MenubarTrigger>
+          <MenubarTrigger>Earth</MenubarTrigger>
           <MenubarContent>
             <MenubarItem> <Link href={'/neows'}>Near Earth Object Web Service</Link> </MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
@@ -27,7 +27,7 @@ export const Header = () => {
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger>Em construção</MenubarTrigger>
+          <MenubarTrigger>Marth</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Em construção</MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
@@ -36,7 +36,7 @@ export const Header = () => {
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger>Em construção</MenubarTrigger>
+          <MenubarTrigger>Tec</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Em construção</MenubarItem>
             <MenubarItem>Em construção</MenubarItem>

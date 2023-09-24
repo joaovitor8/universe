@@ -22,6 +22,7 @@ interface TypeApod {
   date: string
   explanation: string
   copyright: string
+  media_type: string
 }
 
 export const AstronomyPictureOfTheDay = () => {
@@ -71,7 +72,7 @@ export const AstronomyPictureOfTheDay = () => {
         <div className="h-[500px] w-[500px]">
           <AspectRatio ratio={16 / 9}>
             <a href={pictureTheDay?.hdurl} target="_blank">
-              <img src={pictureTheDay?.url} alt={"image"} className="h-[500px] w-[500px] rounded-md object-cover" />
+              <img src={pictureTheDay?.url} alt={pictureTheDay?.media_type} className="h-[500px] w-[500px] rounded-md object-cover" />
             </a>
           </AspectRatio>
         </div>
