@@ -20,7 +20,7 @@ Clone o projeto
   git clone https://github.com/joaovitor8/universo.git
 ```
 
-Entre no diretório do projeto
+Entre nos diretórios do projeto
 
 ```bash
   cd web
