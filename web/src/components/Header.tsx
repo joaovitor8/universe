@@ -18,7 +18,7 @@ export const Header = () => {
     <header className="h-14 px-5 flex items-center justify-between border-b">
       <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
-      <Menubar className="max-[320px]:hidden">
+      <Menubar className="max-sm:hidden">
         <MenubarMenu>
           <MenubarTrigger>Space</MenubarTrigger>
           <MenubarContent>
@@ -56,7 +56,7 @@ export const Header = () => {
         </MenubarMenu>
       </Menubar>
 
-      <div className="max-[320px]:hidden">
+      <div className="max-sm:hidden">
         <Select>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Language" />
@@ -70,7 +70,7 @@ export const Header = () => {
 
 
 
-      <div className="min-[321px]:hidden">
+      <div className="min-[640px]:hidden">
         {nav ? (
           <X className="fixed right-[20px] top-[15px] z-50" onClick={showNav} />
           ) : (
@@ -78,7 +78,7 @@ export const Header = () => {
         )}
       </div>
 
-      <div className={`fixed top-[0px] z-40 flex h-[100vh] w-full flex-col items-center justify-center space-y-5 bg-gray-600 min-[321px]:hidden ${ nav ? "right-[0px]" : "right-[-100vw]" } `}>
+      <div className={`fixed top-[0px] z-40 flex h-[100vh] w-full flex-col items-center justify-center space-y-5 bg-gray-600 min-[640px]:hidden ${ nav ? "right-[0px]" : "right-[-100vw]" } `}>
         <Menubar>
           <MenubarMenu>
             <MenubarTrigger>Space</MenubarTrigger>
