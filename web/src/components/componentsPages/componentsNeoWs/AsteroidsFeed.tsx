@@ -13,8 +13,21 @@ import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
+interface TypeApiAsteroids {
+  id: string
+  name: string
+  orbiting_body: string
+  potentially_hazardous: boolean
+  absolute_magnitude: number
+  relative_velocity_km_h: number
+  estimated_diameter_meters: {
+    estimated_diameter_min: number
+    estimated_diameter_max: number
+  }
+}
+
 export const AsteroidsFeed = () => {
-  const [asteroidsFeed, setAsteroidsFeed] = useState([])
+  const [asteroidsFeed, setAsteroidsFeed] = useState<TypeApiAsteroids[]>([])
   const [date, setDate] = useState<Date>()
 
   const GetAsteroidsFeed = () => {
@@ -37,8 +50,8 @@ export const AsteroidsFeed = () => {
   console.log(asteroidsFeed)
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center space-y-5">
-      <div className="w-[1200px] space-x-5">
+    <div className="h-screen flex flex-col items-center space-y-5">
+      <div className="w-[1200px] mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
@@ -56,18 +69,16 @@ export const AsteroidsFeed = () => {
 
       <div className="w-[1200px]">
         <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableCaption>A list of some information about nearby meteors.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>ID</TableHead>
+              <TableHead className="w-[100px]">ID</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>absolute magnitude</TableHead>
-              <TableHead>estimated diameter</TableHead>
-              <TableHead>potentially hazardous</TableHead>
-              <TableHead>approach date</TableHead>
-              <TableHead>relative velocity</TableHead>
-              <TableHead>distance</TableHead>
               <TableHead>orbiting body</TableHead>
+              <TableHead>potentially hazardous</TableHead>
+              <TableHead>absolute magnitude</TableHead>
+              <TableHead>relative velocity</TableHead>
+              <TableHead>estimated diameter</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -75,13 +86,11 @@ export const AsteroidsFeed = () => {
               <TableRow key={key}>
                 <TableCell>{a.id}</TableCell>
                 <TableCell>{a.name}</TableCell>
-                <TableCell>{a.absolute_magnitude_h}</TableCell>
-                <TableCell>{Math.round(a.estimated_diameter.meters.estimated_diameter_min)} to {Math.round(a.estimated_diameter.meters.estimated_diameter_max)} M</TableCell>
-                <TableCell>{a.is_potentially_hazardous_asteroid ? "Yes" : "No"}</TableCell>
-                <TableCell>{a.close_approach_data[0].close_approach_date}</TableCell>
-                <TableCell>{Math.round(a.close_approach_data[0].relative_velocity.kilometers_per_hour)} KM/H</TableCell>
-                <TableCell>{Math.round(a.close_approach_data[0].miss_distance.kilometers)} KM</TableCell>
-                <TableCell>{a.close_approach_data[0].orbiting_body}</TableCell>
+                <TableCell>{a.orbiting_body}</TableCell>
+                <TableCell>{a.potentially_hazardous ? "Yes" : "No"}</TableCell>
+                <TableCell>{a.absolute_magnitude}</TableCell>
+                <TableCell>{Math.floor(a.relative_velocity_km_h)} KM/H</TableCell>
+                <TableCell>{Math.floor(a.estimated_diameter_meters.estimated_diameter_min)} to {Math.floor(a.estimated_diameter_meters.estimated_diameter_max)} M</TableCell>
               </TableRow>
             ))}
           </TableBody>
