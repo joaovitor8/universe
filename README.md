@@ -7,7 +7,7 @@
 
 ## Stack utilizada
 
-**Front-end:** React, Next, TailwindCSS, shadcnUI
+**Front-end:** React, Next, TailwindCSS, ShadcnUI
 
 **Back-end:** Node, Fastify
 
