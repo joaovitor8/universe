@@ -6,8 +6,8 @@ export default function Apod() {
   return (
     <main>
       <AstronomyPictureOfTheDay />
-      <div className="mt-20 flex items-center justify-center">
-        <Separator className="w-1/2"/>
+      <div className="my-20 flex items-center justify-center">
+        <Separator className="w-3/4"/>
       </div>
       <AstronomyPictureOfTheDayGallery />
     </main>

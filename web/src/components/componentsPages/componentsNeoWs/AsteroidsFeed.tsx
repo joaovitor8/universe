@@ -51,7 +51,7 @@ export const AsteroidsFeed = () => {
 
   return (
     <div className="h-screen flex flex-col items-center space-y-5">
-      <div className="w-[1200px] mt-20 space-x-5">
+      <div className="w-[90%] mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>

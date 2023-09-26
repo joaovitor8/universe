@@ -55,7 +55,7 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
 
   return (
     <div className="flex flex-col items-center space-y-5 my-20">
-      <div className="w-[916px] flex items-start space-x-5">
+      <div className="flex space-x-5">
         <div className={cn("grid gap-2", className)}>
           <Popover>
             <PopoverTrigger asChild>
@@ -84,9 +84,9 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
         <Button onClick={GetGalleryApod}>Buscar</Button>
       </div>
 
-      <div className="w-4/5 flex flex-wrap justify-center">
+      <div className="w-full flex flex-wrap justify-center">
         {galleryPictureTheDay.map((img, key) => (
-          <img src={img.url} alt={img.media_type} key={key} className="h-[300px] w-[300px] m-1"/>
+          <img src={img.url} alt={img.media_type} key={key} className="m-1 w-[31%]"/>
         ))}
       </div>
     </div>
