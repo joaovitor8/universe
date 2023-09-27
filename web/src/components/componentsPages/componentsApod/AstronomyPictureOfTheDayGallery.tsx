@@ -59,7 +59,7 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
         <div className={cn("grid gap-2", className)}>
           <Popover>
             <PopoverTrigger asChild>
-              <Button id="date" variant={"outline"} className={cn( "w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
+              <Button id="date" variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {date?.from ? (
                   date.to ? (
@@ -81,12 +81,12 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
           </Popover>
         </div>
 
-        <Button onClick={GetGalleryApod}>Buscar</Button>
+        <Button onClick={GetGalleryApod}>Search</Button>
       </div>
 
       <div className="w-full flex flex-wrap justify-center">
         {galleryPictureTheDay.map((img, key) => (
-          <img src={img.url} alt={img.media_type} key={key} className="m-1 w-[31%]"/>
+          <img src={img.url} alt={img.media_type} key={key} className="m-1 h-[300px] w-[300px]"/>
         ))}
       </div>
     </div>

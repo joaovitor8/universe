@@ -47,8 +47,6 @@ export const AsteroidsFeed = () => {
     GetAsteroidsFeed()
   }, [])
 
-  console.log(asteroidsFeed)
-
   return (
     <div className="h-screen flex flex-col items-center space-y-5">
       <div className="w-[90%] mt-20 space-x-5">
@@ -64,12 +62,12 @@ export const AsteroidsFeed = () => {
           </PopoverContent>
         </Popover>
 
-        <Button onClick={GetAsteroidsFeed}>Buscar</Button>
+        <Button onClick={GetAsteroidsFeed}>Search</Button>
       </div>
 
       <div className="w-[1200px]">
         <Table>
-          <TableCaption>A list of some information about nearby meteors.</TableCaption>
+          <TableCaption>Today&apos;s list of some information about nearby meteors.</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>

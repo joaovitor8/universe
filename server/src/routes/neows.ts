@@ -46,7 +46,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
     try {
       // Acessando dados enviados como parâmetros de consulta
       // const dateAsteroids = request.query.date
-      const dateAsteroids = 3542519
+      const dateAsteroids = 2329437
 
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${dateAsteroids}`, {

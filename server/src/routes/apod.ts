@@ -11,7 +11,8 @@ export async function RouteApod(app: FastifyInstance) {
       const response = await axios.get("https://api.nasa.gov/planetary/apod", {
         params: {
           api_key: process.env.CHAVE_NASA,
-          date: dateFromFrontend
+          date: dateFromFrontend,
+          thumbs: true
         },
       })
 
