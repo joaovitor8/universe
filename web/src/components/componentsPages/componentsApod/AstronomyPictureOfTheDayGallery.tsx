@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-'use client'
+"use client"
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
@@ -20,7 +20,7 @@ interface TypeApodGallery {
 }
 
 export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
-  const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+  const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()-1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
   const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
 
   const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([])
@@ -34,9 +34,9 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
       if (formtDateFrom > formatToday || formatDateTo > formatToday) {
         alert("Select dates before or equal to today")
       } else {
-        axios.get(`http://localhost:3333/api/apod-gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
+        axios.get(`http://localhost:3333/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
           .then((res) => {
-            if (res.data.length > 40) {
+            if (res.data.length > 100) {
               alert("Maximum requests reached! (maximum 40)")
             } else {
               setGalleryPictureTheDay(res.data)

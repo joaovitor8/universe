@@ -23,7 +23,7 @@ export const AsteroidsLookup = () => {
   useEffect(() => {}, [])
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input type="search" placeholder="enter the ID" />
         <Button type="submit">Search</Button>
