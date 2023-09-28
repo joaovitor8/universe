@@ -36,7 +36,7 @@ export async function RouteApod(app: FastifyInstance) {
 
   // --------------------------------------------
 
-  app.get("/api/apod-gallery", async (request: any, reply) => {
+  app.get("/api/apod/gallery", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
       const startDateFromFrontend = request.query.start_date
@@ -56,7 +56,11 @@ export async function RouteApod(app: FastifyInstance) {
         const data = response.data
 
         // Aqui você pode realizar qualquer tratamento necessário nos dados antes de enviá-los para o front-end
-        // ???
+        delete data.date
+        delete data.title
+        delete data.explanation
+        delete data.copyright
+        delete data.service_version
 
         // Enviando os dados tratados para o front-end
         reply.send(data)

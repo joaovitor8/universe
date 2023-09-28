@@ -16,6 +16,7 @@ import axios from "axios"
 
 interface TypeApodGallery {
   url: string
+  hdurl: string
   media_type: string
 }
 
@@ -86,7 +87,9 @@ export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttribu
 
       <div className="w-full flex flex-wrap justify-center">
         {galleryPictureTheDay.map((img, key) => (
-          <img src={img.url} alt={img.media_type} key={key} className="m-1 h-[300px] w-[300px]"/>
+          <a href={img.hdurl} key={key} target="_blank">
+            <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px]"/>
+          </a>
         ))}
       </div>
     </div>
