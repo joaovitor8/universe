@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-export const AsteroidsLookup = () => {
+export const Lookup = () => {
   const [asteroidsLookup, setAsteroidsLookup] = useState()
 
   const GetAsteroidsLookup = () => {

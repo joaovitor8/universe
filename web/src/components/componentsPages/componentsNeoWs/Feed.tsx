@@ -26,7 +26,7 @@ interface TypeApiAsteroids {
   }
 }
 
-export const AsteroidsFeed = () => {
+export const Feed = () => {
   const [asteroidsFeed, setAsteroidsFeed] = useState<TypeApiAsteroids[]>([])
   const [date, setDate] = useState<Date>()
 

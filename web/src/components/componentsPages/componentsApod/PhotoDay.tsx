@@ -25,7 +25,7 @@ interface TypeApod {
   // thumbnail_url: string
 }
 
-export const AstronomyPictureOfTheDay = () => {
+export const PhotoDay = () => {
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()
   const [date, setDate] = useState<Date>()
 

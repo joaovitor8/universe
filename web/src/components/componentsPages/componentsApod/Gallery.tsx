@@ -20,7 +20,7 @@ interface TypeApodGallery {
   media_type: string
 }
 
-export const AstronomyPictureOfTheDayGallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
+export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()-1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
   const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
 

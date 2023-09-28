@@ -1,15 +1,15 @@
-import { AsteroidsFeed } from "@/components/componentsPages/componentsNeoWs/AsteroidsFeed"
-import { AsteroidsLookup } from "@/components/componentsPages/componentsNeoWs/AsteroidsLookup"
+import { About } from "@/components/componentsPages/componentsNeoWs/About"
+import { Feed } from "@/components/componentsPages/componentsNeoWs/Feed"
+import { Lookup } from "@/components/componentsPages/componentsNeoWs/Lookup"
 
 export default function NeoWs() {
   return (
     <main>
-      <AsteroidsFeed />
+      <About />
       <div className="my-10"></div>
-      {/* <AsteroidsLookup /> */}
+      <Feed />
+      <div className="my-10"></div>
+      {/* <Lookup /> */}
     </main>
   )
 }
-
-
-// Near Earth Object Web Service
