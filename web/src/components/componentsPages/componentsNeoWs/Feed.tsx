@@ -48,7 +48,7 @@ export const Feed = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col items-center space-y-5">
+    <div className="min-h-screen flex flex-col items-center space-y-5 p-5">
       <div className="w-[1000px] mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>

@@ -1,7 +1,7 @@
 
 
 
-export const AnalysisCME = () => {
+export const SpaceWeather = () => {
   return (
     <div></div>
   )

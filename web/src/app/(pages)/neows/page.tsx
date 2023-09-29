@@ -8,8 +8,8 @@ export default function NeoWs() {
       <About />
       <div className="my-10"></div>
       <Feed />
-      <div className="my-10"></div>
-      {/* <Lookup /> */}
+      {/* <div className="my-10"></div>
+      <Lookup /> */}
     </main>
   )
 }

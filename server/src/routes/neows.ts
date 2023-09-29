@@ -60,6 +60,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data
 
         // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
 
         // Enviando os dados tratados para o front-end
         reply.send(data)
