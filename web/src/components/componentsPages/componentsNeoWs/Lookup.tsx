@@ -1,5 +1,6 @@
 "use client"
 
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -28,37 +29,43 @@ export const Lookup = () => {
         <Input type="search" placeholder="enter the ID" onChange={(e) => setAsteroidsID(e.target.value)}/>
         <Button onClick={GetAsteroidsLookup}>Search</Button>
       </div>
-      <div>
-        <div>
-          <p>Orbital Data Information</p>
-          <p>01 aphelion distance: {asteroidsLookup?.orbital_data.aphelion_distance}</p>
-          <p>02 ascending node longitude: {asteroidsLookup?.orbital_data.ascending_node_longitude}</p>
-          <p>03 data arc in days: {asteroidsLookup?.orbital_data.data_arc_in_days}</p>
-          <p>04 eccentricity: {asteroidsLookup?.orbital_data.eccentricity}</p>
-          <p>05 epoch osculation: {asteroidsLookup?.orbital_data.epoch_osculation}</p>
-          <p>06 equinox: {asteroidsLookup?.orbital_data.equinox}</p>
-          <p>07 first observation date: {asteroidsLookup?.orbital_data.first_observation_date}</p>
-          <p>08 inclination: {asteroidsLookup?.orbital_data.inclination}</p>
-          <p>09 jupiter tisserand invariant: {asteroidsLookup?.orbital_data.jupiter_tisserand_invariant}</p>
-          <p>10 last observation date: {asteroidsLookup?.orbital_data.last_observation_date}</p>
-          <p>11 mean anomaly: {asteroidsLookup?.orbital_data.mean_anomaly}</p>
-          <p>12 mean motion: {asteroidsLookup?.orbital_data.mean_motion}</p>
-          <p>13 minimum orbit intersection: {asteroidsLookup?.orbital_data.minimum_orbit_intersection}</p>
-          <p>14 observations used: {asteroidsLookup?.orbital_data.observations_used}</p>
-          <p>---</p>
-          <p>15 orbit class - orbit class description: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_description}</p>
-          <p>16 orbit class - orbit class range: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_range}</p>
-          <p>17 orbit class - orbit class type: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_type}</p>
-          <p>---</p>
-          <p>18 orbit determination date: {asteroidsLookup?.orbital_data.orbit_determination_date}</p>
-          <p>19 orbit id: {asteroidsLookup?.orbital_data.orbit_id}</p>
-          <p>20 orbit uncertainty: {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
-          <p>21 orbital period: {asteroidsLookup?.orbital_data.orbital_period}</p>
-          <p>22 perihelion argument: {asteroidsLookup?.orbital_data.perihelion_argument}</p>
-          <p>23 perihelion distance: {asteroidsLookup?.orbital_data.perihelion_distance}</p>
-          <p>24 perihelion time: {asteroidsLookup?.orbital_data.perihelion_time}</p>
-          <p>25 semi major axis: {asteroidsLookup?.orbital_data.semi_major_axis}</p>
-        </div>
+      <div className="flex">
+        <Card>
+          <CardHeader>
+            <CardTitle>Orbital Data</CardTitle>
+            <CardDescription>Information</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Aphelion distance: {asteroidsLookup?.orbital_data.aphelion_distance}</p>
+            <p>Ascending node longitude: {asteroidsLookup?.orbital_data.ascending_node_longitude}</p>
+            <p>Data arc in days: {asteroidsLookup?.orbital_data.data_arc_in_days}</p>
+            <p>Eccentricity: {asteroidsLookup?.orbital_data.eccentricity}</p>
+            <p>Epoch osculation: {asteroidsLookup?.orbital_data.epoch_osculation}</p>
+            <p>Equinox: {asteroidsLookup?.orbital_data.equinox}</p>
+            <p>First observation date: {asteroidsLookup?.orbital_data.first_observation_date}</p>
+            <p>Inclination: {asteroidsLookup?.orbital_data.inclination}</p>
+            <p>Jupiter tisserand invariant: {asteroidsLookup?.orbital_data.jupiter_tisserand_invariant}</p>
+            <p>Last observation date: {asteroidsLookup?.orbital_data.last_observation_date}</p>
+            <p>Mean anomaly: {asteroidsLookup?.orbital_data.mean_anomaly}</p>
+            <p>Mean motion: {asteroidsLookup?.orbital_data.mean_motion}</p>
+            <p>Minimum orbit intersection: {asteroidsLookup?.orbital_data.minimum_orbit_intersection}</p>
+            <p>Observations used: {asteroidsLookup?.orbital_data.observations_used}</p>
+            <p>Orbit class description: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_description}</p>
+            <p>Orbit class range: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_range}</p>
+            <p>Orbit class type: {asteroidsLookup?.orbital_data.orbit_class.orbit_class_type}</p>
+            <p>Orbit determination date: {asteroidsLookup?.orbital_data.orbit_determination_date}</p>
+            <p>Orbit id: {asteroidsLookup?.orbital_data.orbit_id}</p>
+            <p>Orbit uncertainty: {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
+            <p>Orbital period: {asteroidsLookup?.orbital_data.orbital_period}</p>
+            <p>Perihelion argument: {asteroidsLookup?.orbital_data.perihelion_argument}</p>
+            <p>Perihelion distance: {asteroidsLookup?.orbital_data.perihelion_distance}</p>
+            <p>Perihelion time: {asteroidsLookup?.orbital_data.perihelion_time}</p>
+            <p>Semi major axis: {asteroidsLookup?.orbital_data.semi_major_axis}</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+        </Card>
       </div>
     </div>
   )

@@ -16,14 +16,9 @@ import axios from "axios"
 interface TypeApiAsteroids {
   id: string
   name: string
-  orbiting_body: string
-  potentially_hazardous: boolean
   absolute_magnitude: number
-  relative_velocity_km_h: number
-  estimated_diameter_meters: {
-    estimated_diameter_min: number
-    estimated_diameter_max: number
-  }
+  sentry_object: boolean
+  potentially_hazardous: boolean
 }
 
 export const Feed = () => {
@@ -64,7 +59,7 @@ export const Feed = () => {
 
         <Button onClick={GetAsteroidsFeed}>Search</Button>
 
-        {/* <span>Basic Information</span> */}
+        <span>Basic Information</span>
       </div>
 
       <div className="w-[1000px]">
@@ -74,11 +69,9 @@ export const Feed = () => {
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>orbiting body</TableHead>
-              <TableHead>potentially hazardous</TableHead>
-              <TableHead>absolute magnitude</TableHead>
-              <TableHead>relative velocity</TableHead>
-              <TableHead>estimated diameter</TableHead>
+              <TableHead>Absolute Magnitude</TableHead>
+              <TableHead>Sentry Object</TableHead>
+              <TableHead>Potentially Hazardous</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -86,11 +79,9 @@ export const Feed = () => {
               <TableRow key={key}>
                 <TableCell>{a.id}</TableCell>
                 <TableCell>{a.name}</TableCell>
-                <TableCell>{a.orbiting_body}</TableCell>
-                <TableCell>{a.potentially_hazardous ? "Yes" : "No"}</TableCell>
                 <TableCell>{a.absolute_magnitude}</TableCell>
-                <TableCell>{Math.floor(a.relative_velocity_km_h)} KM/H</TableCell>
-                <TableCell>{Math.floor(a.estimated_diameter_meters.estimated_diameter_min)} to {Math.floor(a.estimated_diameter_meters.estimated_diameter_max)} M</TableCell>
+                <TableCell>{a.sentry_object ? "Yes" : "No"}</TableCell>
+                <TableCell>{a.potentially_hazardous ? "Yes" : "No"}</TableCell>
               </TableRow>
             ))}
           </TableBody>

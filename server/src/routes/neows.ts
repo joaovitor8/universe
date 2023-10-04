@@ -25,10 +25,8 @@ export async function RouteNeoWs(app: FastifyInstance) {
           id: dt.id,
           name: dt.name,
           absolute_magnitude: dt.absolute_magnitude_h,
-          orbiting_body: dt.close_approach_data[0].orbiting_body,
+          sentry_object: dt.is_sentry_object,
           potentially_hazardous: dt.is_potentially_hazardous_asteroid,
-          relative_velocity_km_h: dt.close_approach_data[0].relative_velocity.kilometers_per_hour,
-          estimated_diameter_meters: dt.estimated_diameter.meters,
         }))
 
         // Enviando os dados tratados para o front-end
@@ -59,10 +57,18 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data
 
         // tratamento dos dados
-        delete data.links
-        delete data.neo_reference_id
+        delete data.absolute_magnitude_h
         delete data.designation
+        delete data.id
+        delete data.is_potentially_hazardous_asteroid
+        delete data.is_sentry_object
+        delete data.name
         delete data.nasa_jpl_url
+        delete data.neo_reference_id
+
+        delete data.close_approach_data
+        delete data.estimated_diameter
+        delete data.links
 
         // Enviando os dados tratados para o front-end
         reply.send(data)
@@ -75,3 +81,30 @@ export async function RouteNeoWs(app: FastifyInstance) {
     }
   })
 }
+
+
+// aphelion_distance: dt.orbital_data.aphelion_distance,
+// ascending_node_longitude: dt.orbital_data.ascending_node_longitude,
+// data_arc_in_days: dt.orbital_data.data_arc_in_days,
+// eccentricity: dt.orbital_data.eccentricity,
+// epoch_osculation: dt.orbital_data.epoch_osculation,
+// equinox: dt.orbital_data.equinox,
+// first_observation_date: dt.orbital_data.first_observation_date,
+// inclination: dt.orbital_data.inclination,
+// jupiter_tisserand_invariant: dt.orbital_data.jupiter_tisserand_invariant,
+// last_observation_date: dt.orbital_data.last_observation_date,
+// mean_anomaly: dt.orbital_data.mean_anomaly,
+// mean_motion: dt.orbital_data.mean_motion,
+// minimum_orbit_intersection: dt.orbital_data.minimum_orbit_intersection,
+// observations_used: dt.orbital_data.observations_used,
+// orbit_class_description: dt.orbital_data.orbit_class.orbit_class_description,
+// orbit_class_range: dt.orbital_data.orbit_class.orbit_class_range,
+// orbit_class_type: dt.orbital_data.orbit_class.orbit_class_type,
+// orbit_determination_date: dt.orbital_data.orbit_determination_date,
+// orbit_id: dt.orbital_data.orbit_id,
+// orbit_uncertainty: dt.orbital_data.orbit_uncertainty,
+// orbital_period: dt.orbital_data.orbital_period,
+// perihelion_argument: dt.orbital_data.perihelion_argument,
+// perihelion_distance: dt.orbital_data.perihelion_distance,
+// perihelion_time: dt.orbital_data.perihelion_time,
+// semi_major_axis: dt.orbital_data.semi_major_axis,
