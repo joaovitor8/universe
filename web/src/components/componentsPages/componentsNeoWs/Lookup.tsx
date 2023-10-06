@@ -31,7 +31,7 @@ export const Lookup = () => {
         <Button onClick={GetAsteroidsLookup}>Search</Button>
         <span>Advanced Information</span>
       </div>
-      <div className="flex space-x-1">
+      <div className="flex flex-wrap space-x-1">
         <Card className="h-min w-[500px]">
           <CardHeader>
             <CardTitle>Orbital Data</CardTitle>
@@ -73,13 +73,29 @@ export const Lookup = () => {
             <CardDescription>---</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
-            <div></div>
+            <p>{asteroidsLookup?.estimated_diameter.kilometers}</p>
+            <p>{asteroidsLookup?.estimated_diameter.meters}</p>
+            <p>{asteroidsLookup?.estimated_diameter.miles}</p>
+            <p>{asteroidsLookup?.estimated_diameter.feet}</p>
           </CardContent>
           <CardFooter>
             <p>Card Footer</p>
           </CardFooter>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Card Title</CardTitle>
+            <CardDescription>Card Description</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+          <CardFooter>
+            <p>Card Footer</p>
+          </CardFooter>
+        </Card>
+
       </div>
     </div>
   )

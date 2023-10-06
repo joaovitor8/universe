@@ -58,22 +58,10 @@ export async function RouteNeoWs(app: FastifyInstance) {
 
         const processedData = {
           estimated_diameter: {
-           feet: {
-            max: data.estimated_diameter.feet.estimated_diameter_max,
-            min: data.estimated_diameter.feet.estimated_diameter_min,
-           },
-           kilometers: {
-            max: data.estimated_diameter.kilometers.estimated_diameter_max,
-            min: data.estimated_diameter.kilometers.estimated_diameter_min,
-           },
-           meters: {
-            max: data.estimated_diameter.meters.estimated_diameter_max,
-            min: data.estimated_diameter.meters.estimated_diameter_min,
-           },
-           miles: {
-            max: data.estimated_diameter.miles.estimated_diameter_max,
-            min: data.estimated_diameter.miles.estimated_diameter_min,
-           },
+            kilometers: `${data.estimated_diameter.kilometers.estimated_diameter_max} - ${data.estimated_diameter.kilometers.estimated_diameter_min} km`,
+            meters: `${data.estimated_diameter.meters.estimated_diameter_max} - ${data.estimated_diameter.meters.estimated_diameter_min} m`,
+            miles: `${data.estimated_diameter.miles.estimated_diameter_max} - ${data.estimated_diameter.miles.estimated_diameter_min} mi`,
+            feet: `${data.estimated_diameter.feet.estimated_diameter_max} - ${data.estimated_diameter.feet.estimated_diameter_min} ft`,
           },
 
           orbital_data: {

@@ -27,22 +27,10 @@ export interface TypeFeedAsteroids {
 
 export interface TypeLookupAsteroids {
   estimated_diameter: {
-    feet: {
-      min: string
-      max: string
-    }
-    kilometers: {
-      min: string
-      max: string
-    }
-    meters: {
-      min: string
-      max: string
-    }
-    miles: {
-      min: string
-      max: string
-    }
+    feet: string
+    kilometers: string
+    meters: string
+    miles: string
   }
   orbital_data: {
     equinox: string
