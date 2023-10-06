@@ -10,19 +10,12 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
+import { TypeFeedAsteroids } from "@/components/Types"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-interface TypeApiAsteroids {
-  id: string
-  name: string
-  absolute_magnitude: number
-  sentry_object: boolean
-  potentially_hazardous: boolean
-}
-
 export const Feed = () => {
-  const [asteroidsFeed, setAsteroidsFeed] = useState<TypeApiAsteroids[]>([])
+  const [asteroidsFeed, setAsteroidsFeed] = useState<TypeFeedAsteroids[]>([])
   const [date, setDate] = useState<Date>()
 
   const GetAsteroidsFeed = () => {
@@ -67,7 +60,7 @@ export const Feed = () => {
           <TableCaption>Today&apos;s list of some information about nearby meteors.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">ID</TableHead>
+              <TableHead>ID</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Absolute Magnitude</TableHead>
               <TableHead>Sentry Object</TableHead>

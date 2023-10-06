@@ -11,14 +11,9 @@ import { DateRange } from "react-day-picker"
 import { addDays, format } from "date-fns"
 import { cn } from "@/lib/utils"
 
+import { TypeApodGallery } from "@/components/Types"
 import { useState, useEffect } from "react"
 import axios from "axios"
-
-interface TypeApodGallery {
-  url: string
-  hdurl: string
-  media_type: string
-}
 
 export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()-1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`

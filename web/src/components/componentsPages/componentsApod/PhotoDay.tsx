@@ -11,19 +11,9 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
+import { TypeApod } from "@/components/Types"
 import { useEffect, useState } from "react"
 import axios from "axios"
-
-interface TypeApod {
-  hdurl: string
-  url: string
-  title: string
-  date: string
-  explanation: string
-  copyright: string
-  media_type: string
-  // thumbnail_url: string
-}
 
 export const PhotoDay = () => {
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()

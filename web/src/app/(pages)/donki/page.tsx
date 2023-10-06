@@ -4,8 +4,8 @@ import { SpaceWeather } from "@/components/componentsPages/componentsDonki/Space
 export default function Donki() {
   return (
     <main>
-      <About />
-      <div className="my-10"></div>
+      {/* <About />
+      <div className="my-10"></div> */}
       <SpaceWeather />
     </main>
   )
