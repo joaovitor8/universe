@@ -1,6 +1,8 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -35,7 +37,7 @@ export const Lookup = () => {
         <Card className="h-min w-[500px]">
           <CardHeader>
             <CardTitle>Orbital Data</CardTitle>
-            <CardDescription>---</CardDescription>
+            <CardDescription>Information related to the orbit of a space object</CardDescription>
           </CardHeader>
           <CardContent>
             <p>Equinox: {asteroidsLookup?.orbital_data.equinox}</p>
@@ -62,40 +64,43 @@ export const Lookup = () => {
             <p>Orbit id: {asteroidsLookup?.orbital_data.orbit_id}</p>
             <p>Orbit uncertainty: {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
           </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
         </Card>
 
-        <Card className="h-min w-[500px]">
-          <CardHeader>
-            <CardTitle>Estimated Diameter</CardTitle>
-            <CardDescription>---</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>{asteroidsLookup?.estimated_diameter.kilometers}</p>
-            <p>{asteroidsLookup?.estimated_diameter.meters}</p>
-            <p>{asteroidsLookup?.estimated_diameter.miles}</p>
-            <p>{asteroidsLookup?.estimated_diameter.feet}</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
+        <div className="space-y-1">
+          <Card className="h-min w-[500px]">
+            <CardHeader>
+              <CardTitle>Estimated Diameter</CardTitle>
+              <CardDescription>Diameter information in different measurements</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Miles: {asteroidsLookup?.estimated_diameter.miles}</p>
+              <p>Kilometers: {asteroidsLookup?.estimated_diameter.kilometers}</p>
+              <p>Meters: {asteroidsLookup?.estimated_diameter.meters}</p>
+              <p>Feet: {asteroidsLookup?.estimated_diameter.feet}</p>
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
-          </CardFooter>
-        </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Close Approach Data</CardTitle>
+              <CardDescription>Card Description</CardDescription>
+            </CardHeader>
+            <CardContent>
 
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Data" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">A</SelectItem>
+                  <SelectItem value="">B</SelectItem>
+                  <SelectItem value="">C</SelectItem>
+                </SelectContent>
+              </Select>
+
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   )

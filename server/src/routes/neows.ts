@@ -24,7 +24,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const processedData = data.map((dt) => ({
           id: dt.id,
           name: dt.name,
-          absolute_magnitude: dt.absolute_magnitude_h,
+          absolute_magnitude: `${Number(dt.absolute_magnitude_h).toFixed(2)}`,
           sentry_object: dt.is_sentry_object,
           potentially_hazardous: dt.is_potentially_hazardous_asteroid,
         }))
@@ -58,11 +58,13 @@ export async function RouteNeoWs(app: FastifyInstance) {
 
         const processedData = {
           estimated_diameter: {
-            kilometers: `${data.estimated_diameter.kilometers.estimated_diameter_max} - ${data.estimated_diameter.kilometers.estimated_diameter_min} km`,
-            meters: `${data.estimated_diameter.meters.estimated_diameter_max} - ${data.estimated_diameter.meters.estimated_diameter_min} m`,
-            miles: `${data.estimated_diameter.miles.estimated_diameter_max} - ${data.estimated_diameter.miles.estimated_diameter_min} mi`,
-            feet: `${data.estimated_diameter.feet.estimated_diameter_max} - ${data.estimated_diameter.feet.estimated_diameter_min} ft`,
+            miles: `≅${Number(data.estimated_diameter.miles.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.miles.estimated_diameter_max).toFixed(4)} mi`,
+            kilometers: `≅${Number(data.estimated_diameter.kilometers.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.kilometers.estimated_diameter_max).toFixed(4)} km`,
+            meters: `≅${Number(data.estimated_diameter.meters.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.meters.estimated_diameter_max).toFixed(4)} m`,
+            feet: `≅${Number(data.estimated_diameter.feet.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.feet.estimated_diameter_max).toFixed(4)} ft`,
           },
+
+          close_approach_data: data.close_approach_data,
 
           orbital_data: {
             equinox: data.orbital_data.equinox,
@@ -80,7 +82,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
             epoch_osculation: `≅${Number(data.orbital_data.epoch_osculation).toFixed(2)} J.D`,
             minimum_orbit_intersection: `≅${Number(data.orbital_data.minimum_orbit_intersection).toFixed(2)}`,
             perihelion_time: `≅${Number(data.orbital_data.perihelion_time).toFixed(2)} J.D.`,
-            orbital_period: `≅${Number(data.orbital_data.orbital_period).toFixed(2)} days`,
+            orbital_period: `≅${Math.floor(data.orbital_data.orbital_period)} days`,
             jupiter_tisserand_invariant: `≅${Number(data.orbital_data.jupiter_tisserand_invariant).toFixed(2)}`,
             orbit_class_description: data.orbital_data.orbit_class.orbit_class_description,
             orbit_class_range: data.orbital_data.orbit_class.orbit_class_range,
