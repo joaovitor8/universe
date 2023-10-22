@@ -64,8 +64,6 @@ export async function RouteNeoWs(app: FastifyInstance) {
             feet: `≅${Number(data.estimated_diameter.feet.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.feet.estimated_diameter_max).toFixed(4)} ft`,
           },
 
-          close_approach_data: data.close_approach_data,
-
           orbital_data: {
             equinox: data.orbital_data.equinox,
             observation_date: `${data.orbital_data.first_observation_date} to ${data.orbital_data.last_observation_date}`,

@@ -1,6 +1,6 @@
-import { About } from "@/components/componentsPages/componentsNeoWs/About"
-import { Feed } from "@/components/componentsPages/componentsNeoWs/Feed"
-import { Lookup } from "@/components/componentsPages/componentsNeoWs/Lookup"
+import { About } from "@/components/componentsPages/neoWs/About"
+import { Feed } from "@/components/componentsPages/neoWs/Feed"
+import { Lookup } from "@/components/componentsPages/neoWs/Lookup"
 
 export default function NeoWs() {
   return (

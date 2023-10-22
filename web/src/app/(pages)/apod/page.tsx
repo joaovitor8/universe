@@ -1,6 +1,6 @@
-import { About } from "@/components/componentsPages/componentsApod/About"
-import { PhotoDay } from "@/components/componentsPages/componentsApod/PhotoDay"
-import { Gallery } from "@/components/componentsPages/componentsApod/Gallery"
+import { About } from "@/components/componentsPages/apod/About"
+import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay"
+import { Gallery } from "@/components/componentsPages/apod/Gallery"
 
 export default function Apod() {
   return (

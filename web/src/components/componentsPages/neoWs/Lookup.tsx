@@ -26,6 +26,10 @@ export const Lookup = () => {
 
   console.log(asteroidsLookup)
 
+  // for (let i = 0; i <= asteroidsLookup?.close_approach_data.length; i++) {
+  //   console.log(asteroidsLookup?.close_approach_data[i].close_approach_date)
+  // }
+
   return (
     <div className="min-h-screen flex flex-col items-center space-y-5 p-5">
       <div className="flex w-full max-w-sm items-center space-x-2">
@@ -77,27 +81,6 @@ export const Lookup = () => {
               <p>Kilometers: {asteroidsLookup?.estimated_diameter.kilometers}</p>
               <p>Meters: {asteroidsLookup?.estimated_diameter.meters}</p>
               <p>Feet: {asteroidsLookup?.estimated_diameter.feet}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Close Approach Data</CardTitle>
-              <CardDescription>Card Description</CardDescription>
-            </CardHeader>
-            <CardContent>
-
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Data" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">A</SelectItem>
-                  <SelectItem value="">B</SelectItem>
-                  <SelectItem value="">C</SelectItem>
-                </SelectContent>
-              </Select>
-
             </CardContent>
           </Card>
         </div>
