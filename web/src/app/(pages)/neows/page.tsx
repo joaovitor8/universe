@@ -5,10 +5,10 @@ import { Lookup } from "@/components/componentsPages/neoWs/Lookup"
 export default function NeoWs() {
   return (
     <main>
-      {/* <About />
-      <div className="my-10"></div> */}
+      <About />
+      <div className="h-1 my-10"></div>
       <Feed />
-      <div className="my-10"></div>
+      <div className="h-1 my-10"></div>
       <Lookup />
     </main>
   )

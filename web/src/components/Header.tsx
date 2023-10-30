@@ -12,7 +12,7 @@ export const Header = () => {
           <MenubarTrigger>Space</MenubarTrigger>
           <MenubarContent>
             <MenubarItem> <Link href={'/apod'}>Astronomical Photos</Link> </MenubarItem>
-            <MenubarItem>Em construção</MenubarItem>
+            <MenubarItem> <Link href={'/neows'}>Near Earth Object</Link> </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
 

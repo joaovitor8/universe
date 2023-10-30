@@ -10,12 +10,12 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-import { TypeFeedAsteroids } from "@/components/Types"
+// import { TypeFeedAsteroids } from "@/components/Types"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
 export const Feed = () => {
-  const [asteroidsFeed, setAsteroidsFeed] = useState<TypeFeedAsteroids[]>([])
+  const [asteroidsFeed, setAsteroidsFeed] = useState([])
   const [date, setDate] = useState<Date>()
 
   const GetAsteroidsFeed = () => {
@@ -36,7 +36,7 @@ export const Feed = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col items-center space-y-5 p-5">
+    <div className="min-h-screen flex flex-col items-center space-y-5 p-1">
       <div className="w-[1000px] mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
