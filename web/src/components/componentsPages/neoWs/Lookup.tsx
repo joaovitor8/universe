@@ -6,13 +6,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-// import { TypeLookupAsteroids } from "@/components/Types"
+import { TypeAsteroidsLookup } from "@/components/Types"
 import { useState } from "react"
 import axios from "axios"
 
 export const Lookup = () => {
   const [asteroidsID, setAsteroidsID] = useState('')
-  const [asteroidsLookup, setAsteroidsLookup] = useState()
+  const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
 
   const GetAsteroidsLookup = () => {
     try {
@@ -24,7 +24,7 @@ export const Lookup = () => {
     }
   }
 
-  console.log(asteroidsLookup)
+  // console.log(asteroidsLookup)
 
   // for (let i = 0; i <= asteroidsLookup?.close_approach_data.length; i++) {
   //   console.log(asteroidsLookup?.close_approach_data[i].close_approach_date)
@@ -71,7 +71,7 @@ export const Lookup = () => {
         </Card>
 
         <div className="space-y-1">
-          <Card className="h-min w-[500px]">
+         <Card className="h-min w-[500px]">
             <CardHeader>
               <CardTitle>Estimated Diameter</CardTitle>
               <CardDescription>Diameter information in different measurements</CardDescription>
@@ -81,6 +81,40 @@ export const Lookup = () => {
               <p>Kilometers: {asteroidsLookup?.estimated_diameter.kilometers}</p>
               <p>Meters: {asteroidsLookup?.estimated_diameter.meters}</p>
               <p>Feet: {asteroidsLookup?.estimated_diameter.feet}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="h-min w-[500px]">
+            <CardHeader>
+              <CardTitle>Close Approach</CardTitle>
+              <CardDescription>Data on speeds, distances and more</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Date" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
+              </Select>
+              <p>---</p>
+              <div>
+                <p>Kilometers per Second: ???</p>
+                <p>Kilometers per Hour: ???</p>
+                <p>Miles per Hour: ???</p>
+              </div>
+              <p>---</p>
+              <div>
+                <p>Astronomical: ???</p>
+                <p>Lunar: ???</p>
+                <p>Kilometers: ???</p>
+                <p>Miles: ???</p>
+              </div>
+              <p>---</p>
+              <p>Orbiting Body: ???</p>
             </CardContent>
           </Card>
         </div>

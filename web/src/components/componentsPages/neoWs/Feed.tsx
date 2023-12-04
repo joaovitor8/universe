@@ -10,12 +10,12 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-// import { TypeFeedAsteroids } from "@/components/Types"
+import { TypeAsteroidsFeed } from "@/components/Types"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
 export const Feed = () => {
-  const [asteroidsFeed, setAsteroidsFeed] = useState([])
+  const [asteroidsFeed, setAsteroidsFeed] = useState<TypeAsteroidsFeed[]>([])
   const [date, setDate] = useState<Date>()
 
   const GetAsteroidsFeed = () => {
