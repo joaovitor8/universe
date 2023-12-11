@@ -13,6 +13,7 @@ import axios from "axios"
 export const Lookup = () => {
   const [asteroidsID, setAsteroidsID] = useState('')
   const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
+  const [closeApproachDate, setCloseApproachDate] = useState(0)
 
   const GetAsteroidsLookup = () => {
     try {
@@ -23,8 +24,6 @@ export const Lookup = () => {
       console.error("", error)
     }
   }
-
-  // console.log(asteroidsLookup)
 
   // for (let i = 0; i <= asteroidsLookup?.close_approach_data.length; i++) {
   //   console.log(asteroidsLookup?.close_approach_data[i].close_approach_date)
@@ -95,26 +94,26 @@ export const Lookup = () => {
                   <SelectValue placeholder="Date" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
+                  {asteroidsLookup?.close_approach.map((dt, key) => <SelectItem value={dt.close_approach_date} key={key}>{dt.close_approach_date}</SelectItem> )}
                 </SelectContent>
               </Select>
+              {/** Continuar */}
+              <p>Date: {asteroidsLookup?.close_approach[closeApproachDate].close_approach_date_full}</p>
               <p>---</p>
               <div>
-                <p>Kilometers per Second: ???</p>
-                <p>Kilometers per Hour: ???</p>
-                <p>Miles per Hour: ???</p>
+                <p>Kilometers per Second: {asteroidsLookup?.close_approach[0].relative_velocity.kilometers_second}</p>
+                <p>Kilometers per Hour: {asteroidsLookup?.close_approach[0].relative_velocity.kilometers_hour}</p>
+                <p>Miles per Hour: {asteroidsLookup?.close_approach[0].relative_velocity.miles_hour}</p>
               </div>
               <p>---</p>
               <div>
-                <p>Astronomical: ???</p>
-                <p>Lunar: ???</p>
-                <p>Kilometers: ???</p>
-                <p>Miles: ???</p>
+                <p>Astronomical: {asteroidsLookup?.close_approach[0].miss_distance.astronomical}</p>
+                <p>Lunar: {asteroidsLookup?.close_approach[0].miss_distance.lunar}</p>
+                <p>Kilometers: {asteroidsLookup?.close_approach[0].miss_distance.kilometers}</p>
+                <p>Miles: {asteroidsLookup?.close_approach[0].miss_distance.miles}</p>
               </div>
               <p>---</p>
-              <p>Orbiting Body: ???</p>
+              <p>Orbiting Body: {asteroidsLookup?.close_approach[0].orbiting_body}</p>
             </CardContent>
           </Card>
         </div>

@@ -57,11 +57,29 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data
 
         const processedData = {
+          close_approach: data.close_approach_data.map((e) => ({
+            close_approach_date: e.close_approach_date,
+            close_approach_date_full: e.close_approach_date_full,
+            orbiting_body: e.orbiting_body,
+            // epoch_date_close_approach: e.epoch_date_close_approach,  -  Não sei oque é
+            relative_velocity: {
+              kilometers_second: `≅${Math.floor(e.relative_velocity.kilometers_per_second)} km/s`,
+              kilometers_hour: `≅${Math.floor(e.relative_velocity.kilometers_per_hour)} km/h`,
+              miles_hour: `≅${Math.floor(e.relative_velocity.miles_per_hour)} mi/h`,
+            },
+            miss_distance: {
+              astronomical: `≅${Number(e.miss_distance.astronomical).toFixed(3)} AU`,
+              lunar: `≅${Math.floor(e.miss_distance.lunar)} LU`,
+              kilometers: `≅${Math.floor(e.miss_distance.kilometers)} km`,
+              miles: `≅${Math.floor(e.miss_distance.miles)} m`,
+            },
+          })),
+
           estimated_diameter: {
-            miles: `≅${Number(data.estimated_diameter.miles.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.miles.estimated_diameter_max).toFixed(4)} mi`,
-            kilometers: `≅${Number(data.estimated_diameter.kilometers.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.kilometers.estimated_diameter_max).toFixed(4)} km`,
-            meters: `≅${Number(data.estimated_diameter.meters.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.meters.estimated_diameter_max).toFixed(4)} m`,
-            feet: `≅${Number(data.estimated_diameter.feet.estimated_diameter_min).toFixed(4)} to ≅${Number(data.estimated_diameter.feet.estimated_diameter_max).toFixed(4)} ft`,
+            miles: `≅${Number(data.estimated_diameter.miles.estimated_diameter_min).toFixed(3)} to ≅${Number(data.estimated_diameter.miles.estimated_diameter_max).toFixed(3)} mi`,
+            kilometers: `≅${Number(data.estimated_diameter.kilometers.estimated_diameter_min).toFixed(3)} to ≅${Number(data.estimated_diameter.kilometers.estimated_diameter_max).toFixed(3)} km`,
+            meters: `≅${Math.floor(data.estimated_diameter.meters.estimated_diameter_min)} to ≅${Math.floor(data.estimated_diameter.meters.estimated_diameter_max)} m`,
+            feet: `≅${Math.floor(data.estimated_diameter.feet.estimated_diameter_min)} to ≅${Math.floor(data.estimated_diameter.feet.estimated_diameter_max)} ft`,
           },
 
           orbital_data: {

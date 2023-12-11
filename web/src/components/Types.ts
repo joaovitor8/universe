@@ -57,4 +57,20 @@ export interface TypeAsteroidsLookup {
     orbit_id: string
     orbit_uncertainty: string
   }
+  close_approach: [{
+    close_approach_date: string
+		close_approach_date_full: string
+		orbiting_body: string
+		relative_velocity: {
+			kilometers_second: string
+			kilometers_hour: string
+			miles_hour: string
+		}
+		miss_distance: {
+		  astronomical: string
+		  lunar: string
+		  kilometers: string
+		  miles: string
+		}
+  }]
 }
