@@ -8,9 +8,11 @@ export async function RouteDonki(app: FastifyInstance) {
       const aaa = request.query.date
 
       // Fazendo a solicitação para a API da NASA
-      const response = await axios.get("", {
+      const response = await axios.get("https://api.nasa.gov/DONKI/CME", {
         params: {
           api_key: process.env.CHAVE_NASA,
+          startDate: 2022-10-25,
+          endDate: 2022-10-25,
         },
       })
 
