@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify"
 import axios from "axios"
 
 export async function RouteDonki(app: FastifyInstance) {
-  app.get("/api/donki", async (request: any, reply) => {
+  app.get("/api/donki/cme", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
       const aaa = request.query.date
@@ -11,8 +11,340 @@ export async function RouteDonki(app: FastifyInstance) {
       const response = await axios.get("https://api.nasa.gov/DONKI/CME", {
         params: {
           api_key: process.env.CHAVE_NASA,
-          startDate: 2022-10-25,
-          endDate: 2022-10-25,
+          startDate: "2022-10-25",
+          endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({
+          activityID: dt.activityID,
+          catalog: dt.catalog,
+          startTime: dt.startTime,
+          sourceLocation: dt.sourceLocation,
+          activeRegionNum: dt.activeRegionNum,
+          link: dt.link,
+          note: dt.note,
+          instruments: dt.instruments.map((e) => ({
+            displayName: e.displayName,
+          })),
+          linkedEvents: dt.linkedEvents,
+        }))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(processedData)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/cmea", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/CMEAnalysis", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          startDate: "2022-10-25",
+          endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/gst", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/GST", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          //startDate: "2022-10-25",
+          //endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/ips", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/IPS", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          startDate: "2022-10-25",
+          endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/flr", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/FLR", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          startDate: "2022-10-25",
+          endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/sep", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/SEP", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          // startDate: "2022-10-25",
+          // endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/mpc", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/MPC", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          // startDate: "2022-10-25",
+          // endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/rbe", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/RBE", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          // startDate: "2022-10-25",
+          // endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/hss", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/HSS", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          // startDate: "2022-10-25",
+          // endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/wsaes", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/WSAEnlilSimulations", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          // startDate: "2022-10-25",
+          // endDate: "2022-10-25",
+        },
+      })
+
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.status === 200) {
+        const data = response.data
+
+        // tratamento dos dados
+        const processedData = data.map((dt) => ({}))
+
+        // Enviando os dados tratados para o front-end
+        reply.send(data)
+      } else {
+        reply.status(response.status).send("Erro ao acessar a API da NASA")
+      }
+    } catch (error) {
+      console.error(error)
+      reply.status(500).send("Erro interno do servidor")
+    }
+  })
+
+  app.get("/api/donki/notf", async (request: any, reply) => {
+    try {
+      // Acessando dados enviados como parâmetros de consulta
+      const aaa = request.query.date
+
+      // Fazendo a solicitação para a API da NASA
+      const response = await axios.get("https://api.nasa.gov/DONKI/notifications", {
+        params: {
+          api_key: process.env.CHAVE_NASA,
+          startDate: "2022-10-25",
+          endDate: "2022-10-25",
         },
       })
 
