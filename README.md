@@ -12,40 +12,6 @@
 **Back-end:** Node, Fastify
 
 
-## Rodando localmente
-
-Clone o projeto
-
-```bash
-  git clone https://github.com/joaovitor8/universo.git
-```
-
-Entre nos diretórios do projeto
-
-```bash
-  cd web
-  cd server
-```
-
-Instale as dependências
-
-```bash
-  npm install
-```
-
-Inicie o projeto
-
-```bash
-  npm run dev
-```
-
-
 ## Referência
 
  - [API da NASA](https://api.nasa.gov/)
-
-
-## Licença
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
