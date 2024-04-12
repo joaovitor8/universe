@@ -7,8 +7,8 @@ export const Header = () => {
     <header className="h-14 px-5 flex items-center justify-between border-b">
       <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
-      <Menubar className="w-[350px] flex justify-evenly">
-        <MenubarMenu>
+      <Menubar className="w-[500px] flex justify-evenly"> {/* w-[350px] */}
+        {/* <MenubarMenu>
           <MenubarTrigger>Space</MenubarTrigger>
           <MenubarContent>
             <MenubarItem> <Link href={'/apod'}>Astronomical Photos</Link> </MenubarItem>
@@ -22,10 +22,15 @@ export const Header = () => {
             <MenubarItem>Em construção</MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
           </MenubarContent>
-        </MenubarMenu>
+        </MenubarMenu> */}
+
+        {/* Quando ouver mais paginas voltar a config de cima */}
+        <Link href={'/apod'}>Astronomical Photos</Link>
+        <Link href={'/neows'}>Near Earth Object</Link>
+        <Link href={'#'}>More...</Link>
       </Menubar>
 
-      <Select>
+      <Select disabled>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Language"/>
         </SelectTrigger>

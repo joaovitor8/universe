@@ -57,7 +57,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data
 
         const processedData = {
-          close_approach: data.close_approach_data.map((e) => ({
+          close_approach: data.close_approach_data.map((e) => ({  // Continuar
             close_approach_date: e.close_approach_date,
             close_approach_date_full: e.close_approach_date_full,
             orbiting_body: e.orbiting_body,
