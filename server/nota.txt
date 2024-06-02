@@ -1,0 +1,2 @@
+Arquivo = .env
+Conteudo = CHAVE_NASA=""
