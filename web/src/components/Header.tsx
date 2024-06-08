@@ -27,7 +27,7 @@ export const Header = () => {
         {/* Quando ouver mais paginas voltar a config de cima */}
         <Link href={'/apod'}>Astronomical Photos</Link>
         <Link href={'/neows'}>Near Earth Object</Link>
-        <Link href={'#'}>More...</Link>
+        <Link href={'/donki'}>Clima</Link>
       </Menubar>
 
       <Select disabled>

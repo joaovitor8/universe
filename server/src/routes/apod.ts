@@ -1,6 +1,8 @@
 import { FastifyInstance } from "fastify"
 import axios from "axios"
 
+// Foto do Dia
+
 export async function RouteApod(app: FastifyInstance) {
   app.get("/api/apod", async (request: any, reply) => {
     try {

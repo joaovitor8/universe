@@ -1,6 +1,8 @@
 import { FastifyInstance } from "fastify"
 import axios from "axios"
 
+// Clima espacial
+
 export async function RouteDonki(app: FastifyInstance) {
   app.get("/api/donki/cme", async (request: any, reply) => {
     try {
@@ -11,8 +13,8 @@ export async function RouteDonki(app: FastifyInstance) {
       const response = await axios.get("https://api.nasa.gov/DONKI/CME", {
         params: {
           api_key: process.env.CHAVE_NASA,
-          startDate: "2022-10-25",
-          endDate: "2022-10-25",
+          startDate: "2024-01-25",
+          endDate: "2024-01-25",
         },
       })
 
@@ -29,10 +31,31 @@ export async function RouteDonki(app: FastifyInstance) {
           activeRegionNum: dt.activeRegionNum,
           link: dt.link,
           note: dt.note,
+          submissionTime: dt.submissionTime,
           instruments: dt.instruments.map((e) => ({
             displayName: e.displayName,
           })),
           linkedEvents: dt.linkedEvents,
+          cmeAnalyses: dt.cmeAnalyses.map((e) => ({
+            isMostAccurate: e.isMostAccurate,
+            time21_5: e.time21_5,
+            latitude: e.latitude,
+            longitude: e.longitude,
+            halfAngle: e.halfAngle,
+            speed: e.speed,
+            type: e.type,
+            featureCode: e.featureCode,
+            imageType: e.imageType,
+            measurementTechnique: e.measurementTechnique,
+            note: e.note,
+            levelOfData: e.levelOfData,
+            tilt: e.tilt,
+            minorHalfWidth: e.minorHalfWidth,
+            speedMeasuredAtHeight: e.speedMeasuredAtHeight,
+            submissionTime: e.submissionTime,
+            link: e.link,
+            enlilList: e.enlilList,
+          })),
         }))
 
         // Enviando os dados tratados para o front-end

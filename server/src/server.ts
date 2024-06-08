@@ -3,7 +3,7 @@ import { fastifyCors } from "@fastify/cors"
 
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
-// import { RouteDonki } from "./routes/donki"
+import { RouteDonki } from "./routes/donki"
 // import { RouteEarth } from "./routes/earth"
 import "dotenv/config"
 
@@ -16,7 +16,7 @@ app.register(fastifyCors, {
 
 app.register(RouteApod)
 app.register(RouteNeoWs)
-// app.register(RouteDonki)
+app.register(RouteDonki)
 // app.register(RouteEarth)
 
 app.listen({ port: 3333 }).then(() => {
