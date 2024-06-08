@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,7 +13,7 @@ import axios from "axios"
 export const Lookup = () => {
   const [asteroidsID, setAsteroidsID] = useState('')
   const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
-  const [closeApproachDate, setCloseApproachDate] = useState(0)
+  // const [closeApproachDate, setCloseApproachDate] = useState(0)
 
   const GetAsteroidsLookup = () => {
     try {
@@ -24,10 +24,6 @@ export const Lookup = () => {
       console.error("", error)
     }
   }
-
-  // for (let i = 0; i <= asteroidsLookup?.close_approach_data.length; i++) {
-  //   console.log(asteroidsLookup?.close_approach_data[i].close_approach_date)
-  // }
 
   return (
     <div className="min-h-screen flex flex-col items-center space-y-5 p-1">
@@ -83,12 +79,13 @@ export const Lookup = () => {
             </CardContent>
           </Card>
 
-          <Card className="h-min w-[500px]">
+          {/* <Card className="h-min w-[500px]">
             <CardHeader>
               <CardTitle>Close Approach</CardTitle>
               <CardDescription>Data on speeds, distances and more</CardDescription>
             </CardHeader>
             <CardContent>
+
               <Select>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Date" />
@@ -97,7 +94,7 @@ export const Lookup = () => {
                   {asteroidsLookup?.close_approach.map((dt, key) => <SelectItem value={dt.close_approach_date} key={key}>{dt.close_approach_date}</SelectItem> )}
                 </SelectContent>
               </Select>
-              {/** Continuar */}
+
               <p>Date: {asteroidsLookup?.close_approach[closeApproachDate].close_approach_date_full}</p>
               <p>---</p>
               <div>
@@ -115,7 +112,7 @@ export const Lookup = () => {
               <p>---</p>
               <p>Orbiting Body: {asteroidsLookup?.close_approach[0].orbiting_body}</p>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </div>
