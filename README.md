@@ -1,8 +1,8 @@
 # Universo
 
- Projeto full-stack usando a API da NASA para pegar informações espaciais.
+ Projeto full-stack usando as APIs da NASA para pegar informações espaciais. (Quero tentar usar todas! por mais que tenha algumas que eu não intendi nada.)
 
- Tem duas coisas que eu gosto muito, tecnologia e os misterios do universo, fiquei muito feliz quando eu achei essa API, por mais que tenha coisa nela que eu não intenda nada.
+ Tem duas coisas que eu gosto muito, tecnologia e os misterios do universo.
 
 
 ## Stack utilizada
