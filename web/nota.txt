@@ -1,0 +1,1 @@
+package.json Atualização: npm i @types/node @types/react @types/react-dom eslint eslint-config-next postcss tailwindcss typescript

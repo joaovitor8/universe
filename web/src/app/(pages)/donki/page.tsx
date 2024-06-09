@@ -1,9 +1,9 @@
-import { Teste } from "@/components/componentsPages/donki/teste"
+import { CME } from "@/components/componentsPages/donki/CME"
 
 export default function Donki() {
   return (
     <main>
-      <Teste/>
+      <CME/>
     </main>
   )
 }

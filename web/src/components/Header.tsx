@@ -4,41 +4,48 @@ import Link from "next/link"
 
 export const Header = () => {
   return (
-    <header className="h-14 px-5 flex items-center justify-between border-b">
+    <header className="h-24 px-10 flex items-center justify-between border-b">
       <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
-      <Menubar className="w-[500px] flex justify-evenly"> {/* w-[350px] */}
-        {/* <MenubarMenu>
-          <MenubarTrigger>Space</MenubarTrigger>
+      <Menubar className="w-[600px] p-7 flex justify-evenly"> {/* w-[350px] */}
+    {/* <MenubarMenu>
+          <MenubarTrigger>Sistema Solar</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem> <Link href={'/apod'}>Astronomical Photos</Link> </MenubarItem>
-            <MenubarItem> <Link href={'/neows'}>Near Earth Object</Link> </MenubarItem>
+            <MenubarItem> <Link href={'/'}> aaa </Link> </MenubarItem>
+            <MenubarItem> <Link href={'/'}> aaa </Link> </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger>...</MenubarTrigger>
+          <MenubarTrigger>Universo</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Em construção</MenubarItem>
             <MenubarItem>Em construção</MenubarItem>
           </MenubarContent>
-        </MenubarMenu> */}
+        </MenubarMenu>
+
+        <MenubarMenu>
+          <MenubarTrigger>Nasa API</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Em construção</MenubarItem>
+            <MenubarItem>Em construção</MenubarItem>
+        </MenubarContent>
+
+        <MenubarMenu>
+          <MenubarTrigger>AI</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Em construção</MenubarItem>
+            <MenubarItem>Em construção</MenubarItem>
+        </MenubarContent>
+
+        
+         */}
 
         {/* Quando ouver mais paginas voltar a config de cima */}
         <Link href={'/apod'}>Astronomical Photos</Link>
         <Link href={'/neows'}>Near Earth Object</Link>
-        <Link href={'/donki'}>Clima</Link>
+        <Link href={'/donki'}>Climate</Link>
       </Menubar>
-
-      <Select disabled>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Language"/>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="en">English</SelectItem>
-          <SelectItem value="br">Português</SelectItem>
-        </SelectContent>
-      </Select>
     </header>
   )
 }
