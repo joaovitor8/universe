@@ -3,8 +3,8 @@
 "use client"
 
 import { TypeApod } from "@/components/utils/Types"
-import axios from "axios"
 import { useEffect, useState } from "react"
+import axios from "axios"
 
 export const PhotoDay = () => {
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()
@@ -34,19 +34,19 @@ export const PhotoDay = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center space-y-5">
       <div className="w-[1012px] flex items-start mt-20 space-x-5">
-        <Popover>
+        {/* <Popover>
           <PopoverTrigger asChild>
-            <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
+            <button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, "yyyy-MM-dd") : <span>Pick a date</span>}
-            </Button>
+            </button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
             <Calendar mode="single" selected={date} onSelect={setDate} initialFocus/>
           </PopoverContent>
         </Popover>
 
-        <Button onClick={GetApod}>Search</Button>
+        <button onClick={GetApod}>Search</button> */}
       </div>
 
       <div className="flex justify-center space-x-3">
@@ -56,18 +56,18 @@ export const PhotoDay = () => {
           </a>
         </div>
 
-        <Card className="h-min w-[500px]">
-          <CardHeader>
-            <CardTitle>{pictureTheDay?.title}</CardTitle>
-            <CardDescription>{pictureTheDay?.date}</CardDescription>
-          </CardHeader>
-          <CardContent>
+        <div className="h-min w-[500px]">
+          <div>
+            <div>{pictureTheDay?.title}</div>
+            <div>{pictureTheDay?.date}</div>
+          </div>
+          <div>
             <p>{pictureTheDay?.explanation}</p>
-          </CardContent>
-          <CardFooter>
+          </div>
+          <div>
             <p>{pictureTheDay?.copyright}</p>
-          </CardFooter>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -42,7 +42,7 @@ export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => 
 
   return (
     <div className="flex flex-col items-center space-y-5 my-20">
-      <div className="flex space-x-5">
+      {/* <div className="flex space-x-5">
         <div className={cn("grid gap-2", className)}>
           <Popover>
             <PopoverTrigger asChild>
@@ -69,7 +69,7 @@ export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => 
         </div>
 
         <Button onClick={GetGalleryApod}>Search</Button>
-      </div>
+      </div> */}
 
       <div className="w-full flex flex-wrap justify-center">
         {galleryPictureTheDay.map((img, key) => (
