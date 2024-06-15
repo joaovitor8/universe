@@ -5,7 +5,7 @@ import { Gallery } from "@/components/componentsPages/apod/Gallery"
 export default function Apod() {
   return (
     <main className="flex flex-col items-center justify-center">
-      {/* <About /> */}
+      <About />
       <PhotoDay />
       {/* <Gallery /> */}
     </main>

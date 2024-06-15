@@ -32,7 +32,7 @@ export const PhotoDay = () => {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-5 bg-green-700 w-full min-h-min">
+    <div className="flex flex-col items-center justify-center space-y-5 bg-green-700 w-full min-h-screen">
       <div className="flex items-start mt-20 space-x-5">
         {/* <Popover>
           <PopoverTrigger asChild>
