@@ -32,8 +32,8 @@ export const PhotoDay = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-5">
-      <div className="w-[1012px] flex items-start mt-20 space-x-5">
+    <div className="flex flex-col items-center justify-center space-y-5 bg-green-700 w-full min-h-min">
+      <div className="flex items-start mt-20 space-x-5">
         {/* <Popover>
           <PopoverTrigger asChild>
             <button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
@@ -56,7 +56,7 @@ export const PhotoDay = () => {
           </a>
         </div>
 
-        <div className="h-min w-[500px]">
+        <div className="h-min w-[500px] space-y-10">
           <div>
             <div>{pictureTheDay?.title}</div>
             <div>{pictureTheDay?.date}</div>
