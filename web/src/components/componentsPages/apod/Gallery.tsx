@@ -50,7 +50,7 @@ export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => 
   }, [])
 
   return (
-    <div className="flex flex-col items-center space-y-5 my-20">
+    <div className="flex flex-col items-center space-y-5">
       <div className="flex space-x-5">
         <div className={cn("grid gap-2", className)}>
           <Popover>

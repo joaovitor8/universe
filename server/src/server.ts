@@ -4,7 +4,7 @@ import { fastifyCors } from "@fastify/cors"
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
 import { RouteDonki } from "./routes/donki"
-// import { RouteEarth } from "./routes/earth"
+import { RouteEarth } from "./routes/earth"
 import "dotenv/config"
 
 const app = fastify()
