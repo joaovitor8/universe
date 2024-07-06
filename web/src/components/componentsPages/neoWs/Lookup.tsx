@@ -26,7 +26,7 @@ export const Lookup = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center space-y-5 p-1">
+    <div className="min-h-screen flex flex-col items-center space-y-5 pb-5">
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input type="search" placeholder="enter the ID" onChange={(e) => setAsteroidsID(e.target.value)}/>
         <Button onClick={GetAsteroidsLookup}>Search</Button>

@@ -1,19 +1,20 @@
 import { FastifyInstance } from "fastify"
 import axios from "axios"
+import { planetas } from "../db"
 
-export async function RouteEarth(app: FastifyInstance) {
-  app.get("/api/earth/img", async (request: any, reply) => {
+
+export async function RouteApod(app: FastifyInstance) {
+  app.get("/api/solar-system", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
-      const aaa = request.query.date
+      const dateFromFrontend = request.query.date
 
       // Fazendo a solicitação para a API da NASA
-      const response = await axios.get("https://api.nasa.gov/planetary/earth/imagery", {
+      const response = await axios.get("https://api.nasa.gov/planetary/apod", {
         params: {
           api_key: process.env.CHAVE_NASA,
-          lon: 100.75,
-          lat: 1.5,
-          date: "2020-10-27"
+          date: dateFromFrontend,
+          thumbs: true
         },
       })
 
@@ -22,7 +23,7 @@ export async function RouteEarth(app: FastifyInstance) {
         const data = response.data
 
         // tratamento dos dados
-        //const processedData = data.map((dt) => ({}))
+        delete data.service_version
 
         // Enviando os dados tratados para o front-end
         reply.send(data)

@@ -10,7 +10,7 @@ export const Header = () => {
       <Menubar className="space-x-10 p-7 flex justify-evenly">
         <Link href={'/apod'}>Astronomical Photos</Link>
         <Link href={'/neows'}>Near Earth Object</Link>
-        <Link href={'/donki'}>Climate</Link>
+        <Link href={'/solar-system'}>Solar System</Link>
       </Menubar>
     </header>
   )

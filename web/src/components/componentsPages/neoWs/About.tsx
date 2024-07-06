@@ -2,7 +2,7 @@
 
 export const About = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center p-1">
+    <div className="min-h-screen flex flex-col items-center">
       <div className="w-[1000px] text-center space-y-10">
         <h2 className="text-3xl mt-10">Near Earth Object Web Service</h2>
         <p className="text-lg">Search and look for asteroids based on date of closest approach to Earth</p>

@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header"
+import Particles from "@/components/particles";
 import type { Metadata } from "next"
 import { Inter } from "next/font/google";
 import "./globals.css"
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={100} /> */}
         <Header />
         {children}
       </body>
