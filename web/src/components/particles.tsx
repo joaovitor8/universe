@@ -49,11 +49,13 @@ export default function Particles({
 		initCanvas();
 	}, [refresh]);
 
+	// Iniciar Canvas
 	const initCanvas = () => {
 		resizeCanvas();
 		drawParticles();
 	};
 
+	// Movimento do Mouse
 	// const onMouseMove = () => {
 	// 	if (canvasRef.current) {
 	// 		const rect = canvasRef.current.getBoundingClientRect();
@@ -81,6 +83,7 @@ export default function Particles({
 		magnetism: number;
 	};
 
+	// Redimensionar Canvas
 	const resizeCanvas = () => {
 		if (canvasContainerRef.current && canvasRef.current && context.current) {
 			circles.current.length = 0;
@@ -94,6 +97,7 @@ export default function Particles({
 		}
 	};
 
+	// Círculo Parâmetros
 	const circleParams = (): Circle => {
 		const x = Math.floor(Math.random() * canvasSize.current.w);
 		const y = Math.floor(Math.random() * canvasSize.current.h);
@@ -119,6 +123,7 @@ export default function Particles({
 		};
 	};
 
+	// Desenhar Círculo
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
@@ -135,6 +140,7 @@ export default function Particles({
 		}
 	};
 
+	// Contexto claro
 	const clearContext = () => {
 		if (context.current) {
 			context.current.clearRect(
@@ -146,6 +152,7 @@ export default function Particles({
 		}
 	};
 
+	// Desenhar Partículas
 	const drawParticles = () => {
 		clearContext();
 		const particleCount = quantity;
@@ -155,6 +162,7 @@ export default function Particles({
 		}
 	};
 
+	// Remapear Valor
 	const remapValue = (
 		value: number,
 		start1: number,
@@ -167,6 +175,7 @@ export default function Particles({
 		return remapped > 0 ? remapped : 0;
 	};
 
+	// Animar
 	const animate = () => {
 		clearContext();
 		circles.current.forEach((circle: Circle, i: number) => {

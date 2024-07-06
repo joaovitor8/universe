@@ -8,9 +8,9 @@ export const Header = () => {
       <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
       <Menubar className="space-x-10 p-7 flex justify-evenly">
+        <Link href={'/solar-system'}>Solar System</Link>
         <Link href={'/apod'}>Astronomical Photos</Link>
         <Link href={'/neows'}>Near Earth Object</Link>
-        <Link href={'/solar-system'}>Solar System</Link>
       </Menubar>
     </header>
   )

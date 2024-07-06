@@ -16,32 +16,30 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
-  const formatYesterday = `${new Date().getFullYear()}-${String(new Date().getMonth()-1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
-  const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+  const today = new Date()
+  const formatYesterday = `${today.getFullYear()}-${String(today.getMonth()-1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
+  const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
 
   const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([])
   const [date, setDate] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
 
-  const GetGalleryApod = () => {
+  const GetGalleryApod = async () => {
     try {
-      const formtDateFrom = `${date?.from?.getFullYear()}-${String(Number(date?.from?.getMonth())+1).padStart(2, "0")}-${String(date?.from?.getDate()).padStart(2, "0")}`
-      const formatDateTo = `${date?.to?.getFullYear()}-${String(Number(date?.to?.getMonth())+1).padStart(2, "0")}-${String(date?.to?.getDate()).padStart(2, "0")}`
+      const formtDateFrom = `${date?.from?.getFullYear()}-${String(Number(date?.from?.getMonth()) + 1).padStart(2, "0")}-${String(date?.from?.getDate()).padStart(2, "0")}`
+      const formatDateTo = `${date?.to?.getFullYear()}-${String(Number(date?.to?.getMonth()) + 1).padStart(2, "0")}-${String(date?.to?.getDate()).padStart(2, "0")}`
 
-      if (formtDateFrom > formatToday || formatDateTo > formatToday) {
-        alert("Select dates before or equal to today")
+      if (new Date(formtDateFrom) > new Date(formatToday) || new Date(formatDateTo) > new Date(formatToday)) {
+        alert("Selecione datas anteriores ou iguais a hoje")
       } else {
-        axios.get(`http://localhost:3333/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
-          .then((res) => {
-            if (res.data.length > 100) {
-              alert("Maximum requests reached! (maximum 40)")
-            } else {
-              setGalleryPictureTheDay(res.data)
-            }
-          })
-          .catch((error) => { console.error(error) })
+        const response = await axios.get(`http://localhost:3333/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
+        if (response.data.length > 100) {
+          alert("Limite máximo de requisições atingido! (máximo 40)")
+        } else {
+          setGalleryPictureTheDay(response.data)
+        }
       }
     } catch (error) {
-      console.error("Error when searching for image", error)
+      console.error("Erro ao buscar imagem:", error)
     }
   }
 
@@ -80,7 +78,7 @@ export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => 
         <Button onClick={GetGalleryApod}>Search</Button>
       </div>
 
-      <div className="w-full flex flex-wrap justify-center">
+      <div className="w-full flex flex-wrap justify-center pb-5">
         {galleryPictureTheDay.map((img, key) => (
           <a href={img.hdurl} key={key} target="_blank">
             <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px]"/>

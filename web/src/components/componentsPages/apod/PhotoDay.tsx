@@ -16,20 +16,21 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 export const PhotoDay = () => {
+  const today = new Date()
+
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()
   const [date, setDate] = useState<Date>()
 
-  const GetApod = () => {
+  const GetApod = async () => {
     try {
-      const formatToday = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
-      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+      const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
+      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
 
-      if (formatDate > formatToday) {
+      if (new Date(formatDate) > new Date(formatToday)) {
         alert("Select dates before or equal to today")
       } else {
-        axios.get(`http://localhost:3333/api/apod?date=${formatDate}`)
-          .then((res) => setPictureTheDay(res.data))
-          .catch((error) => { console.error(error) })
+        const response = await axios.get(`http://localhost:3333/api/apod?date=${formatDate}`)
+        setPictureTheDay(response.data)
       }
     } catch (error) {
       console.error("Error when searching for image", error)
