@@ -24,7 +24,7 @@ export default function Particles({
 	const context = useRef<CanvasRenderingContext2D | null>(null);
 	const circles = useRef<any[]>([]);
 	// const mousePosition = useMousePosition();
-	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+	// const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
@@ -198,14 +198,14 @@ export default function Particles({
 			} else {
 				circle.alpha = circle.targetAlpha * remapClosestEdge;
 			}
-			circle.x += circle.dx;
-			circle.y += circle.dy;
-			circle.translateX +=
-				(mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-				ease;
-			circle.translateY +=
-				(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-				ease;
+			circle.x += circle.dx; //
+			circle.y += circle.dy; //
+			// circle.translateX +=
+			// 	(mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
+			// 	ease;
+			// circle.translateY +=
+			// 	(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
+			// 	ease;
 			// circle gets out of the canvas
 			if (
 				circle.x < -circle.size ||
