@@ -2,4 +2,4 @@ Arquivo = .env
 Conteudo = CHAVE_NASA=""
 
 
-package.json Atualização:  npm i  @fastify/cors axios dotenv fastify @types/node tsx typescript
+npm i  @fastify/cors axios dotenv fastify @types/node tsx typescript

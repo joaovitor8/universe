@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-// import { useMousePosition } from "@/components/utils/mouse";
 
 interface ParticlesProps {
 	className?: string;
@@ -23,8 +22,6 @@ export default function Particles({
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
 	const context = useRef<CanvasRenderingContext2D | null>(null);
 	const circles = useRef<any[]>([]);
-	// const mousePosition = useMousePosition();
-	// const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
@@ -41,10 +38,6 @@ export default function Particles({
 		};
 	}, []);
 
-	// useEffect(() => {
-	// 	onMouseMove();
-	// }, [mousePosition.x, mousePosition.y]);
-
 	useEffect(() => {
 		initCanvas();
 	}, [refresh]);
@@ -54,21 +47,6 @@ export default function Particles({
 		resizeCanvas();
 		drawParticles();
 	};
-
-	// Movimento do Mouse
-	// const onMouseMove = () => {
-	// 	if (canvasRef.current) {
-	// 		const rect = canvasRef.current.getBoundingClientRect();
-	// 		const { w, h } = canvasSize.current;
-	// 		const x = mousePosition.x - rect.left - w / 2;
-	// 		const y = mousePosition.y - rect.top - h / 2;
-	// 		const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-	// 		if (inside) {
-	// 			mouse.current.x = x;
-	// 			mouse.current.y = y;
-	// 		}
-	// 	}
-	// };
 
 	type Circle = {
 		x: number;
@@ -198,15 +176,6 @@ export default function Particles({
 			} else {
 				circle.alpha = circle.targetAlpha * remapClosestEdge;
 			}
-			circle.x += circle.dx; //
-			circle.y += circle.dy; //
-			// circle.translateX +=
-			// 	(mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-			// 	ease;
-			// circle.translateY +=
-			// 	(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-			// 	ease;
-			// circle gets out of the canvas
 			if (
 				circle.x < -circle.size ||
 				circle.x > canvasSize.current.w + circle.size ||

@@ -1,1 +1,2 @@
-package.json Atualização: npm i @types/node @types/react @types/react-dom eslint eslint-config-next postcss tailwindcss typescript
+npm i @types/node @types/react @types/react-dom eslint eslint-config-next postcss tailwindcss typescript
+npm i axios class-variance-authority clsx date-fns lucide-react next react react-day-picker react-dom tailwind-merge tailwindcss-animate

@@ -74,3 +74,5 @@ export interface TypeAsteroidsLookup {
 		}
   }]
 }
+
+export interface TypePlanetas{}

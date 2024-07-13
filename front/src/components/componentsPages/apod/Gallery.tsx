@@ -17,6 +17,7 @@ import axios from "axios"
 
 export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   const today = new Date()
+
   const formatYesterday = `${today.getFullYear()}-${String(today.getMonth()-1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
   const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
 
