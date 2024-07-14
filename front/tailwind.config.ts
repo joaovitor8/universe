@@ -72,9 +72,30 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+
+      scrollbar: {},
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+
+    function ({ addUtilities }: any) {
+      addUtilities({
+        '.scrollbar': {
+          '&::-webkit-scrollbar': {
+            width: '10px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '240 10% 3.9%',
+            borderRadius: '3px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: 'purple',
+          },
+        },
+      });
+    },
+  ],
 } satisfies Config
 
 export default config
