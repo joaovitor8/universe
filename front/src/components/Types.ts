@@ -75,4 +75,18 @@ export interface TypeAsteroidsLookup {
   }]
 }
 
-export interface TypePlanetas{}
+export interface TypePlanetas{
+  id: number
+  name: string
+  type: string
+  gravity: string
+  image: string
+  diameter: string
+  distance_to_the_sun: string
+  satellites: string
+  composition: string
+  average_celsius_temperature: string
+  atmosphere: string
+  characteristics: string
+  history_of_discovery: string
+}
