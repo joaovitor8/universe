@@ -1,53 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-"use client"
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
 
 import { CalendarIcon } from "@radix-ui/react-icons"
-import { DateRange } from "react-day-picker"
-import { addDays, format } from "date-fns"
+import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-import { TypeApodGallery } from "@/components/Types"
-import { useState, useEffect } from "react"
-import axios from "axios"
-
-export const Gallery = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
-  const today = new Date()
-
-  const formatYesterday = `${today.getFullYear()}-${String(today.getMonth()-1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
-  const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
-
-  const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([])
-  const [date, setDate] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
-
-  const GetGalleryApod = async () => {
-    try {
-      const formtDateFrom = `${date?.from?.getFullYear()}-${String(Number(date?.from?.getMonth()) + 1).padStart(2, "0")}-${String(date?.from?.getDate()).padStart(2, "0")}`
-      const formatDateTo = `${date?.to?.getFullYear()}-${String(Number(date?.to?.getMonth()) + 1).padStart(2, "0")}-${String(date?.to?.getDate()).padStart(2, "0")}`
-
-      if (new Date(formtDateFrom) > new Date(formatToday) || new Date(formatDateTo) > new Date(formatToday)) {
-        alert("Selecione datas anteriores ou iguais a hoje")
-      } else {
-        const response = await axios.get(`http://localhost:3333/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
-        if (response.data.length > 100) {
-          alert("Limite máximo de requisições atingido! (máximo 40)")
-        } else {
-          setGalleryPictureTheDay(response.data)
-        }
-      }
-    } catch (error) {
-      console.error("Erro ao buscar imagem:", error)
-    }
-  }
-
-  useEffect(() => {
-    GetGalleryApod()
-  }, [])
-
+export const Gallery = ({ className, galleryPictureTheDay, date, setDate, GetGalleryApod }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className="flex flex-col items-center space-y-5">
       <div className="flex space-x-5">

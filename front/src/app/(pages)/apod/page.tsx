@@ -1,11 +1,12 @@
-import { Gallery } from "@/components/componentsPages/apod/Gallery"
-import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay"
+// import { Gallery } from "@/components/componentsPages/apod/Gallery"
+// import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay"
+
+import { APIsApod } from "@/components/componentsPages/apod/APIsApod";
 
 export default function Apod() {
   return (
-    <main className="space-y-40">
-      <PhotoDay />
-      <Gallery />
+    <main>
+      <APIsApod/>
     </main>
   )
 }

@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-"use client"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -11,36 +9,7 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-import { TypeApod } from "@/components/Types"
-import { useEffect, useState } from "react"
-import axios from "axios"
-
-export const PhotoDay = () => {
-  const today = new Date()
-
-  const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()
-  const [date, setDate] = useState<Date>()
-
-  const GetApod = async () => {
-    try {
-      const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
-      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
-
-      if (new Date(formatDate) > new Date(formatToday)) {
-        alert("Select dates before or equal to today")
-      } else {
-        const response = await axios.get(`http://localhost:3333/api/apod?date=${formatDate}`)
-        setPictureTheDay(response.data)
-      }
-    } catch (error) {
-      console.error("Error when searching for image", error)
-    }
-  }
-
-  useEffect(() => {
-    GetApod()
-  }, [])
-
+export const PhotoDay = ({pictureTheDay, date, setDate, GetApod}) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center space-y-5">
       <div className="w-[1012px] flex items-start mt-20 space-x-5">
