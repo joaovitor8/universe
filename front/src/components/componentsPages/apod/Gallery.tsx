@@ -8,23 +8,35 @@ import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-export const Gallery = ({ className, galleryPictureTheDay, date, setDate, GetGalleryApod }: React.HTMLAttributes<HTMLDivElement>) => {
+import { TypeApodGallery } from "@/components/Types"
+import { DateRange } from "react-day-picker"
+
+interface TypeProps {
+  className?: string
+  galleryPictureTheDay: TypeApodGallery[]
+  dateGallery: DateRange | undefined
+  setDateGallery: React.Dispatch<React.SetStateAction<DateRange | undefined>>
+  GetGalleryApod: () => Promise<void>
+}
+
+// React.FC - React.FunctionComponent tipagem generica
+export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, dateGallery, setDateGallery, GetGalleryApod }) => {
   return (
     <div className="flex flex-col items-center space-y-5">
       <div className="flex space-x-5">
         <div className={cn("grid gap-2", className)}>
           <Popover>
             <PopoverTrigger asChild>
-              <Button id="date" variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground")}>
+              <Button id="date" variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !dateGallery && "text-muted-foreground")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
-                {date?.from ? (
-                  date.to ? (
+                {dateGallery?.from ? (
+                  dateGallery.to ? (
                     <>
-                      {format(date.from, "yyyy-MM-dd")} /{" "}
-                      {format(date.to, "yyyy-MM-dd")}
+                      {format(dateGallery.from, "yyyy-MM-dd")} /{" "}
+                      {format(dateGallery.to, "yyyy-MM-dd")}
                     </>
                   ) : (
-                    format(date.from, "yyyy-MM-dd")
+                    format(dateGallery.from, "yyyy-MM-dd")
                   )
                 ) : (
                   <span>Pick a date</span>
@@ -32,7 +44,7 @@ export const Gallery = ({ className, galleryPictureTheDay, date, setDate, GetGal
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
-              <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={2}/>
+              <Calendar initialFocus mode="range" defaultMonth={dateGallery?.from} selected={dateGallery} onSelect={setDateGallery} numberOfMonths={2}/>
             </PopoverContent>
           </Popover>
         </div>

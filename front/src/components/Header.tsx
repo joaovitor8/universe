@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const Header = () => {
   return (
-    <header className="h-24 px-10 flex items-center justify-between border-b">
+    <header className="h-24 w-full px-10 flex items-center justify-between fixed bg-inherit">
       <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
 
       <Menubar className="space-x-10 p-7 flex justify-evenly">

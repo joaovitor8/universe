@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { Gallery } from "@/components/componentsPages/apod/Gallery"
@@ -20,8 +21,8 @@ export const APIsApod = () => {
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>()
   const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([])
 
-  const [date, setDate] = useState<Date>()
-  const [dateA, setDateA] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
+  const [datePhotoDay, setDatePhotoDay] = useState<Date>()
+  const [dateGallery, setDateGallery] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
 
   const [loading, setLoading] = useState(true)
 
@@ -29,7 +30,7 @@ export const APIsApod = () => {
   const GetApod = async () => {
     try {
       const formatToday = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
-      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
+      const formatDate = datePhotoDay ? `${datePhotoDay?.getFullYear()}-${String(Number(datePhotoDay?.getMonth())+1).padStart(2, "0")}-${String(datePhotoDay?.getDate()).padStart(2, "0")}` : `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`
 
       if (new Date(formatDate) > new Date(formatToday)) {
         alert("Select dates before or equal to today")
@@ -44,8 +45,8 @@ export const APIsApod = () => {
 
   const GetGalleryApod = async () => {
     try {
-      const formtDateFrom = `${dateA?.from?.getFullYear()}-${String(Number(dateA?.from?.getMonth()) + 1).padStart(2, "0")}-${String(dateA?.from?.getDate()).padStart(2, "0")}`
-      const formatDateTo = `${dateA?.to?.getFullYear()}-${String(Number(dateA?.to?.getMonth()) + 1).padStart(2, "0")}-${String(dateA?.to?.getDate()).padStart(2, "0")}`
+      const formtDateFrom = `${dateGallery?.from?.getFullYear()}-${String(Number(dateGallery?.from?.getMonth()) + 1).padStart(2, "0")}-${String(dateGallery?.from?.getDate()).padStart(2, "0")}`
+      const formatDateTo = `${dateGallery?.to?.getFullYear()}-${String(Number(dateGallery?.to?.getMonth()) + 1).padStart(2, "0")}-${String(dateGallery?.to?.getDate()).padStart(2, "0")}`
 
       if (new Date(formtDateFrom) > new Date(formatToday) || new Date(formatDateTo) > new Date(formatToday)) {
         alert("Selecione datas anteriores ou iguais a hoje")
@@ -76,8 +77,8 @@ export const APIsApod = () => {
 
   return (
     <main className="space-y-40">
-      <PhotoDay pictureTheDay={pictureTheDay} date={date} setDate={setDate} GetApod={GetApod}/>
-      <Gallery galleryPictureTheDay={galleryPictureTheDay} date={date} setDate={setDateA} GetGalleryApod={GetGalleryApod}/>
+      <PhotoDay pictureTheDay={pictureTheDay} datePhotoDay={datePhotoDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod}/>
+      <Gallery galleryPictureTheDay={galleryPictureTheDay} dateGallery={dateGallery} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod}/>
     </main>
   )
 }

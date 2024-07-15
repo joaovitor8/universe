@@ -4,7 +4,7 @@ import { Lookup } from "@/components/componentsPages/neoWs/Lookup"
 
 export default function NeoWs() {
   return (
-    <main className="space-y-40">
+    <main className="space-y-40 pt-24">
       <About />
       <Feed />
       <Lookup />

@@ -25,8 +25,8 @@ export const System = () => {
   }, [])
 
   return(
-    <div className="h-screen flex justify-center items-center">
-      <Carousel className="h-4/5 w-4/5">
+    <div className="flex justify-center items-center">
+      <Carousel className="h-4/5 w-4/5 ">
         <CarouselContent>
           {data.map((d, key) => (
             <CarouselItem key={key}>

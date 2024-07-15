@@ -2,11 +2,8 @@
 
 export default function Loading() {
   return(
-    <div className="h-screen bg-red-500">
-      <p>Loading...</p>
-      <p>Carregando...</p>
+    <div className="min-h-screen flex justify-center items-center">
+      <p className="text-5xl">Carregando APIs...</p>
     </div>
   )
 }
-
-//   await new Promise((resolve) => setTimeout(resolve, 10000))

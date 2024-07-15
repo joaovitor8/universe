@@ -9,19 +9,29 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
-export const PhotoDay = ({pictureTheDay, date, setDate, GetApod}) => {
+import { TypeApod } from "@/components/Types"
+
+interface TypeProps {
+  pictureTheDay: TypeApod | undefined
+  datePhotoDay: Date | undefined
+  setDatePhotoDay: React.Dispatch<React.SetStateAction<Date | undefined>>
+  GetApod: () => Promise<void>
+}
+
+// React.FC - React.FunctionComponent   tipagem generica
+export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, setDatePhotoDay, GetApod }) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center space-y-5">
       <div className="w-[1012px] flex items-start mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
+            <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !datePhotoDay && "text-muted-foreground" )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
-              {date ? format(date, "yyyy-MM-dd") : <span>Pick a date</span>}
+              {datePhotoDay ? format(datePhotoDay, "yyyy-MM-dd") : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
-            <Calendar mode="single" selected={date} onSelect={setDate} initialFocus/>
+            <Calendar mode="single" selected={datePhotoDay} onSelect={setDatePhotoDay} initialFocus/>
           </PopoverContent>
         </Popover>
 
