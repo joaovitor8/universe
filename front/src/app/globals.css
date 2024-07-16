@@ -28,6 +28,47 @@
 }
 
 
+/* Estilos padrão para todos os tamanhos de tela
+body {
+  font-family: Arial, sans-serif;
+} */
+
+/* Dispositivos móveis (até 480px) */
+@media (max-width: 480px) {
+  body {
+    background-color: blue;
+  }
+}
+
+/* Tablets (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Telas pequenas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    background-color: coral;
+  }
+}
+
+/* Telas médias (1025px a 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  body {
+    background-color: goldenrodyellow;
+  }
+}
+
+/* Telas grandes (1201px e acima) */
+@media (min-width: 1201px) {
+  body {
+    background-color: gray;
+  }
+}
+
+
 @layer base {
   * {
     @apply border-border;
