@@ -35,37 +35,27 @@ body {
 
 /* Dispositivos móveis (até 480px) */
 @media (max-width: 480px) {
-  body {
-    background-color: blue;
-  }
+  body {}
 }
 
 /* Tablets (481px a 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  body {
-    background-color: green;
-  }
+  body {}
 }
 
 /* Telas pequenas (769px a 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    background-color: coral;
-  }
+  body {}
 }
 
 /* Telas médias (1025px a 1200px) */
 @media (min-width: 1025px) and (max-width: 1200px) {
-  body {
-    background-color: goldenrodyellow;
-  }
+  body {}
 }
 
 /* Telas grandes (1201px e acima) */
 @media (min-width: 1201px) {
-  body {
-    background-color: gray;
-  }
+  body {}
 }
 
 
