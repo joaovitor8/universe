@@ -15,27 +15,20 @@ export const Header = () => {
 
   return (
     <header className="h-24 w-full px-10 flex items-center justify-between">
-      <h1><Link href={'/'} className="text-4xl">Universe</Link></h1>
+      <h1><Link href={'/'} className="max-lg:text-2xl lg:text-4xl">Universe</Link></h1>
 
-      <Menubar className="space-x-10 p-7 flex justify-evenly max-lg:bg-red-700 max-lg:hidden">
+      <Menubar className={`max-lg:bg-slate-700 max-lg:fixed max-lg:top-0 max-lg:z-40 max-lg:h-screen max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:space-y-5 ${ nav ? 'max-lg:right-[0px]' : 'max-lg:right-[-100vw]' } lg:bg-blue-700 lg:flex lg:justify-evenly lg:space-x-10 lg:p-7 `}>
         <Link href={'/solar-system'}>Solar System</Link>
         <Link href={'/apod'}>Astronomical Photos</Link>
         <Link href={'/neows'}>Near Earth Object</Link>
       </Menubar>
-
-
 
       {nav ? (
-        <div className="fixed right-[30px] z-50 text-3xl   hidden" onClick={showNav}>A</div>
+        <div className="lg:hidden max-lg:z-50" onClick={showNav}>Fechar</div>
       ) : (
-        <div className="text-3xl   hidden" onClick={showNav}>B</div>
+        <div className="lg:hidden max-lg:z-50" onClick={showNav}>Abrir</div>
       )}
 
-      <Menubar className={`fixed top-[0px] z-40 flex h-[100vh] w-full flex-col items-center justify-center space-y-5 bg-white duration-1000   ${ nav ? 'right-[0px]' : 'right-[-100vw]' } `}>
-        <Link href={'/solar-system'}>Solar System</Link>
-        <Link href={'/apod'}>Astronomical Photos</Link>
-        <Link href={'/neows'}>Near Earth Object</Link>
-      </Menubar>
     </header>
   )
 }

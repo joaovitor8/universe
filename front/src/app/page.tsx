@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <main className="h-screen flex items-center justify-center">
-      <h2 className="text-5xl">Exploring the Universe, One Star at a Time</h2>
+      <h2 className="max-lg:text-3xl lg:text-5xl">Exploring the Universe, One Star at a Time</h2>
     </main>
   )
 }
