@@ -26,7 +26,7 @@ export const System = () => {
 
   return(
     <div className="flex justify-center items-center">
-      <Carousel className="h-4/5 w-4/5 ">
+      <Carousel className="h-4/5 w-4/5 pb-3">
         <CarouselContent>
           {data.map((d, key) => (
             <CarouselItem key={key}>
@@ -35,23 +35,23 @@ export const System = () => {
                   <CardTitle>{d.name}</CardTitle>
                   <CardDescription>{d.id}° planet after the sun</CardDescription>
                 </CardHeader>
-                <CardContent className="flex items-center space-x-10">
+                <CardContent className="flex   sm:flex-col sm:space-y-5   lg:items-center lg:space-x-10">
                   <img src={d.image} alt={d.name} className="h-[400px]"/>
 
                   <div className="space-y-1">
-                    <p>Type: {d.type}</p>
-                    <p>Gravity: {d.gravity}</p>
-                    <p>Diameter: {d.diameter}</p>
-                    <p>Atmosphere: {d.atmosphere}</p>
-                    <p>Average Temperature Celsius: {d.average_celsius_temperature}</p>
-                    <p>Composition: {d.composition}</p>
-                    <p>Distance to the Sun: {d.distance_to_the_sun}</p>
-                    <p>Characteristics: {d.characteristics}</p>
-                    <p>satellites: {d.satellites}</p>
+                    <p><span className="text-violet-700 font-bold">Type:</span> {d.type}</p>
+                    <p><span className="text-violet-700 font-bold">Gravity:</span> {d.gravity}</p>
+                    <p><span className="text-violet-700 font-bold">Diameter:</span> {d.diameter}</p>
+                    <p><span className="text-violet-700 font-bold">Atmosphere:</span> {d.atmosphere}</p>
+                    <p><span className="text-violet-700 font-bold">Average Temperature Celsius:</span> {d.average_celsius_temperature}</p>
+                    <p><span className="text-violet-700 font-bold">Composition:</span> {d.composition}</p>
+                    <p><span className="text-violet-700 font-bold">Distance to</span> the Sun: {d.distance_to_the_sun}</p>
+                    <p><span className="text-violet-700 font-bold">Characteristics:</span> {d.characteristics}</p>
+                    <p><span className="text-violet-700 font-bold">satellites:</span> {d.satellites}</p>
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <p>History of Discovery: {d.history_of_discovery}</p>
+                  <p><span className="text-violet-700 font-bold">History of Discovery:</span> {d.history_of_discovery}</p>
                 </CardFooter>
               </Card>
             </CarouselItem>

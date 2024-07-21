@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} scrollbar`}>
+      <body className={`${inter.className} scrollbar   max-sm:hidden`}>
         <Particles className="absolute inset-0 -z-10" quantity={500} />
         <Header />
         {children}
