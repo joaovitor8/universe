@@ -2,8 +2,8 @@
 
 export default function Loading() {
   return(
-    <div className="min-h-screen flex justify-center items-center">
-      <p className="text-5xl">Carregando APIs...</p>
+    <div className="flex justify-center items-center">
+      <p className="text-5xl text-violet-700 font-bold">Loading APIs...</p>
     </div>
   )
 }

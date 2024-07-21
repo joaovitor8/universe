@@ -39,29 +39,29 @@ export const Lookup = () => {
             <CardDescription>Information related to the orbit of a space object</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Equinox: {asteroidsLookup?.orbital_data.equinox}</p>
-            <p>Observation date: {asteroidsLookup?.orbital_data.observation_date}</p>
-            <p>Aphelion distance: {asteroidsLookup?.orbital_data.aphelion_distance}</p>
-            <p>Perihelion distance: {asteroidsLookup?.orbital_data.perihelion_distance}</p>
-            <p>Semi major axis: {asteroidsLookup?.orbital_data.semi_major_axis}</p>
-            <p>Mean anomaly: {asteroidsLookup?.orbital_data.mean_anomaly}</p>
-            <p>Mean motion: {asteroidsLookup?.orbital_data.mean_motion}</p>
-            <p>Ascending node longitude: {asteroidsLookup?.orbital_data.ascending_node_longitude}</p>
-            <p>Inclination: {asteroidsLookup?.orbital_data.inclination}</p>
-            <p>Perihelion argument: {asteroidsLookup?.orbital_data.perihelion_argument}</p>
-            <p>Eccentricity: {asteroidsLookup?.orbital_data.eccentricity}</p>
-            <p>Observations used: {asteroidsLookup?.orbital_data.observations_used}</p>
-            <p>Epoch osculation: {asteroidsLookup?.orbital_data.epoch_osculation}</p>
-            <p>Minimum orbit intersection: {asteroidsLookup?.orbital_data.minimum_orbit_intersection}</p>
-            <p>Perihelion time: {asteroidsLookup?.orbital_data.perihelion_time}</p>
-            <p>Orbital period: {asteroidsLookup?.orbital_data.orbital_period}</p>
-            <p>Jupiter tisserand invariant: {asteroidsLookup?.orbital_data.jupiter_tisserand_invariant}</p>
-            <p>Orbit class description: {asteroidsLookup?.orbital_data.orbit_class_description}</p>
-            <p>Orbit class range: {asteroidsLookup?.orbital_data.orbit_class_range}</p>
-            <p>Orbit class type: {asteroidsLookup?.orbital_data.orbit_class_type}</p>
-            <p>Orbit determination date: {asteroidsLookup?.orbital_data.orbit_determination_date}</p>
-            <p>Orbit id: {asteroidsLookup?.orbital_data.orbit_id}</p>
-            <p>Orbit uncertainty: {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
+            <p><span className="text-violet-700 font-bold">Equinox:</span> {asteroidsLookup?.orbital_data.equinox}</p>
+            <p><span className="text-violet-700 font-bold">Observation date:</span> {asteroidsLookup?.orbital_data.observation_date}</p>
+            <p><span className="text-violet-700 font-bold">Aphelion distance:</span> {asteroidsLookup?.orbital_data.aphelion_distance}</p>
+            <p><span className="text-violet-700 font-bold">Perihelion distance:</span> {asteroidsLookup?.orbital_data.perihelion_distance}</p>
+            <p><span className="text-violet-700 font-bold">Semi major axis:</span> {asteroidsLookup?.orbital_data.semi_major_axis}</p>
+            <p><span className="text-violet-700 font-bold">Mean anomaly:</span> {asteroidsLookup?.orbital_data.mean_anomaly}</p>
+            <p><span className="text-violet-700 font-bold">Mean motion:</span> {asteroidsLookup?.orbital_data.mean_motion}</p>
+            <p><span className="text-violet-700 font-bold">Ascending node longitude:</span> {asteroidsLookup?.orbital_data.ascending_node_longitude}</p>
+            <p><span className="text-violet-700 font-bold">Inclination:</span> {asteroidsLookup?.orbital_data.inclination}</p>
+            <p><span className="text-violet-700 font-bold">Perihelion argument:</span> {asteroidsLookup?.orbital_data.perihelion_argument}</p>
+            <p><span className="text-violet-700 font-bold">Eccentricity:</span> {asteroidsLookup?.orbital_data.eccentricity}</p>
+            <p><span className="text-violet-700 font-bold">Observations used:</span> {asteroidsLookup?.orbital_data.observations_used}</p>
+            <p><span className="text-violet-700 font-bold">Epoch osculation:</span> {asteroidsLookup?.orbital_data.epoch_osculation}</p>
+            <p><span className="text-violet-700 font-bold">Minimum orbit intersection:</span> {asteroidsLookup?.orbital_data.minimum_orbit_intersection}</p>
+            <p><span className="text-violet-700 font-bold">Perihelion time:</span> {asteroidsLookup?.orbital_data.perihelion_time}</p>
+            <p><span className="text-violet-700 font-bold">Orbital period:</span> {asteroidsLookup?.orbital_data.orbital_period}</p>
+            <p><span className="text-violet-700 font-bold">Jupiter tisserand invariant:</span> {asteroidsLookup?.orbital_data.jupiter_tisserand_invariant}</p>
+            <p><span className="text-violet-700 font-bold">Orbit class description:</span> {asteroidsLookup?.orbital_data.orbit_class_description}</p>
+            <p><span className="text-violet-700 font-bold">Orbit class range:</span> {asteroidsLookup?.orbital_data.orbit_class_range}</p>
+            <p><span className="text-violet-700 font-bold">Orbit class type:</span> {asteroidsLookup?.orbital_data.orbit_class_type}</p>
+            <p><span className="text-violet-700 font-bold">Orbit determination date:</span> {asteroidsLookup?.orbital_data.orbit_determination_date}</p>
+            <p><span className="text-violet-700 font-bold">Orbit id:</span> {asteroidsLookup?.orbital_data.orbit_id}</p>
+            <p><span className="text-violet-700 font-bold">Orbit uncertainty:</span> {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
           </CardContent>
         </Card>
 
@@ -72,10 +72,10 @@ export const Lookup = () => {
               <CardDescription>Diameter information in different measurements</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Miles: {asteroidsLookup?.estimated_diameter.miles}</p>
-              <p>Kilometers: {asteroidsLookup?.estimated_diameter.kilometers}</p>
-              <p>Meters: {asteroidsLookup?.estimated_diameter.meters}</p>
-              <p>Feet: {asteroidsLookup?.estimated_diameter.feet}</p>
+              <p><span className="text-violet-700 font-bold">Miles:</span> {asteroidsLookup?.estimated_diameter.miles}</p>
+              <p><span className="text-violet-700 font-bold">Kilometers:</span> {asteroidsLookup?.estimated_diameter.kilometers}</p>
+              <p><span className="text-violet-700 font-bold">Meters:</span> {asteroidsLookup?.estimated_diameter.meters}</p>
+              <p><span className="text-violet-700 font-bold">Feet:</span> {asteroidsLookup?.estimated_diameter.feet}</p>
             </CardContent>
           </Card>
 
@@ -118,3 +118,5 @@ export const Lookup = () => {
     </div>
   )
 }
+
+// className="text-violet-700 font-bold"

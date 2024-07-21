@@ -60,11 +60,11 @@ export const Feed = () => {
           <TableCaption>Today&apos;s list of some information about nearby meteors.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>ID</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Absolute Magnitude</TableHead>
-              <TableHead>Sentry Object</TableHead>
-              <TableHead>Potentially Hazardous</TableHead>
+              <TableHead className="text-violet-700 font-bold">ID</TableHead>
+              <TableHead className="text-violet-700 font-bold">Name</TableHead>
+              <TableHead className="text-violet-700 font-bold">Absolute Magnitude</TableHead>
+              <TableHead className="text-violet-700 font-bold">Sentry Object</TableHead>
+              <TableHead className="text-violet-700 font-bold">Potentially Hazardous</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
