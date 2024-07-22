@@ -4,7 +4,7 @@
 
 ## Tecnologias utilizadas
 
-**Front-end:** NextJS, React, TypeScrip, HTML, CSS, TailwindCSS, ShadcnUI
+**Front-end:** NextJS, React, TypeScript, HTML, CSS, TailwindCSS, ShadcnUI
 
 **Back-end:** Fastify, Node, TypeScript
 
