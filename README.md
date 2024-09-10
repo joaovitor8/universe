@@ -1,18 +1,16 @@
 # Universo
 
- Projeto full-stack usando as APIs da NASA para pegar informações espaciais.
+ Tentando contruir um README decente! :)
+
+ ---
+
+ Aplicação com informações espaciais da Nasa
 
 ## Tecnologias utilizadas
 
 **Front-end:** NextJS, React, TypeScript, HTML, CSS, TailwindCSS, ShadcnUI
 
 **Back-end:** Fastify, Node, TypeScript
-
-**Banco de Dados:** ...
-
-## Como rodar
-
-...
 
 ## Referência
 
