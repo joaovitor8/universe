@@ -21,8 +21,8 @@ interface TypeProps {
 // React.FC - React.FunctionComponent   tipagem generica
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, setDatePhotoDay, GetApod }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-5">
-      <div className="flex items-start mt-20 space-x-5   lg:w-[1012px]">
+    <div className="flex flex-col items-center justify-center space-y-5">
+      <div className="flex items-start mt-5 space-x-5   lg:w-[1012px]">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !datePhotoDay && "text-muted-foreground" )}>

@@ -14,13 +14,13 @@ export const Header = () => {
   }
 
   return (
-    <header className="h-24 w-full px-10 flex items-center justify-between border-b">
+    <header className="h-24 px-10 flex items-center justify-between border-b">
       <h1><Link href={'/'} className="max-lg:text-2xl lg:text-4xl">Universe</Link></h1>
 
       <Menubar className={`max-lg:bg-slate-700 max-lg:fixed max-lg:top-0 max-lg:z-40 max-lg:h-screen max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:space-y-5 ${ nav ? 'max-lg:right-[0px]' : 'max-lg:right-[-100vw]' }   lg:flex lg:justify-evenly lg:space-x-10 lg:p-7 `}>
         <Link href={'/solar-system'}>Solar System</Link>
         <Link href={'/apod'}>Astronomical Photos</Link>
-        <Link href={'/neows'}>Near Earth Object</Link>
+        <p className="text-purple-700">Mais paginas em breve</p>
       </Menubar>
 
       {nav ? (

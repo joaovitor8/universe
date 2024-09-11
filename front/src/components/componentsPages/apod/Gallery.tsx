@@ -50,6 +50,7 @@ export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, 
         </div>
 
         <Button onClick={GetGalleryApod}>Search</Button>
+        <p>Click on the image for better viewing</p>
       </div>
 
       <div className="w-full flex flex-wrap justify-center pb-5">

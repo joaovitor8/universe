@@ -1,7 +1,5 @@
 import { FastifyInstance } from "fastify"
 
-
-
 module.exports = function rotasUsers(fastify: any) {
 
   // Criar um usuário
@@ -26,17 +24,17 @@ module.exports = function rotasUsers(fastify: any) {
   })
 
   // Pegar um usuário
-  // fastify.get('/users/:id', async (request: any, reply: any) => {
-  //   const collection = fastify.mongo.db.collection('users') // Estou no DB de usuarios
-  //   const id = request.params.id
-  //   const user = await collection.findOne({ _id: new ObjectId(id) })
-  //   console.log(user)
-  //   if (!user) {
-  //     reply.status(404).send({ message: 'Usuário não encontrado' })
-  //   } else {
-  //     reply.send(user)
-  //   }
-  // })
+  fastify.get('/users/:id', async (request: any, reply: any) => {
+    const collection = fastify.mongo.db.collection('users') // Estou no DB de usuarios
+    const id = request.params.id
+    const user = await collection.findOne({ _id: new ObjectId(id) })
+    console.log(user)
+    if (!user) {
+      reply.status(404).send({ message: 'Usuário não encontrado' })
+    } else {
+      reply.send(user)
+    }
+  })
 
   // Atualizar um usuário
   fastify.put('/users/:id', async (request: any, reply: any) => {

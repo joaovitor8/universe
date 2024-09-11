@@ -80,7 +80,7 @@ const config = {
       addUtilities({
         '.scrollbar': {
           '&::-webkit-scrollbar': {
-            width: '10px',
+            width: '0px',
           },
           '&::-webkit-scrollbar-thumb': {
             background: '240 10% 3.9%',

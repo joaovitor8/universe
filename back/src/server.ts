@@ -3,7 +3,7 @@ import { fastifyCors } from "@fastify/cors"
 
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
-// import { RouteDonki } from "./routes/donki"
+import { RouteDonki } from "./routes/donki"
 import { RouteSolarSystem } from "./routes/solar-system"
 import "dotenv/config"
 
@@ -15,7 +15,7 @@ app.register(fastifyCors, {
 })
 
 app.register(RouteApod)
-app.register(RouteNeoWs)
+// app.register(RouteNeoWs)
 // app.register(RouteDonki)
 app.register(RouteSolarSystem)
 
