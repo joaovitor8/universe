@@ -1,16 +1,68 @@
+"use client"
+
+import { Card } from "@/components/Card"
+
+import { ExternalLink, Github, Linkedin, Mail, Twitter } from "lucide-react"
 import Link from "next/link"
 
-import { AtSign, ExternalLink, Github, Linkedin, Mail, Twitter } from "lucide-react"
+const socials = [
+  {
+    icon: <Github size={20} />,
+    href: "https://github.com/joaovitor8",
+    label: "GitHub",
+    handle: "joaovitor8",
+  },
+  {
+    icon: <Linkedin size={20} />,
+    href: "https://www.linkedin.com/in/joaovitorezequiel/",
+    label: "LinkedIn",
+    handle: "joaovitorezequiel",
+  },
+  {
+    icon: <ExternalLink size={20} />,
+    href: "https://bsky.app/profile/buraco-negro.bsky.social",
+    label: "BlueSky",
+    handle: "Universo",
+  },
+  {
+    icon: <ExternalLink size={20} />,
+    href: "https://www.tiktok.com/@os_tres_corpos",
+    label: "TikTok",
+    handle: "Universo",
+  },
+  {
+    icon: <Mail size={20} />,
+    href: "mailto:joaoezeki@gmail.com",
+    label: "Email",
+    handle: "joaoezeki@gmail.com",
+  },
+	{
+		icon: <Twitter size={20} />,
+		href: "https://x.com/joao_ezeki",
+		label: "Twitter",
+		handle: "@joao_ezeki",
+	},
+]
 
 export const ContactLinks = () => {
-  return (
-    <div className="h-24 flex items-center justify-center space-x-5">
-      <Link href={"https://github.com/joaovitor8"} target="_blank"> <Github size={30}/> <p>GitHub</p> </Link>
-      <Link href={"https://www.linkedin.com/in/joaovitorezequiel/"} target="_blank"> <Linkedin size={30}/> <p>LinkdIn</p> </Link>
-      <Link href={"/"} target="_blank"> <Twitter size={30}/> <p>Twitter</p> </Link>
-      <Link href={"https://bsky.app/profile/buraco-negro.bsky.social"} target="_blank"> <AtSign size={30}/> <p>BlueSky</p> </Link>
-      <Link href={"https://www.tiktok.com/@os_tres_corpos"} target="_blank"> <ExternalLink size={30}/> <p>TikTok</p> </Link>
-      <div> <Mail size={30}/> <p>joaoezeki@gmail.com</p> </div>
-    </div>
-  )
+	return (
+		<div className="py-10 bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
+				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
+					{socials.map((s, key) => (
+						<Card key={key}>
+							<Link href={s.href} target="_blank" className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16">
+								<span className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent" aria-hidden="true"/>
+								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">{s.icon}</span>
+								<div className="z-10 flex flex-col items-center">
+									<span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">{s.handle}</span>
+									<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">{s.label}</span>
+								</div>
+							</Link>
+						</Card>
+					))}
+				</div>
+			</div>
+		</div>
+	)
 }

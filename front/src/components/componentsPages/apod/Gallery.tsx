@@ -39,7 +39,7 @@ export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, 
                     format(dateGallery.from, "yyyy-MM-dd")
                   )
                 ) : (
-                  <span>Pick a date</span>
+                  <span>Escolha uma data</span>
                 )}
               </Button>
             </PopoverTrigger>
@@ -49,8 +49,8 @@ export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, 
           </Popover>
         </div>
 
-        <Button onClick={GetGalleryApod}>Search</Button>
-        <p>Click on the image for better viewing</p>
+        <Button onClick={GetGalleryApod}>Pesquisar</Button>
+        <p>Click na imagem para ver mais detalhes</p>
       </div>
 
       <div className="w-full flex flex-wrap justify-center pb-5">

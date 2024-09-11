@@ -15,12 +15,12 @@ export const Header = () => {
 
   return (
     <header className="h-24 px-10 flex items-center justify-between border-b">
-      <h1><Link href={'/'} className="max-lg:text-2xl lg:text-4xl">Universe</Link></h1>
+      <h1><Link href={'/'} className="max-lg:text-2xl lg:text-4xl">Universo</Link></h1>
 
       <Menubar className={`max-lg:bg-slate-700 max-lg:fixed max-lg:top-0 max-lg:z-40 max-lg:h-screen max-lg:w-full max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:space-y-5 ${ nav ? 'max-lg:right-[0px]' : 'max-lg:right-[-100vw]' }   lg:flex lg:justify-evenly lg:space-x-10 lg:p-7 `}>
-        <Link href={'/apod'}>Astronomical Photos</Link>
-        <Link href={'/solar-system'}>Solar System</Link>
-        <Link href={'/contact'} className="text-purple-700">Contact</Link>
+        <Link href={'/apod'}>Fotos Astronomicas</Link>
+        <Link href={'/solar-system'}>Sistema Solar</Link>
+        <Link href={'/contact'} className="text-purple-700">Contato</Link>
       </Menubar>
 
       {nav ? (

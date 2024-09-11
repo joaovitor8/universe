@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <main className="flex items-center justify-center   max-[480px]:px-12">
-      <h2 className="mt-40 max-lg:text-3xl   lg:text-5xl">Exploring the Universe, One Star at a Time</h2>
+      <h2 className="mt-40 max-lg:text-3xl   lg:text-5xl">Explorando o universo, uma estrela de cada vez.</h2>
     </main>
   )
 }

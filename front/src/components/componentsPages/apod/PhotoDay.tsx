@@ -27,7 +27,7 @@ export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, set
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !datePhotoDay && "text-muted-foreground" )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
-              {datePhotoDay ? format(datePhotoDay, "yyyy-MM-dd") : <span>Pick a date</span>}
+              {datePhotoDay ? format(datePhotoDay, "yyyy-MM-dd") : <span>Escolha uma data</span>}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
@@ -35,7 +35,7 @@ export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, set
           </PopoverContent>
         </Popover>
 
-        <Button onClick={GetApod}>Search</Button>
+        <Button onClick={GetApod}>Pesquisar</Button>
       </div>
 
       <div className="flex   sm:flex-col sm:items-center sm:space-y-3   lg:flex-row lg:justify-center lg:space-x-3">
