@@ -36,12 +36,12 @@ const socials = [
     label: "Email",
     handle: "joaoezeki@gmail.com",
   },
-	{
-		icon: <Twitter size={20} />,
-		href: "https://x.com/joao_ezeki",
-		label: "Twitter",
-		handle: "@joao_ezeki",
-	},
+	// {
+	// 	icon: <Twitter size={20} />,
+	// 	href: "https://x.com/joao_ezeki",
+	// 	label: "Twitter",
+	// 	handle: "@joao_ezeki",
+	// },
 ]
 
 export const ContactLinks = () => {
