@@ -1,4 +1,4 @@
-import { fastify } from "fastify"
+// import { fastify } from "fastify"
 import { fastifyCors } from "@fastify/cors"
 
 import { RouteApod } from "./routes/apod"
@@ -7,20 +7,24 @@ import { RouteDonki } from "./routes/donki"
 import { RouteSolarSystem } from "./routes/solar-system"
 import "dotenv/config"
 
-const app = fastify()
+const fastify = require('fastify')({ logger: true })
 
-app.register(fastifyCors, {
+fastify.register(fastifyCors, {
   origin: "http://localhost:3000",
   methods: ["GET"],
 })
 
-app.register(RouteApod)
-// app.register(RouteNeoWs)
-// app.register(RouteDonki)
-app.register(RouteSolarSystem)
+fastify.register(RouteApod)
+// fastify.register(RouteNeoWs)
+// fastify.register(RouteDonki)
+fastify.register(RouteSolarSystem)
 
-const porta = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
-app.listen({ port: porta }).then(() => {
-  console.log(`Servidor rodando`)
+fastify.listen({host: host, port: port }, function (err, address) {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
 })
