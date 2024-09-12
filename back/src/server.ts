@@ -19,6 +19,8 @@ app.register(RouteApod)
 // app.register(RouteDonki)
 app.register(RouteSolarSystem)
 
-app.listen({ port: 10000 }).then(() => {
+const porta = process.env.PORT || 4000;
+
+app.listen({ port: porta }).then(() => {
   console.log(`Servidor rodando`)
 })
