@@ -10,7 +10,7 @@ import "dotenv/config"
 const fastify = require('fastify')({ logger: true })
 
 fastify.register(fastifyCors, {
-  origin: "http://localhost:3000",
+  origin: "https://unyverso.vercel.app",
   methods: ["GET"],
 })
 
