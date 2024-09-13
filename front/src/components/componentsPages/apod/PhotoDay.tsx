@@ -22,7 +22,7 @@ interface TypeProps {
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, setDatePhotoDay, GetApod }) => {
   return (
     <div className="flex flex-col items-center justify-center space-y-5">
-      <div className="flex items-start mt-5 space-x-5   lg:w-[1012px]">
+      <div className="flex items-start mt-5 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !datePhotoDay && "text-muted-foreground" )}>
@@ -38,14 +38,14 @@ export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, set
         <Button onClick={GetApod}>Pesquisar</Button>
       </div>
 
-      <div className="flex   sm:flex-col sm:items-center sm:space-y-3   lg:flex-row lg:justify-center lg:space-x-3">
-        <div className="w-[500px]">
+      <div className="flex max-[896px]:flex-col max-[896px]:">
+        <div className="w-[500px] max-[426px]:w-[300px]">
           <a href={pictureTheDay?.hdurl} target="_blank">
             <img src={pictureTheDay?.url} alt={pictureTheDay?.media_type} className="rounded-md object-cover" />
           </a>
         </div>
 
-        <Card className="h-min w-[500px]">
+        <Card className="h-min w-[500px] max-[426px]:w-[300px]">
           <CardHeader>
             <CardTitle>{pictureTheDay?.title}</CardTitle>
             <CardDescription>{pictureTheDay?.date}</CardDescription>

@@ -37,7 +37,7 @@ export const Feed = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center space-y-5">
-      <div className="mt-20 space-x-5   lg:w-[1000px]">
+      <div className="mt-20 space-x-5">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant={"outline"} className={cn("w-[280px] justify-start text-left font-normal", !date && "text-muted-foreground" )}>
@@ -55,7 +55,7 @@ export const Feed = () => {
         <span>Basic Information</span>
       </div>
 
-      <div className="lg:w-[1000px]">
+      <div className="">
         <Table>
           <TableCaption>Today&apos;s list of some information about nearby meteors.</TableCaption>
           <TableHeader>

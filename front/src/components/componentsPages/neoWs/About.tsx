@@ -3,19 +3,19 @@
 export const About = () => {
   return (
     <div className="min-h-screen flex flex-col items-center">
-      <div className="text-center space-y-10   sm:w-[80%]   lg:w-[1000px]">
+      <div className="text-center space-y-10">
         <h2 className="text-3xl mt-10">Near Earth Object Web Service</h2>
         <p className="text-lg">Search and look for asteroids based on date of closest approach to Earth</p>
-        <div className="flex   sm:flex-row-reverse   lg:flex-row">
+        <div className="flex">
           <img src="./img/asteroid_b.jpg" alt="" className="h-[200px] rounded-2xl mr-5"/>
           <div className="flex flex-col items-start text-left">
             <p>&nbsp;&nbsp;&nbsp;ASTEROIDS are giant hunks of rock and metal that orbit the Sun.</p>
             <p>&nbsp;&nbsp;&nbsp;Some are more rocky in composition, while others are more metallic. Like comets, they are remnants left over from the formation of our solar system more than 4 billion years ago.</p>
           </div>
         </div>
-        <div className="text-left lg:flex lg:flex-row">
+        <div className="text-left">
           <p>&nbsp;&nbsp;&nbsp;Most of this ancient space rubble can be found orbiting the Sun between Mars and Jupiter within the main asteroid belt. Many asteroids have orbits that stray far outside the asteroid belt as well, and quite a few have paths that cross the orbit of Earth. Groups of asteroids have collected in different parts of the solar system over time as a result of gravitational tugs from Jupiter and the other planets.</p>
-          <img src="./img/asteroids.jpg" alt="" className="h-[200px] rounded-2xl ml-5   sm:hidden   lg:flex"/>
+          <img src="./img/asteroids.jpg" alt="" className="h-[200px] rounded-2xl ml-5"/>
         </div>
         <div className="flex">
           <img src="./img/asteroid_a.jpg" alt="" className="h-[200px] rounded-2xl mr-5"/>

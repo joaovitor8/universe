@@ -13,7 +13,7 @@ export const System = () => {
 
   const GetPlanets = async () => {
     try {
-      const response = await axios.get(`https://universe-back.onrender.com/api/solar-system`)
+      const response = await axios.get(`http://127.0.0.1:4000/api/solar-system`)
       setData(response.data)
     } catch (error) {
       console.error("", error)
@@ -35,9 +35,9 @@ export const System = () => {
                   <CardTitle>{d.name}</CardTitle>
                   <CardDescription>{d.id}° Planeta depois do Sol</CardDescription>
                 </CardHeader>
-                <CardContent className="flex   sm:flex-col sm:space-y-5   lg:flex-row ">
-                  <div className="sm:w-full sm:flex sm:justify-center   lg:w-1/2">
-                    <img src={d.image} alt={d.name} className="h-[300px] w-[300px]"/>
+                <CardContent className="flex  max-[896px]:flex-col ">
+                  <div className="max-[896px]:w-full max-[896px]:flex max-[896px]:justify-center   min-[897px]:w-1/2">
+                    <img src={d.image} alt={d.name} className="h-[300px] w-[300px] mb-7 max-[426px]:h-[200px] max-[426px]:w-[200px]"/>
                   </div>
 
                   <div className="space-y-1">
@@ -52,14 +52,14 @@ export const System = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <p><span className="text-violet-700 font-bold">Historia da Descoberta:</span> {d.history_of_discovery}</p>
+                  <p><span className="text-violet-700 font-bold text-wrap">Historia da Descoberta:</span> {d.history_of_discovery}</p>
                 </CardFooter>
               </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="max-[896px]:hidden"/>
+        <CarouselNext className="max-[896px]:hidden"/>
       </Carousel>
     </div>
   )

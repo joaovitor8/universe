@@ -32,7 +32,7 @@ export const Lookup = () => {
         <Button onClick={GetAsteroidsLookup}>Search</Button>
         <span>Advanced Information</span>
       </div>
-      <div className="flex   sm:flex-col sm:space-y-1   lg:flex-row lg:space-x-1">
+      <div className="flex">
         <Card className="h-min w-[500px]">
           <CardHeader>
             <CardTitle>Orbital Data</CardTitle>

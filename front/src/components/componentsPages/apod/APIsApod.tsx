@@ -35,7 +35,7 @@ export const APIsApod = () => {
       if (new Date(formatDate) > new Date(formatToday)) {
         alert("Select dates before or equal to today")
       } else {
-        const response = await axios.get(`https://universe-back.onrender.com/api/apod?date=${formatDate}`)
+        const response = await axios.get(`http://127.0.0.1:4000/api/apod?date=${formatDate}`)
         setPictureTheDay(response.data)
       }
     } catch (error) {
@@ -51,7 +51,7 @@ export const APIsApod = () => {
       if (new Date(formtDateFrom) > new Date(formatToday) || new Date(formatDateTo) > new Date(formatToday)) {
         alert("Selecione datas anteriores ou iguais a hoje")
       } else {
-        const response = await axios.get(`https://universe-back.onrender.com/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
+        const response = await axios.get(`http://127.0.0.1:4000/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`)
         if (response.data.length > 100) {
           alert("Limite máximo de requisições atingido! (máximo 40)")
         } else {
