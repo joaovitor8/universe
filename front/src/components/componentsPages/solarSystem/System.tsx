@@ -13,7 +13,7 @@ export const System = () => {
 
   const GetPlanets = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:4000/api/solar-system`)
+      const response = await axios.get(`https://universe-back.onrender.com/api/solar-system`)
       setData(response.data)
     } catch (error) {
       console.error("", error)
