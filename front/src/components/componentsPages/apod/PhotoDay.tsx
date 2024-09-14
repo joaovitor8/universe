@@ -22,10 +22,10 @@ interface TypeProps {
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, setDatePhotoDay, GetApod }) => {
   return (
     <div className="flex flex-col items-center justify-center space-y-5">
-      <div className="flex items-start mt-5 space-x-5">
+      <div className="flex items-start mt-5 space-x-2">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !datePhotoDay && "text-muted-foreground" )}>
+            <Button variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal   max-[426px]:w-[200px]", !datePhotoDay && "text-muted-foreground" )}>
               <CalendarIcon className="mr-2 h-4 w-4" />
               {datePhotoDay ? format(datePhotoDay, "yyyy-MM-dd") : <span>Escolha uma data</span>}
             </Button>
@@ -35,17 +35,17 @@ export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, set
           </PopoverContent>
         </Popover>
 
-        <Button onClick={GetApod}>Pesquisar</Button>
+        <Button onClick={GetApod} className="max-[426px]:w-[100px]">Pesquisar</Button>
       </div>
 
-      <div className="flex max-[896px]:flex-col max-[896px]:">
-        <div className="w-[500px] max-[426px]:w-[300px]">
+      <div className="flex   max-[1022px]:flex-col max-[1022px]:space-y-3   min-[1023px]:space-x-2">
+        <div className="w-[500px]   max-[426px]:w-[300px] max-[540px]:w-[400px]">
           <a href={pictureTheDay?.hdurl} target="_blank">
             <img src={pictureTheDay?.url} alt={pictureTheDay?.media_type} className="rounded-md object-cover" />
           </a>
         </div>
 
-        <Card className="h-min w-[500px] max-[426px]:w-[300px]">
+        <Card className="h-min w-[500px]   max-[426px]:w-[300px] max-[540px]:w-[400px]">
           <CardHeader>
             <CardTitle>{pictureTheDay?.title}</CardTitle>
             <CardDescription>{pictureTheDay?.date}</CardDescription>

@@ -2,13 +2,8 @@
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center   max-[480px]:px-12">
-      <h2 className="mt-40 max-lg:text-3xl   lg:text-5xl">Explorando o universo, uma estrela de cada vez.</h2>
+    <main className="flex items-center justify-center">
+      <h2 className="mt-40 text-center   max-[1022px]:text-3xl max-[1022px]:mx-4   min-[1023px]:text-5xl min-[1023px]:mx-8">Explorando o universo, uma estrela de cada vez.</h2>
     </main>
   )
 }
-
-
-{/* <p>Explorando o universo, uma estrela de cada vez.</p>
-<p>Navegue pelas estrelas conosco.</p>
-<p>Onde a imaginação encontra o cosmos.</p> */}

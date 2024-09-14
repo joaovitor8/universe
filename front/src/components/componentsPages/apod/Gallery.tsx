@@ -23,12 +23,12 @@ interface TypeProps {
 export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, dateGallery, setDateGallery, GetGalleryApod }) => {
   return (
     <div className="flex flex-col items-center space-y-5">
-      <div className="flex space-x-5">
+      <div className="flex space-x-2">
         <div className={cn("grid gap-2", className)}>
           <Popover>
             <PopoverTrigger asChild>
-              <Button id="date" variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal", !dateGallery && "text-muted-foreground")}>
-                <CalendarIcon className="mr-2 h-4 w-4" />
+              <Button id="date" variant={"outline"} className={cn("w-[300px] justify-start text-left font-normal   max-[426px]:w-[220px]", !dateGallery && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4 max-[426px]:hidden" />
                 {dateGallery?.from ? (
                   dateGallery.to ? (
                     <>
@@ -49,8 +49,7 @@ export const Gallery: React.FC<TypeProps> = ({ className, galleryPictureTheDay, 
           </Popover>
         </div>
 
-        <Button onClick={GetGalleryApod}>Pesquisar</Button>
-        <p>Click na imagem para ver mais detalhes</p>
+        <Button onClick={GetGalleryApod} className="max-[426px]:w-[80px]">Pesquisar</Button>
       </div>
 
       <div className="w-full flex flex-wrap justify-center pb-5">

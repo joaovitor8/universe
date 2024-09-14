@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-// import { useMousePosition } from "@/outros/mouse";
+import React, { useRef, useEffect, useState } from "react";
 
-interface ParticlesProps {
+interface StarsProps {
 	className?: string;
 	quantity?: number;
 	staticity?: number;
@@ -12,19 +11,17 @@ interface ParticlesProps {
 	refresh?: boolean;
 }
 
-export default function Particles({
-	className = "",
-	quantity = 30,
-	staticity = 50,
-	ease = 50,
-	refresh = false,
-}: ParticlesProps) {
+export default function Stars({
+		className = "",
+		quantity = 30,
+		staticity = 50,
+		ease = 50,
+		refresh = false,
+	}: StarsProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
 	const context = useRef<CanvasRenderingContext2D | null>(null);
 	const circles = useRef<any[]>([]);
-	// const mousePosition = useMousePosition();
-	// const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
@@ -41,32 +38,15 @@ export default function Particles({
 		};
 	}, []);
 
-	// useEffect(() => {
-	// 	onMouseMove();
-	// }, [mousePosition.x, mousePosition.y]);
-
 	useEffect(() => {
 		initCanvas();
 	}, [refresh]);
 
+	// Iniciar Canvas
 	const initCanvas = () => {
 		resizeCanvas();
-		drawParticles();
+		drawStars();
 	};
-
-	// const onMouseMove = () => {
-	// 	if (canvasRef.current) {
-	// 		const rect = canvasRef.current.getBoundingClientRect();
-	// 		const { w, h } = canvasSize.current;
-	// 		const x = mousePosition.x - rect.left - w / 2;
-	// 		const y = mousePosition.y - rect.top - h / 2;
-	// 		const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-	// 		if (inside) {
-	// 			mouse.current.x = x;
-	// 			mouse.current.y = y;
-	// 		}
-	// 	}
-	// };
 
 	type Circle = {
 		x: number;
@@ -81,6 +61,7 @@ export default function Particles({
 		magnetism: number;
 	};
 
+	// Redimensionar Canvas
 	const resizeCanvas = () => {
 		if (canvasContainerRef.current && canvasRef.current && context.current) {
 			circles.current.length = 0;
@@ -94,6 +75,7 @@ export default function Particles({
 		}
 	};
 
+	// Círculo Parâmetros
 	const circleParams = (): Circle => {
 		const x = Math.floor(Math.random() * canvasSize.current.w);
 		const y = Math.floor(Math.random() * canvasSize.current.h);
@@ -119,6 +101,7 @@ export default function Particles({
 		};
 	};
 
+	// Desenhar Círculo
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
 			const { x, y, translateX, translateY, size, alpha } = circle;
@@ -135,6 +118,7 @@ export default function Particles({
 		}
 	};
 
+	// Contexto claro
 	const clearContext = () => {
 		if (context.current) {
 			context.current.clearRect(
@@ -146,7 +130,8 @@ export default function Particles({
 		}
 	};
 
-	const drawParticles = () => {
+	// Desenhar Partículas
+	const drawStars = () => {
 		clearContext();
 		const particleCount = quantity;
 		for (let i = 0; i < particleCount; i++) {
@@ -155,6 +140,7 @@ export default function Particles({
 		}
 	};
 
+	// Remapear Valor
 	const remapValue = (
 		value: number,
 		start1: number,
@@ -167,6 +153,7 @@ export default function Particles({
 		return remapped > 0 ? remapped : 0;
 	};
 
+	// Animar
 	const animate = () => {
 		clearContext();
 		circles.current.forEach((circle: Circle, i: number) => {
@@ -189,12 +176,6 @@ export default function Particles({
 			} else {
 				circle.alpha = circle.targetAlpha * remapClosestEdge;
 			}
-			circle.x += circle.dx;
-			circle.y += circle.dy;
-			// circle.translateX += (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) / ease;
-			// circle.translateY += (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) / ease;
-
-			// circle gets out of the canvas
 			if (
 				circle.x < -circle.size ||
 				circle.x > canvasSize.current.w + circle.size ||
