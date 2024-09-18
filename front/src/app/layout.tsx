@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-br">
       <body className={`${inter.className} scrollbar max-[300px]:hidden`}>
         <Stars className="absolute inset-0 -z-10" quantity={500} />
-        {/* <Header /> */}
+        <Header />
         {children}
       </body>
     </html>
