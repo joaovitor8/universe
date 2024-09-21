@@ -2,7 +2,6 @@
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
 
 import Link from "next/link"
 
@@ -31,28 +30,25 @@ export const Header = () => {
       <div className={`max-[896px]:bg-black max-[896px]:fixed max-[896px]:top-0 max-[896px]:z-40 max-[896px]:h-screen max-[896px]:w-full
                         max-[896px]:grid max-[896px]:content-center max-[896px]:place-content-center max-[896px]:space-y-2
                         ${ nav ? 'max-[896px]:right-[0px]' : 'max-[896px]:right-[-100vw]' }
-                        min-[897px]:flex min-[897px]:justify-evenly min-[897px]:space-x-8 min-[897px]:p-6
-                      `}>
+                        min-[897px]:flex min-[897px]:justify-evenly min-[897px]:space-x-8 min-[897px]:p-6`}>
         <NavigationMenu>
           <NavigationMenuList className="max-[896px]:grid max-[896px]:space-y-1">
             <NavigationMenuItem>
-              <Button variant="link" className="p-0">
-                <Link href={'/apod'} className={navigationMenuTriggerStyle()}>Astronomical Photos</Link>
-              </Button>
+              <NavigationMenuLink href={"/apod"} className={navigationMenuTriggerStyle()}>Astronomical Photos</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Solar System</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 max-[896px]:grid-cols-2 max-[896px]:w-[240px]   min-[897px]:grid-cols-5 min-[897px]:w-[500px]">
-                  <NavigationMenuLink>Sun</NavigationMenuLink>
-                  <NavigationMenuLink>Mercury</NavigationMenuLink>
-                  <NavigationMenuLink>Venus</NavigationMenuLink>
-                  <NavigationMenuLink>Earth</NavigationMenuLink>
-                  <NavigationMenuLink>Mars</NavigationMenuLink>
-                  <NavigationMenuLink>Jupiter</NavigationMenuLink>
-                  <NavigationMenuLink>Saturn</NavigationMenuLink>
-                  <NavigationMenuLink>Uranus</NavigationMenuLink>
-                  <NavigationMenuLink>Neptune</NavigationMenuLink>
+              <NavigationMenuContent className="">
+                <ul className="grid gap-3 p-4 max-[896px]:grid-cols-2 max-[896px]:w-[240px]   min-[897px]:grid-cols-5 min-[897px]:w-[300px]">
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Sun</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Mercury</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Venus</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Earth</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/mars"} className={navigationMenuTriggerStyle()}>Mars</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Jupiter</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Saturn</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Uranus</NavigationMenuLink>
+                  <NavigationMenuLink href={"/solar-system/"} className={navigationMenuTriggerStyle()}>Neptune</NavigationMenuLink>
                   {/* <NavigationMenuLink>Asteroids</NavigationMenuLink> */}
                   {/* <NavigationMenuLink>More</NavigationMenuLink> */}
                 </ul>
