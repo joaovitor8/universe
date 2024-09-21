@@ -1,6 +1,9 @@
 'use client'
 
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuViewport, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
+
 import Link from "next/link"
 
 import { useState } from 'react'
@@ -22,14 +25,64 @@ export const Header = () => {
   }
 
   return (
-    <header className="h-24 px-10 flex items-center justify-between border-b">
-      <h1><Link href={'/'} className="max-[1022px]:text-2xl   min-[1023px]:text-4xl">Universo</Link></h1>
+    <header className="h-24 px-10 flex items-center justify-between ">
+      <h1><Link href={'/'} className="max-[1022px]:text-2xl   min-[1023px]:text-4xl">Universe</Link></h1>
 
-      <Menubar className={`max-[896px]:bg-black max-[896px]:fixed max-[896px]:top-0 max-[896px]:z-40 max-[896px]:h-screen max-[896px]:w-full max-[896px]:flex max-[896px]:flex-col max-[896px]:items-center max-[896px]:justify-center max-[896px]:space-y-5 ${ nav ? 'max-[896px]:right-[0px]' : 'max-[896px]:right-[-100vw]' }   min-[897px]:flex min-[897px]:justify-evenly min-[897px]:space-x-8 min-[897px]:p-6 `}>
-        <Link href={'/apod'} onClick={showNavFalse}>Fotos Astronomicas</Link>
-        <Link href={'/solar-system'} onClick={showNavFalse}>Sistema Solar</Link>
-        <Link href={'/contact'} onClick={showNavFalse} className="text-purple-700">Contato</Link>
-      </Menubar>
+      <div className={`max-[896px]:bg-black max-[896px]:fixed max-[896px]:top-0 max-[896px]:z-40 max-[896px]:h-screen max-[896px]:w-full
+                        max-[896px]:grid max-[896px]:content-center max-[896px]:place-content-center max-[896px]:space-y-2
+                        ${ nav ? 'max-[896px]:right-[0px]' : 'max-[896px]:right-[-100vw]' }
+                        min-[897px]:flex min-[897px]:justify-evenly min-[897px]:space-x-8 min-[897px]:p-6
+                      `}>
+        <NavigationMenu>
+          <NavigationMenuList className="max-[896px]:grid max-[896px]:space-y-1">
+            <NavigationMenuItem>
+              <Button variant="link" className="p-0">
+                <Link href={'/apod'} className={navigationMenuTriggerStyle()}>Astronomical Photos</Link>
+              </Button>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Solar System</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-4 max-[896px]:grid-cols-2 max-[896px]:w-[240px]   min-[897px]:grid-cols-5 min-[897px]:w-[500px]">
+                  <NavigationMenuLink>Sun</NavigationMenuLink>
+                  <NavigationMenuLink>Mercury</NavigationMenuLink>
+                  <NavigationMenuLink>Venus</NavigationMenuLink>
+                  <NavigationMenuLink>Earth</NavigationMenuLink>
+                  <NavigationMenuLink>Mars</NavigationMenuLink>
+                  <NavigationMenuLink>Jupiter</NavigationMenuLink>
+                  <NavigationMenuLink>Saturn</NavigationMenuLink>
+                  <NavigationMenuLink>Uranus</NavigationMenuLink>
+                  <NavigationMenuLink>Neptune</NavigationMenuLink>
+                  {/* <NavigationMenuLink>Asteroids</NavigationMenuLink> */}
+                  {/* <NavigationMenuLink>More</NavigationMenuLink> */}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Travel Beyond</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-4 max-[896px]:grid-cols-2 max-[896px]:w-[240px]   min-[897px]:grid-cols-5 min-[897px]:w-[500px]">
+                  <NavigationMenuLink>Universe</NavigationMenuLink>
+                  <NavigationMenuLink>Galaxies</NavigationMenuLink>
+                  <NavigationMenuLink>Black Hole</NavigationMenuLink>
+                  <NavigationMenuLink>Stars</NavigationMenuLink>
+                  <NavigationMenuLink>Planets</NavigationMenuLink>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <Select disabled>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Language"/>
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="english">English</SelectItem>
+            <SelectItem value="portuguese">Portuguese</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
 
       {nav ? (
         <div className="z-50 fixed w-full text-end   min-[897px]:hidden" onClick={showNavFalse}><span className="mr-20">Fechar</span></div>

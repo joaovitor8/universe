@@ -6,16 +6,12 @@ import React, { useRef, useEffect, useState } from "react";
 interface StarsProps {
 	className?: string;
 	quantity?: number;
-	staticity?: number;
-	ease?: number;
 	refresh?: boolean;
 }
 
 export default function Stars({
 		className = "",
 		quantity = 30,
-		staticity = 50,
-		ease = 50,
 		refresh = false,
 	}: StarsProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
