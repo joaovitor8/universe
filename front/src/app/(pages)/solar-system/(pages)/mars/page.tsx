@@ -3,11 +3,6 @@
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 
-// <p><span className="text-red-400">Diameter:</span> Mars has a diameter of ≅6779 KM</p>
-// <p>Tamanho em comparação com a Terra: Marte é cerca de metade do tamanho da Terra.</p>
-
-// <p><span className="text-red-400">Distance to the Sun:</span> Mars is about 140 million kilometers or ≅1.5 UA from the Sun.</p>
-
 
 export default function Mars() {
   return (
@@ -17,7 +12,7 @@ export default function Mars() {
         <div className="flex gap-5">
           <div className="flex flex-col justify-around">
             <h2 className="text-4xl text-red-400 mt-10 mb-20">MARS: The red planet</h2>
-            <p><span className="text-red-400">Mars</span> is the fourth planet from the Sun and the second smallest in the Solar System, after Mercury. Named after the Roman god of war, it is often described as the &quot;Red Planet&quot; because the iron oxide that predominates on its surface gives it a reddish appearance.</p>
+            <p><span className="text-red-400">Mars</span> It is the fourth planet in the Solar System, located about 140 million kilometers or ≅1.5 AU from the Sun, and the second smallest in the Solar System, after Mercury, its size is about half the size of Planet Earth. Named after the Roman god of war, it is often described as the &quot;Red Planet&quot; because the iron oxide that predominates on its surface gives it a reddish appearance.</p>
           </div>
           <img src="/planets/mars.png" alt="Planet Mars" className="h-[400px] w-[400px]"/>
         </div>
@@ -83,12 +78,6 @@ export default function Mars() {
       </div>
 
       <Separator className="my-10 w-[800px]"/>
-
-      {/* <div>
-        <p>imagens</p>
-      </div>
-
-      <Separator className="my-10 w-[800px]"/> */}
 
       <div className="w-[800px]">
         <h3 className="text-3xl text-center mb-3">Useful links to continue <span className="text-red-400">Exploring</span></h3>
