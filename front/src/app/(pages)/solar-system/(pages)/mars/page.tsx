@@ -8,86 +8,85 @@ export default function Mars() {
   return (
     <main className="flex flex-col items-center text-justify my-20">
 
-      <div className="w-[800px] flex flex-col gap-5">
-        <div className="flex gap-5">
+      <div className="w-[800px] flex flex-col gap-5 max-[900px]:w-[600px] max-[700px]:w-[300px]">
+        <div className="flex gap-5 max-[700px]:flex-col">
           <div className="flex flex-col justify-around">
             <h2 className="text-4xl text-red-400 mt-10 mb-20">MARS: The red planet</h2>
-            <p><span className="text-red-400">Mars</span> It is the fourth planet in the Solar System, located about 140 million kilometers or ≅1.5 AU from the Sun, and the second smallest in the Solar System, after Mercury, its size is about half the size of Planet Earth. Named after the Roman god of war, it is often described as the &quot;Red Planet&quot; because the iron oxide that predominates on its surface gives it a reddish appearance.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptatibus nisi esse deserunt aut ullam quos fugit, expedita hic autem officiis asperiores ipsum placeat labore, similique eius quae maxime laborum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus ut id ipsum debitis quidem omnis perspiciatis perferendis natus rerum excepturi reiciendis, nesciunt, ea iure quae quod vel dolorum. Ducimus, tenetur!</p>
           </div>
-          <img src="/planets/mars.png" alt="Planet Mars" className="h-[400px] w-[400px]"/>
+          <img src="/planets/mars.png" alt="Planet" className="h-[400px] max-[900px]:h-[300px]"/>
         </div>
-          <p><span className="text-red-400">Mars</span> is a rocky planet with a thin atmosphere, with surface features that resemble both the impact craters of the Moon and the volcanoes, valleys, deserts, and polar ice caps of Earth. <span className="text-red-400">Mars</span>&apos; rotation period and seasonal cycles are also similar to those of Earth, as is the tilt that produces its seasons. <span className="text-red-400">Mars</span> is home to Olympus Mons, the second-tallest known mountain in the Solar System (the tallest on a planet), and Valles Marineris, a gigantic canyon. The smooth North Polar Basin in the northern hemisphere of <span className="text-red-400">Mars</span> covers about 40% of the planet and may be a large impact scar. <span className="text-red-400">Mars</span> has two known moons, Phobos and Deimos, which are small and irregularly shaped. These moons may be captured asteroids, similar to 5261 Eureka, a Martian Trojan asteroid.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptatibus nisi esse deserunt aut ullam quos fugit, expedita hic autem officiis asperiores ipsum placeat labore, similique eius quae maxime laborum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus odio itaque in molestias architecto, illo quis officiis, odit consequuntur ullam illum dolores molestiae debitis beatae autem consequatur dolorem tempore neque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui autem ea, corporis neque repellendus quibusdam quia deleniti, tempora quaerat pariatur aperiam nemo veritatis possimus, hic mollitia soluta! Dolores, quaerat facere!</p>
       </div>
 
-      <Separator className="my-10 w-[800px]"/>
+      <Separator className="my-10 w-[80%]"/>
 
-      <div className="w-[800px] flex gap-5">
+      <div className="w-[800px] flex gap-5 max-[900px]:w-[600px] max-[700px]:w-[300px] max-[700px]:flex-col">
         <div>
           <h3 className="text-red-400 text-3xl text-center mb-3">Geology</h3>
-          <p><span className="text-red-400">Surface:</span> The surface of Mars is predominantly rocky, composed mainly of basalt, similar to the volcanic rocks found on Earth. The characteristic reddish color is due to the presence of iron oxide.</p>
-          <p><span className="text-red-400">Volcanoes:</span> Mars is home to the largest volcano in the Solar System, Olympus Mons, an extinct volcano about 27 km high. In addition to this, there are several other volcanic calderas and vast lava plains.</p>
-          <p><span className="text-red-400">Craters:</span> The Martian surface is marked by numerous impact craters, the result of collisions with asteroids and comets over billions of years.</p>
-          <p><span className="text-red-400">Mountains:</span> In addition to Olympus Mons, Mars has large canyon systems, such as Valles Marineris, which extends for thousands of kilometers.</p>
+          <p><span className="text-red-400">Surface:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Volcanoes:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Craters:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Mountains:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
         </div>
         <div>
           <h3 className="text-red-400 text-3xl text-center mb-3">Atmosphere</h3>
-          <p><span className="text-red-400">Composition:</span> The Martian atmosphere is very thin, composed mainly of carbon dioxide (95%), as well as nitrogen, argon and small amounts of other gases.</p>
-          <p><span className="text-red-400">Atmospheric pressure:</span> The atmospheric pressure on Mars is about 100 times lower than that on Earth, which makes the atmosphere very thin and incapable of retaining heat.</p>
-          <p><span className="text-red-400">Climate:</span> The Martian climate is extremely cold and dry, with temperatures ranging from -140°C to 20°C. The thin atmosphere and the great distance from the Sun contribute to these low temperatures.</p>
-          <p><span className="text-red-400">Winds:</span> Mars is known for its intense dust storms, which can cover the entire planet and last for months. These storms are caused by large temperature differences between day and night, which generate strong winds.</p>
+          <p><span className="text-red-400">Composition:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Atmospheric pressure:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Climate:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
+          <p><span className="text-red-400">Winds:</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit assumenda nostrum delectus itaque quia maxime at accusamus illum autem ad. Atque, ducimus. Veritatis ipsam itaque qui, porro quis alias eos!</p>
         </div>
       </div>
 
-      <Separator className="my-10 w-[800px]"/>
+      <Separator className="my-10 w-[80%]"/>
 
-      <div className="w-[800px] flex gap-5 flex-col">
+      <div className="w-[800px] flex gap-5 flex-col max-[900px]:w-[600px] max-[700px]:w-[300px]">
         <h3 className="text-red-400 text-3xl text-center mb-3">Natural Satellites</h3>
-        <div className="flex gap-5">
+        <div className="flex gap-5 max-[700px]:flex-col">
           <div className="flex flex-col justify-between items-start">
-            <p><span className="text-red-400">Phobos:</span> The larger of the two moons, Phobos, orbits Mars at a very close distance, completing a revolution every 7 hours and 39 minutes. Phobos is thought to be gradually approaching Mars and in a few million years it could collide with the planet or break up into a ring.</p>
+            <p><span className="text-red-400">Moon:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis mollitia natus eum eos ducimus atque officiis expedita quaerat error, perspiciatis illo nesciunt laboriosam explicabo dolorem optio velit harum laudantium nemo?</p>
             <Button variant={"link"} className="hover:text-red-400">
-              <a href="https://en.wikipedia.org/wiki/Phobos_(moon)" target="_blank">Learn More</a>
+              <a href="" target="_blank">Learn More</a>
             </Button>
           </div>
-          <img src="/img/Phobos_moon.jpg" alt="Phobos" className="rounded-xl" />
+          <img src="" alt="" className="rounded-xl" />
         </div>
-        <div className="flex gap-5">
-          <img src="/img/Deimos_moon.jpg" alt="Deimos" className="rounded-xl" />
+        <div className="flex gap-5 max-[700px]:flex-col">
+          <img src="" alt="" className="rounded-xl" />
           <div className="flex flex-col justify-between items-end">
-            <p><span className="text-red-400">Deimos:</span> The smaller moon, Deimos, orbits Mars at a greater distance and more slowly than Phobos. Both moons are important for studying the formation and evolution of Mars and the Solar System.</p>
+            <p><span className="text-red-400">Moon:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus facere ullam a reiciendis aspernatur voluptate numquam, rerum saepe totam soluta officiis eius laudantium corrupti sed, earum pariatur sit, quam nesciunt?</p>
             <Button variant={"link"} className="hover:text-red-400">
-              <a href="https://en.wikipedia.org/wiki/Deimos_(moon)" target="_blank">Learn More</a>
+              <a href="" target="_blank">Learn More</a>
             </Button>
           </div>
         </div>
       </div>
 
-      <Separator className="my-10 w-[800px]"/>
+      <Separator className="my-10 w-[80%]"/>
 
-      <div className="w-[800px]">
+      <div className="w-[800px] max-[900px]:w-[600px] max-[700px]:w-[300px]">
         <h3 className="text-red-400 text-3xl text-center mb-3">Space Exploration</h3>
 
-        <p><span className="text-red-400">History of Discovery:</span> Mars has been known since ancient times and was often associated with war gods due to its reddish color. Telescopic observations have revealed details of the surface and the characteristics of its thin atmosphere. Modern space missions have provided a clearer view of the geology and atmosphere of Mars.</p>
-
-        <p><span className="text-red-400">First Rovers:</span> The first probes to reach Mars were the Mariners, in the 1960s, which sent the first close-up images of the planet.</p>
-        <p><span className="text-red-400">Viking:</span> In the 1970s, the Viking probes made the first successful landings on Mars, searching for signs of life.</p>
-        <p><span className="text-red-400">Pathfinder and Sojourner:</span> The Pathfinder mission in 1997 marked the United States&apos; return to Mars and included the first rover to explore the Martian surface, Sojourner.</p>
-        <p><span className="text-red-400">Spirit and Opportunity:</span> In 2004, NASA launched the twin rovers Spirit and Opportunity, which far exceeded their life expectancy, exploring Martian geology for years..</p>
-        <p><span className="text-red-400">Curiosity:</span> In 2012, NASA sent the Curiosity rover, a true mobile laboratory, to study the past and present habitability of Mars.</p>
-        <p><span className="text-red-400">Perseverance:</span> In 2021, NASA landed the Perseverance rover on Mars, with the aim of searching for signs of ancient life and collecting samples for a future return to Earth.</p>
+        <p><span className="text-red-400">History of Discovery:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">First Rovers:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">Viking:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">Pathfinder and Sojourner:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">Spirit and Opportunity:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">Curiosity:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
+        <p><span className="text-red-400">Perseverance:</span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore modi aut hic at officia, earum, consequatur illo impedit voluptatibus dolores soluta accusamus, voluptatem tenetur sunt. Itaque a perspiciatis laboriosam obcaecati!</p>
       </div>
 
-      <Separator className="my-10 w-[800px]"/>
+      <Separator className="my-10 w-[80%]"/>
 
-      <div className="w-[800px]">
+      <div className="w-[800px] max-[900px]:w-[600px] max-[700px]:w-[300px]">
         <h3 className="text-3xl text-center mb-3">Useful links to continue <span className="text-red-400">Exploring</span></h3>
-        <div className="flex justify-center">
-          <Button variant={"link"} className="hover:text-red-400">
-            <a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Learn More - Wikipedia</a>
+        <div className="flex justify-center max-[700px]:flex-col">
+          <Button variant={"link"} className="hover:text-red-400" disabled>
+            <a href="" target="_blank">Learn More - Wikipedia</a>
           </Button>
 
-          <Button variant={"link"} className="hover:text-red-400">
-            <a href="https://www.nasa.gov/?search=mars" target="_blank">Learn More - Nasa</a>
+          <Button variant={"link"} className="hover:text-red-400 disabled:">
+            <a href="" target="_blank">Learn More - Nasa</a>
           </Button>
         </div>
       </div>
