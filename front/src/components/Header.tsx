@@ -39,6 +39,9 @@ export const Header = () => {
             <NavigationMenuItem>
               <NavigationMenuLink href={""} className={navigationMenuTriggerStyle()}>Travel Beyond</NavigationMenuLink>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href={""} className={navigationMenuTriggerStyle()}>Noticias</NavigationMenuLink>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
