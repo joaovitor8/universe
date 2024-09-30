@@ -3,7 +3,7 @@ import { Button } from "./ui/button"
 
 export const Footer = () => {
   return (
-    <footer className="h-40 border-t flex flex-col justify-center items-center">
+    <footer className="h-40 flex flex-col justify-center items-center">
       <p><span className="text-violet-700">Made by:</span> João Vitor</p>
       <div>
         <Button variant={"link"} className="hover:text-violet-700">
