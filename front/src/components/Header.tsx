@@ -37,10 +37,10 @@ export const Header = () => {
               <NavigationMenuLink href={"/solar-system"} className={navigationMenuTriggerStyle()}>Solar System</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href={""} className={navigationMenuTriggerStyle()}>Travel Beyond</NavigationMenuLink>
+              <NavigationMenuLink href={"/"} className={navigationMenuTriggerStyle()}>Travel Beyond</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href={""} className={navigationMenuTriggerStyle()}>Noticias</NavigationMenuLink>
+              <NavigationMenuLink href={"/news"} className={navigationMenuTriggerStyle()}>News</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
