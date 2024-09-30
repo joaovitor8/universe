@@ -10,6 +10,7 @@ import { z } from "zod"
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
+  email: z.string().min(2).max(50)
 })
 
 export const FormComp = () => {
@@ -18,6 +19,7 @@ export const FormComp = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      email: "",
     },
   })
  
@@ -31,14 +33,24 @@ export const FormComp = () => {
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 border p-10 rounded-2xl w-[500px]">
           <FormField control={form.control} name="username" render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Your name" {...field} />
               </FormControl>
-              <FormDescription>This is your public display name.</FormDescription>
+              <FormDescription>What should we call it?</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}/>
+          <FormField control={form.control} name="email" render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Email" {...field} />
+              </FormControl>
+              <FormDescription>Where should I send the news?</FormDescription>
               <FormMessage />
             </FormItem>
           )}/>

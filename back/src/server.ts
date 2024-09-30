@@ -10,16 +10,17 @@ import "dotenv/config"
 const fastify = require('fastify')({ logger: true })
 
 fastify.register(fastifyCors, {
-  origin: "http://localhost:3000",
+  origin: "https://unyverso.vercel.app",
   methods: ["GET"],
 })
 
 //https://unyverso.vercel.app
+//http://localhost:3000
 
 fastify.register(RouteApod)
 // fastify.register(RouteNeoWs)
 // fastify.register(RouteDonki)
-fastify.register(RouteSolarSystem)
+// fastify.register(RouteSolarSystem)
 
 const port = process.env.PORT || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
