@@ -2,68 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+:root {
+  --background: #000;
+  --foreground: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
+    --background: #ff0000;
+    --foreground: #00ff00;
   }
 }
 
-
-/* Estilos padrão para todos os tamanhos de tela
 body {
-  font-family: Arial, sans-serif;
-} */
-
-/* Dispositivos móveis (até 480px) */
-@media (max-width: 480px) {
-  body {}
-}
-
-/* Tablets (481px a 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  body {}
-}
-
-/* Telas pequenas (769px a 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  body {}
-}
-
-/* Telas médias (1025px a 1200px) */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  body {}
-}
-
-/* Telas grandes (1201px e acima) */
-@media (min-width: 1201px) {
-  body {}
-}
-
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }

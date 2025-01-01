@@ -8,7 +8,7 @@ export async function RouteSolarSystem(app: FastifyInstance) {
       const data = await readFile("./src/DB/db_sistema-solar PT-BR.json", "utf-8");
       const jsonData = JSON.parse(data);
 
-      reply.send(jsonData.planetas)
+      reply.send()
     } catch (error) {
       console.error(error)
       reply.status(500).send("Erro interno do servidor")

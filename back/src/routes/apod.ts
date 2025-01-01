@@ -12,7 +12,7 @@ export async function RouteApod(app: FastifyInstance) {
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/planetary/apod", {
         params: {
-          api_key: process.env.CHAVE_NASA,
+          api_key: process.env.KEY_NASA,
           date: dateFromFrontend,
           thumbs: true
         },
@@ -47,7 +47,7 @@ export async function RouteApod(app: FastifyInstance) {
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/planetary/apod", {
         params: {
-          api_key: process.env.CHAVE_NASA,
+          api_key: process.env.KEY_NASA,
           start_date: startDateFromFrontend,
           end_date: endDateFromFrontend,
         },

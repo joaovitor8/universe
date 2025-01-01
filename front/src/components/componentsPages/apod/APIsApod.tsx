@@ -6,8 +6,6 @@ import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay"
 import Loading from '@/app/loading'
 import { TypeApodGallery, TypeApod } from "@/components/Types"
 
-import { Separator } from "@/components/ui/separator"
-
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 
@@ -85,7 +83,6 @@ export const APIsApod = () => {
   return (
     <main className="my-20 flex flex-col items-center">
       <PhotoDay pictureTheDay={pictureTheDay} datePhotoDay={datePhotoDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod}/>
-      <Separator className="my-20 w-4/5"/>
       <Gallery galleryPictureTheDay={galleryPictureTheDay} dateGallery={dateGallery} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod}/>
     </main>
   )
