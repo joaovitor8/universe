@@ -2,7 +2,7 @@ import { SolarSystemNav } from "@/components/componentsPages/solarSystem/SolarSy
 
 export default function SolarSystemLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="flex">
+    <div>
       <SolarSystemNav/>
       {children}
     </div>

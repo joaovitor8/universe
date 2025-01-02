@@ -1,12 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Calendar } from "@/components/ui/calendar"
-import { Button } from "@/components/ui/button"
-
-import { CalendarIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { cn } from "@/lib/utils"
 
 import { TypeApodGallery } from "@/components/Types"
 import { DateRange } from "react-day-picker"

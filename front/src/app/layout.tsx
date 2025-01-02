@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Stars className="fixed inset-0 -z-10" quantity={800} />
+        <Stars className="fixed inset-0 -z-10" quantity={500} />
         <Header/>
         {children}
         <Footer/>

@@ -2,18 +2,18 @@
 
 import Link from "next/link"
 
-const systemSL = ["sun", "mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"]
+const systemSL = ["sun", "mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"]  //"pluto"
 
 export const SolarSystemNav = () => {
   return(
-    <div className="w-20 space-y-2 m-5">
+    <div className="flex justify-center space-x-4 mb-10
+      max-[700px]:flex max-[700px]:flex-wrap max-[700px]:px-1"
+      >
       {systemSL.map((s, key) =>
-        <div key={key}>
+        <div key={key} className="max-[700px]:p-2">
           <Link href={`/solar-system/${s}`}>
-            <span className="text-center space-x-1">
-              <img src={`/planets/${s}.png`} alt={`Imagem ${s}`}/>
-              <p className="capitalize">{s}</p>
-            </span>
+            <img src={`/planets/${s}.png`} alt={`Imagem ${s}`} className="h-14 max-[700px]:hidden"/>
+            <p className="text-center capitalize max-[700px]:underline">{s}</p>
           </Link>
         </div>
       )}

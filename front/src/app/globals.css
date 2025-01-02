@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.mainPagPlanets {
+  @apply flex flex-col items-center text-justify;
+}
+
+.teste {
+  @apply w-[800px] flex flex-col gap-5;
+}
