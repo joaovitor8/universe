@@ -13,7 +13,7 @@ export const SolarSystemNav = () => {
         <div key={key} className="max-[700px]:p-2">
           <Link href={`/solar-system/${s}`}>
             <img src={`/planets/${s}.png`} alt={`Imagem ${s}`} className="h-14 max-[700px]:hidden"/>
-            <p className="text-center capitalize max-[700px]:underline">{s}</p>
+            <p className="text-center capitalize   max-[700px]:underline underlineMod">{s}</p>
           </Link>
         </div>
       )}
