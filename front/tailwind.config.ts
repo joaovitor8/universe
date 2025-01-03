@@ -14,6 +14,7 @@ export default {
         "RoxoNeon": "#8A2BE2",
         "AzulEletrico": "#1E90FF",
         "AmareloDourado": "#FFD700",
+        "CinzaMetalico": "#A9A9A9",
       },
     },
   },

@@ -13,21 +13,20 @@ interface TypeProps {
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, datePhotoDay, setDatePhotoDay, GetApod }) => {
   return (
     <div className="flex flex-col items-center justify-center space-y-5">
-      <div className="flex items-start mt-5 space-x-2">
+
+      <div className="flex space-x-2">
         {/* <input mode="single" selected={datePhotoDay} onSelect={setDatePhotoDay} initialFocus/> */}
-        <input type="date" name="" id=""  className="p-2 w-80 text-black rounded-md"/>
-        <button onClick={GetApod} className="max-[426px]:w-[100px] bg-slate-950 mx-1 p-3 text-center rounded-md hover:bg-violet-500">Search</button>
+        <input type="date" name="" id="" className=""/>
+        <button onClick={GetApod} className="max-[426px]:w-[100px]">Search</button>
       </div>
 
 
       <div className="flex   max-[1022px]:flex-col max-[1022px]:space-y-3   min-[1023px]:space-x-2">
         <div className="w-[500px]   max-[426px]:w-[300px] max-[540px]:w-[400px]">
-          <a href={pictureTheDay?.hdurl} target="_blank">
-            <img src={pictureTheDay?.url} alt={pictureTheDay?.media_type} className="rounded-md object-cover" />
-          </a>
+          <img src={pictureTheDay?.url} alt={pictureTheDay?.media_type} className="rounded-md object-cover" />
         </div>
 
-        <div className="h-min w-[500px] p-5 border rounded-md space-y-5   max-[426px]:w-[300px] max-[540px]:w-[400px]">
+        <div className="h-min w-[500px] p-5 border border-CinzaMetalico rounded-md space-y-5   max-[426px]:w-[300px] max-[540px]:w-[400px]">
           <div>
             <div>{pictureTheDay?.title}</div>
             <div>{pictureTheDay?.date}</div>
