@@ -17,76 +17,60 @@ export interface TypeApodGallery {
 
 // ---
 
-export interface TypeAsteroidsFeed {
-  id: string
-  name: string
-  absolute_magnitude: number
-  sentry_object: boolean
-  potentially_hazardous: boolean
-}
+// export interface TypeAsteroidsFeed {
+//   id: string
+//   name: string
+//   absolute_magnitude: number
+//   sentry_object: boolean
+//   potentially_hazardous: boolean
+// }
 
-export interface TypeAsteroidsLookup {
-  estimated_diameter: {
-    miles: number
-    kilometers: number
-    meters: number
-    feet: number
-  }
-  orbital_data: {
-    equinox: string
-    observation_date: string
-    aphelion_distance: string
-    perihelion_distance: string
-    semi_major_axis: string
-    mean_anomaly: string
-    mean_motion: string
-    ascending_node_longitude: string
-    inclination: string
-    perihelion_argument: string
-    eccentricity: string
-    observations_used: string
-    epoch_osculation: string
-    minimum_orbit_intersection: string
-    perihelion_time: string
-    orbital_period: string
-    jupiter_tisserand_invariant: string
-    orbit_class_description: string
-    orbit_class_range: string
-    orbit_class_type: string
-    orbit_determination_date: string
-    orbit_id: string
-    orbit_uncertainty: string
-  }
-  close_approach: [{
-    close_approach_date: string
-		close_approach_date_full: string
-		orbiting_body: string
-		relative_velocity: {
-			kilometers_second: string
-			kilometers_hour: string
-			miles_hour: string
-		}
-		miss_distance: {
-		  astronomical: string
-		  lunar: string
-		  kilometers: string
-		  miles: string
-		}
-  }]
-}
-
-export interface TypePlanetas{
-  id: number
-  name: string
-  type: string
-  gravity: string
-  image: string
-  diameter: string
-  distance_to_the_sun: string
-  satellites: string
-  composition: string
-  average_celsius_temperature: string
-  atmosphere: string
-  characteristics: string
-  history_of_discovery: string
-}
+// export interface TypeAsteroidsLookup {
+//   estimated_diameter: {
+//     miles: number
+//     kilometers: number
+//     meters: number
+//     feet: number
+//   }
+//   orbital_data: {
+//     equinox: string
+//     observation_date: string
+//     aphelion_distance: string
+//     perihelion_distance: string
+//     semi_major_axis: string
+//     mean_anomaly: string
+//     mean_motion: string
+//     ascending_node_longitude: string
+//     inclination: string
+//     perihelion_argument: string
+//     eccentricity: string
+//     observations_used: string
+//     epoch_osculation: string
+//     minimum_orbit_intersection: string
+//     perihelion_time: string
+//     orbital_period: string
+//     jupiter_tisserand_invariant: string
+//     orbit_class_description: string
+//     orbit_class_range: string
+//     orbit_class_type: string
+//     orbit_determination_date: string
+//     orbit_id: string
+//     orbit_uncertainty: string
+//   }
+//   close_approach: [{
+//     close_approach_date: string
+// 		close_approach_date_full: string
+// 		orbiting_body: string
+// 		relative_velocity: {
+// 			kilometers_second: string
+// 			kilometers_hour: string
+// 			miles_hour: string
+// 		}
+// 		miss_distance: {
+// 		  astronomical: string
+// 		  lunar: string
+// 		  kilometers: string
+// 		  miles: string
+// 		}
+//   }]
+// }

@@ -4,7 +4,7 @@
 
 :root {
   --background: #000;
-  --foreground: #fff;
+  --foreground: #A9A9A9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,10 +38,6 @@ body {
   @apply max-[900px]:w-[600px] max-[700px]:w-[300px]
 }
 
-.underlineMod {
-  @apply decoration-AmareloDourado decoration-2 underline-offset-4
-}
-
 
 h2, h3 {
   color: #8A2BE2;
@@ -51,31 +47,7 @@ span {
   color: #1E90FF;
 }
 
-button {
-  background-color: #8A2BE2;
-  height: 36px;
-  padding: 16px 8px;
-  border-radius: 5px;
-  margin: 2px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-button:hover {
-  background-color: #1E90FF;
-}
-
-input {
-  height: 36px;
-  width: 100%;
-  background-color: transparent;
-  border: 1px solid #A9A9A9;
-  border-radius: 5px;
-  padding: 12px 4px;
-}
-
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: var(--foreground);
+  background-color: #8A2BE2;
+  border-radius: 5px;
 }

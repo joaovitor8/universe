@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import { Gallery } from "@/components/componentsPages/apod/Gallery"
+// import { Gallery } from "@/components/componentsPages/apod/Gallery"
 import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay"
-import Loading from '@/app/loading'
-import { TypeApodGallery, TypeApod } from "@/components/Types"
+// import Loading from '@/app/loading'
+import { TypeApod } from "@/components/Types"
 
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
@@ -24,7 +24,7 @@ export const APIsApod = () => {
   const [datePhotoDay, setDatePhotoDay] = useState<Date>()
   // const [dateGallery, setDateGallery] = useState<DateRange | undefined>({ from: new Date(formatYesterday), to: addDays(new Date(formatToday), 1) })
 
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
 
 
   const GetApod = async () => {
@@ -73,13 +73,12 @@ export const APIsApod = () => {
     // GetGalleryApod()
 
     // Buscar ambos os dados simultaneamente
-    Promise.all([GetApod()]).then(() => { setLoading(false) })
     // Promise.all([GetApod(), GetGalleryApod()]).then(() => { setLoading(false) })
   }, [])
 
-  if (loading) {
-    return <Loading />
-  }
+  // if (loading) {
+  //   return <Loading />
+  // }
 
   return (
     <main className="my-20 flex flex-col items-center">
