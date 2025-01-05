@@ -1,5 +1,1 @@
-Arquivo = .env
-Conteudo = CHAVE_NASA=""
-
-
 npm i @fastify/cors axios dotenv fastify @types/node tsx typescript

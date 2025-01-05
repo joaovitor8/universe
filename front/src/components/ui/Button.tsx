@@ -5,9 +5,9 @@ interface ButtonProps {
 }
 
 
-export const ButtonGeneric = ({ children, onClick, className="" }: ButtonProps) => {
+export const Button = ({ children, onClick, className="" }: ButtonProps) => {
   return (
-    <button onClick={onClick} className={`px-5 py-2 bg-RoxoNeon hover:bg-purple-900 duration-700 rounded-lg ${className}`}>
+    <button onClick={onClick} className={`px-5 py-2 bg-purple-700 hover:bg-purple-900 duration-700 rounded-lg ${className}`}>
       {children}
     </button>
   );

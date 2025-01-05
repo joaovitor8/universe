@@ -15,7 +15,7 @@ export const Header = () => {
       </nav>
 
       {/* Botão de Menu Mobile */}
-      <button className="md:hidden text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500">☰</button>
+      <button className="md:hidden text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-700">☰</button>
     </header>
   )
 }
