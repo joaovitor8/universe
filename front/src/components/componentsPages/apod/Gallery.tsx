@@ -2,10 +2,8 @@
 "use client"
 
 import { useState } from "react";
-
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-
 import { TypeApodGallery } from "@/components/Types";
 
 interface TypeProps {
@@ -15,55 +13,33 @@ interface TypeProps {
 }
 
 export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGallery, GetGalleryApod }) => {
-  // Estados locais para armazenar as datas
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  // Atualiza o estado local para a data inicial
-  const handleDateChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedDate = e.target.value;
-    const formattedDate1 = new Date(selectedDate);
-    console.log(formattedDate1)
-    // setStartDate(formattedDate1);
-  };
-
-  // Atualiza o estado local para a data final
-  const handleDateChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedDate = e.target.value;
-    const formattedDate2 = new Date(selectedDate);
-    console.log(formattedDate2)
-    // setEndDate(formattedDate2);
-  };
-
-  // Envia as datas para o componente pai
   const handleSetDateGallery = () => {
-    if (startDate && endDate) {
-      setDateGallery({ startDate, endDate });
-    } else {
-      alert("Selecione ambas as datas antes de prosseguir.");
+    if (!startDate || !endDate || startDate > endDate) {
+      alert("Please select valid dates. Start date cannot be after end date.");
+      return;
     }
-    GetGalleryApod()
+    setDateGallery({ startDate, endDate });
+    GetGalleryApod();
   };
 
   return (
     <div className="flex flex-col items-center space-y-5">
       <div className="flex space-x-2">
-        <div className="flex space-x-1">
-          <Input type="date" onChange={handleDateChange1} />
-          <Input type="date" onChange={handleDateChange2} />
-        </div>
-
-        <Button onClick={handleSetDateGallery} className="max-[426px]:w-[80px]">Search</Button>
+        <Input type="date" onChange={(e) => setStartDate(new Date(e.target.value))} />
+        <Input type="date" onChange={(e) => setEndDate(new Date(e.target.value))} />
+        <Button onClick={handleSetDateGallery}>Search</Button>
       </div>
 
       <div className="w-full flex flex-wrap justify-center pb-5">
         {galleryPictureTheDay.map((img, key) => (
           <a href={img.hdurl} key={key} target="_blank" rel="noopener noreferrer">
-            <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px]" />
+            <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px] rounded-md object-cover" />
           </a>
         ))}
       </div>
     </div>
   );
 };
-

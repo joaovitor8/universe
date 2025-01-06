@@ -1,7 +1,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="border-t p-10   flex flex-col md:flex-row justify-between items-center space-y-4   mt-10">
+    <footer className="p-10 mt-10 space-y-4 flex flex-col justify-between items-center   md:flex-row">
       <p className="text-sm">
         &copy; {new Date().getFullYear()} Universe. All rights reserved.
       </p>
@@ -12,9 +12,10 @@ export const Footer = () => {
       </div> */}
 
       <div className="flex space-x-4">
-        <a href="#" className="hover:text-purple-900 transition">LinkedIn</a>
-        <a href="#" className="hover:text-purple-900 transition">GitHub</a>
-        <a href="#" className="hover:text-purple-900 transition">Twitter</a>
+        <a href="https://www.linkedin.com/in/joaovitorezequiel/" target="_blank" className="hover:text-purple-900 transition">LinkedIn</a>
+        <a href="https://github.com/joaovitor8" target="_blank" className="hover:text-purple-900 transition">GitHub</a>
+        <a href="https://x.com/AstronautJonnes" target="_blank" className="hover:text-purple-900 transition">Twitter (Universe)</a>
+        <a href="https://x.com/joao_ezeki" target="_blank" className="hover:text-purple-900 transition">Twitter (Personal)</a>
       </div>
     </footer>
   )

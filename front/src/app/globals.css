@@ -26,18 +26,25 @@ body {
   @apply flex flex-col items-center text-justify space-y-10;
 }
 
-.h2PagPlanets {
+.h1PagPlanets {
   @apply text-4xl mt-10 mb-16
 }
 
-.h3PagPlanets {
+.h2PagPlanets {
   @apply text-3xl text-center mb-3
+}
+
+.h3PagPlanets {
+  @apply text-2xl text-center mb-3
 }
 
 .mobileTemp {
   @apply max-[900px]:w-[600px] max-[700px]:w-[300px]
 }
 
+h1 {
+  color: gold;
+}
 
 h2, h3 {
   color: #8A2BE2;
