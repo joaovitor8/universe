@@ -13,7 +13,7 @@ export default function Stars({ className = "", quantity = 30, refresh = false }
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 	const canvasContainerRef = useRef<HTMLDivElement>(null)
 	const context = useRef<CanvasRenderingContext2D | null>(null)
-	const circles = useRef<any[]>([])
+	const circles = useRef<Circle[]>([])
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
 
@@ -84,7 +84,7 @@ export default function Stars({ className = "", quantity = 30, refresh = false }
 
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
-			const { x, y, translateX, translateY, size, alpha } = circle
+			const { x, y, translateX, translateY, size } = circle
 			context.current.translate(translateX, translateY)
 			context.current.beginPath()
 			context.current.arc(x, y, size, 0, 2 * Math.PI)

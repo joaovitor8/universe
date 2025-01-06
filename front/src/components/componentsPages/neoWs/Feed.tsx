@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client"
+// /* eslint-disable react-hooks/exhaustive-deps */
+// "use client"
 
 // import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 // import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
