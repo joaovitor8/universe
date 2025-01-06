@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { TypeApodGallery } from "@/components/Types";
 
-interface TypeProps {
+type TypeProps = {
   galleryPictureTheDay: TypeApodGallery[];
-  setDateGallery: (dates: { startDate: Date; endDate: Date }) => void;
-  GetGalleryApod: () => Promise<void>;
-}
+  setDateGallery: (dates: { startDate: Date | null; endDate: Date | null }) => void;
+  GetGalleryApod: () => void;
+};
+
 
 export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGallery, GetGalleryApod }) => {
   const [startDate, setStartDate] = useState<Date | null>(null);

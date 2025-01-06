@@ -25,9 +25,12 @@ export const APIsApod = () => {
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>();
   const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([]);
   const [datePhotoDay, setDatePhotoDay] = useState<Date>(today);
-  const [dateGallery, setDateGallery] = useState({ startDate: null, endDate: null });
+  const [dateGallery, setDateGallery] = useState<{ startDate: Date | null; endDate: Date | null }>({
+    startDate: null,
+    endDate: null,
+  });
+  
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const GetApod = async () => {
     try {
@@ -36,8 +39,8 @@ export const APIsApod = () => {
       }
       const response = await axios.get(`https://universe-back.onrender.com/api/apod?date=${formatDate(datePhotoDay)}`);
       setPictureTheDay(response.data);
-    } catch (err) {
-      setError(err.message || "Error fetching the picture of the day.");
+    } catch (error) {
+      console.error("Error when searching for image", error)
     }
   };
 
@@ -58,8 +61,8 @@ export const APIsApod = () => {
         throw new Error("Maximum request limit reached! (maximum 40)");
       }
       setGalleryPictureTheDay(response.data);
-    } catch (err) {
-      setError(err.message || "Error fetching gallery data.");
+    } catch (error) {
+      console.error("Error fetching image:", error)
     }
   };
 
@@ -75,7 +78,6 @@ export const APIsApod = () => {
 
   return (
     <main className="flex flex-col items-center">
-      {error && <div className="error-message">{error}</div>}
       <PhotoDay pictureTheDay={pictureTheDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod} />
       <div className="w-1/2 m-14 border border-purple-700"></div>
       <Gallery galleryPictureTheDay={galleryPictureTheDay} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod} />
