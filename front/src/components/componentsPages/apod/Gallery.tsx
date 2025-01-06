@@ -27,7 +27,7 @@ export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGall
   };
 
   return (
-    <div className="flex flex-col items-center space-y-5">
+    <div className="h-screen flex flex-col items-center space-y-5">
       <div className="flex space-x-2">
         <Input type="date" onChange={(e) => setStartDate(new Date(e.target.value))} />
         <Input type="date" onChange={(e) => setEndDate(new Date(e.target.value))} />

@@ -9,7 +9,7 @@ export default function SolarSystem() {
           className="h-[500px] w-[900px] border border-purple-700 rounded-lg   max-[905px]:h-[500px] max-[905px]:w-[600px]   max-[605px]:hidden"
         ></iframe>
 
-        <span className="min-[605px]:hidden">Please open the website in a larger screen to see the component.</span>
+        <p className="text-center text-blue-700 min-[605px]:hidden">Please open the website in a larger screen to see the component.</p>
       </div>
     </div>
   )
