@@ -11,8 +11,8 @@ export const Header = () => {
   };
 
   return (
-    <header className="py-5 px-10 mb-10 flex justify-between items-center">
-      <div>
+    <header className="py-5 px-10 mb-10 flex justify-between items-center    max-md:justify-end">
+      <div className="max-md:hidden ">
         {/* Logo */}
         <Link href="/" className="text-4xl">Universe</Link>
       </div>
@@ -21,7 +21,7 @@ export const Header = () => {
         <Link href="/apod" className="hover:underline decoration-purple-900 decoration-2 underline-offset-4">Astronomical Photos</Link>
         <Link href="/solar-system" className="hover:underline decoration-purple-900 decoration-2 underline-offset-4">Solar System</Link>
         <Link href="/astro-events" className="hover:underline decoration-purple-900 decoration-2 underline-offset-4">Astronomical Events</Link>
-        <Link href="/" className="hover:underline decoration-purple-900 decoration-2 underline-offset-4">Travel Beyond</Link>
+        {/* <Link href="" className="hover:underline decoration-purple-900 decoration-2 underline-offset-4">Travel Beyond</Link> */}
       </nav>
 
       {/* Botão de Menu Mobile */}

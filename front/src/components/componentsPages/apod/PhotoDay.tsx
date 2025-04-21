@@ -13,7 +13,7 @@ interface TypeProps {
 
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, setDatePhotoDay, GetApod }) => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center space-y-5">
+    <div className="flex flex-col items-center justify-center space-y-5   md:h-screen">
       <div className="flex space-x-2">
         <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} />
         <Button onClick={GetApod}>Search</Button>

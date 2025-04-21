@@ -1,1 +1,4 @@
 npm i @fastify/cors axios dotenv fastify @types/node tsx typescript
+
+
+npm install nome-do-pacote@latest
