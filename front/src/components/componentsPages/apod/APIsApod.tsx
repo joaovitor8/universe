@@ -37,7 +37,7 @@ export const APIsApod = () => {
       if (datePhotoDay > today) {
         throw new Error("Select dates before or equal to today.");
       }
-      const response = await axios.get(`https://universe-back.onrender.com/api/apod?date=${formatDate(datePhotoDay)}`);
+      const response = await axios.get(`http://127.0.0.1:4000/api/apod?date=${formatDate(datePhotoDay)}`);
       setPictureTheDay(response.data);
     } catch (error) {
       console.error("Error when searching for image", error)
@@ -56,7 +56,7 @@ export const APIsApod = () => {
         throw new Error("Select dates before or equal to today.");
       }
 
-      const response = await axios.get(`https://universe-back.onrender.com/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`);
+      const response = await axios.get(`http://127.0.0.1:4000/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`);
       if (response.data.length > 100) {
         throw new Error("Maximum request limit reached! (maximum 40)");
       }
