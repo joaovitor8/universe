@@ -13,14 +13,14 @@ interface TypeProps {
 
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, setDatePhotoDay, GetApod }) => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-5   md:h-screen">
-      <div className="flex space-x-2">
+    <div className="min-h-screen w-screen flex flex-col items-center justify-center">
+      <div className="flex space-x-2 mb-3">
         <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} />
         <Button onClick={GetApod}>Search</Button>
       </div>
 
-      <div className="flex max-[1022px]:flex-col max-[1022px]:space-y-3 min-[1023px]:space-x-2">
-        <div className="w-[500px] max-[426px]:w-[300px] max-[540px]:w-[400px]">
+      <div className="flex space-x-3 mx-2 md:w-[1000px]  max-md:flex-col max-md:items-center max-md:space-y-3">
+        <div className="md:w-[50%]">
           <img
             src={pictureTheDay?.url}
             alt={pictureTheDay?.title}
@@ -28,7 +28,7 @@ export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, setDatePhotoDay, 
           />
         </div>
 
-        <Card>
+        <Card className="md:w-[50%]">
           <CardHeader>
             <CardTitle>{pictureTheDay?.title}</CardTitle>
             <CardDescription>{pictureTheDay?.date}</CardDescription>

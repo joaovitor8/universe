@@ -27,8 +27,8 @@ export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGall
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center space-y-5   md:h-screen">
-      <div className="flex space-x-2   max-md:grid max-md:grid-cols-2 max-md:grid-rows-[auto_auto] max-md:gap-2">
+    <div className="min-h-screen flex flex-col items-center space-y-5 ">
+      <div className="flex space-x-2 hidden">
         <Input type="date" onChange={(e) => setStartDate(new Date(e.target.value))} />
         <Input type="date" onChange={(e) => setEndDate(new Date(e.target.value))} />
         <Button onClick={handleSetDateGallery} className="max-md:col-span-2">Search</Button>
