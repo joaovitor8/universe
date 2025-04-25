@@ -33,7 +33,7 @@ export const FormComp = () => {
   return (
     <div>
       {/* <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 border p-10 rounded-2xl w-[500px]">
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField control={form.control} name="username" render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>

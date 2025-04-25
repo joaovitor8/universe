@@ -77,9 +77,9 @@ export const APIsApod = () => {
   if (loading) return <Loading />;
 
   return (
-    <main className="flex flex-col items-center">
+    <main>
       <PhotoDay pictureTheDay={pictureTheDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod} />
-      <div className="w-1/2 m-14 border border-purple-700"></div>
+      <div></div>
       <Gallery galleryPictureTheDay={galleryPictureTheDay} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod} />
     </main>
   );
