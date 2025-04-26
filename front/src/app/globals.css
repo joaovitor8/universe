@@ -29,6 +29,22 @@ body {
   @apply hover:underline decoration-purple-900 decoration-2 underline-offset-4
 }
 
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out;
+}
+
+
 /* input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #8A2BE2;
   border-radius: 5px;
