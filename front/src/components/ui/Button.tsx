@@ -1,9 +1,8 @@
 interface ButtonProps {
-  children: React.ReactNode; // O conteúdo do botão (texto, ícone, etc.)
-  onClick?: () => void; // Função chamada ao clicar no botão
-  className?: string; // Classes CSS adicionais
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 }
-
 
 export const Button = ({ children, onClick, className="" }: ButtonProps) => {
   return (

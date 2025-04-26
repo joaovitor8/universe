@@ -19,7 +19,7 @@ export const Header = () => {
           <Link href="/apod" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Astronomical Photos</Link>
           <Link href="/solar-system" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Solar System</Link>
           <Link href="/astro-events" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Astronomical Events</Link>
-          <Link href="" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Travel Beyond</Link>
+          <Link href="/" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Travel Beyond</Link>
         </nav>
 
         <button
@@ -30,7 +30,7 @@ export const Header = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="mt-2 px-8 py-10 border border-purple-700 rounded-lg absolute right-2 md:hidden animate-slide-down">
+        <div className="bg-background mt-2 px-8 py-10 border border-purple-700 rounded-lg absolute right-2 md:hidden animate-slide-down">
           <nav className="flex flex-col space-y-4">
             <Link href="/apod" onClick={toggleMobileMenu} className="hover:text-purple-700">Astronomical Photos</Link>
             <Link href="/solar-system" onClick={toggleMobileMenu} className="hover:text-purple-700">Solar System</Link>

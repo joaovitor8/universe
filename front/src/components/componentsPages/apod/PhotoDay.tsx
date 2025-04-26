@@ -13,30 +13,28 @@ interface TypeProps {
 
 export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, setDatePhotoDay, GetApod }) => {
   return (
-    <div>
-      <div>
-        <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} />
-        <Button onClick={GetApod}>Search</Button>
+    <div className="flex flex-col items-center p-4 mt-10 space-y-6">
+      <div className="flex items-center space-x-1">
+        <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} className="w-full sm:w-auto"/>
+        
+        <Button onClick={GetApod} className="w-full sm:w-auto">Search</Button>
       </div>
 
-      <div>
-        <div>
-          <img
-            src={pictureTheDay?.url}
-            alt={pictureTheDay?.title}
-          />
+      <div className="w-full max-w-4xl space-y-4 flex flex-col items-center lg:space-y-0 lg:flex lg:flex-row lg:items-start lg:space-x-2">
+        <div className="flex justify-center w-[300px] sm:w-[400px] md:w-[500px] lg:w-1/2">
+          <img src={pictureTheDay?.url} alt={pictureTheDay?.title} className="max-w-full h-auto rounded-lg"/>
         </div>
 
-        <Card>
+        <Card className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-1/2">
           <CardHeader>
-            <CardTitle>{pictureTheDay?.title}</CardTitle>
-            <CardDescription>{pictureTheDay?.date}</CardDescription>
+            <CardTitle className="text-lg font-bold">{pictureTheDay?.title}</CardTitle>
+            <CardDescription className="text-sm text-gray-500">{pictureTheDay?.date}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>{pictureTheDay?.explanation}</p>
+            <p className="text-justify">{pictureTheDay?.explanation}</p>
           </CardContent>
           <CardFooter>
-            <p>{pictureTheDay?.copyright}</p>
+            <p className="text-sm text-gray-400">{pictureTheDay?.copyright}</p>
           </CardFooter>
         </Card>
       </div>

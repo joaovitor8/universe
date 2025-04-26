@@ -79,7 +79,7 @@ export const APIsApod = () => {
   return (
     <main>
       <PhotoDay pictureTheDay={pictureTheDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod} />
-      <div></div>
+      <div className="m-20"></div>
       <Gallery galleryPictureTheDay={galleryPictureTheDay} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod} />
     </main>
   );
