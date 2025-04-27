@@ -1,7 +1,7 @@
 
 export const Footer = () => {
   return (
-    <footer className="p-14">
+    <footer className="p-14 mt-10">
       <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center text-sm md:text-base">
         <div className="text-center md:text-left">
           &copy; {new Date().getFullYear()} Universe. All rights reserved.

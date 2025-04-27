@@ -11,7 +11,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="p-4">
+    <header className="p-4 mb-10">
       <div className="flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold tracking-wide text-purple-700">Universe</Link>
 
