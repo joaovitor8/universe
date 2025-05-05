@@ -5,7 +5,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string // Classes adicionais
 }
 
-
 export const Input: React.FC<InputProps> = ({ type, onChange, className="", ...props }) => {
   return (
     <input

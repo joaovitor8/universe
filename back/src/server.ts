@@ -5,7 +5,6 @@ import { RouteApod } from "./routes/apod"
 // import { RouteNeoWs } from "./routes/neows"
 // import { RouteDonki } from "./routes/donki"
 import { RouteSolarSystem } from "./routes/solar-system"
-import { RouteAstroEvents } from "./routes/astro-events"
 import "dotenv/config"
 
 const fastify = require('fastify')({ logger: true })
@@ -22,7 +21,6 @@ fastify.register(RouteApod)
 // fastify.register(RouteNeoWs)
 // fastify.register(RouteDonki)
 fastify.register(RouteSolarSystem)
-fastify.register(RouteAstroEvents)
 
 const port = process.env.PORT || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;

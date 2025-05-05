@@ -1,10 +1,9 @@
-import { FormComp } from "@/components/componentsPages/news/Form"
-
+import { Form } from "@/components/ui/Form"
 
 export default function News() {
   return (
-    <main>
-      <FormComp />
+    <main className="h-screen">
+      <Form />
     </main>
   )
 }
