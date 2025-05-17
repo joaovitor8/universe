@@ -35,11 +35,15 @@ export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGall
       </div>
 
       <div className="w-full flex flex-wrap justify-center">
-        {galleryPictureTheDay.map((img, key) => (
-          <a href={img.hdurl} key={key} target="_blank" rel="noopener noreferrer">
-            <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px] rounded-md object-cover" />
-          </a>
-        ))}
+        {galleryPictureTheDay && galleryPictureTheDay.length > 0 ? (
+          galleryPictureTheDay.map((img, key) => (
+            <a href={img.hdurl} key={key} target="_blank" rel="noopener noreferrer">
+              <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px] rounded-md object-cover" />
+            </a>
+          ))
+        ) : (
+          <div className="w-full h-[300px] bg-purple-700 rounded-lg mx-10"></div>
+        )}
       </div>
     </div>
   );
