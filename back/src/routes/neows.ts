@@ -7,12 +7,13 @@ export async function RouteNeoWs(app: FastifyInstance) {
   app.get("/api/neows/feed", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
-      const dateAsteroids = request.query.date
+      //const dateAsteroids = request.query.date
+      const dateAsteroids = "2025-07-05"
 
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/neo/rest/v1/feed", {
         params: {
-          api_key: process.env.CHAVE_NASA,
+          api_key: process.env.KEY_NASA,
           start_date: dateAsteroids,
           end_date: dateAsteroids,
         },
@@ -23,16 +24,16 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data.near_earth_objects[dateAsteroids]
 
         // tratamento dos dados
-        const processedData = data.map((dt) => ({
-          id: dt.id,
-          name: dt.name,
-          absolute_magnitude: `${Number(dt.absolute_magnitude_h).toFixed(2)}`,
-          sentry_object: dt.is_sentry_object,
-          potentially_hazardous: dt.is_potentially_hazardous_asteroid,
-        }))
+        // const processedData = data.map((dt) => ({
+        //   id: dt.id,
+        //   name: dt.name,
+        //   absolute_magnitude: `${Number(dt.absolute_magnitude_h).toFixed(2)}`,
+        //   sentry_object: dt.is_sentry_object,
+        //   potentially_hazardous: dt.is_potentially_hazardous_asteroid,
+        // }))
 
         // Enviando os dados tratados para o front-end
-        reply.send(processedData)
+        reply.send(data)
       } else {
         reply.status(response.status).send("Erro ao acessar a API da NASA")
       }
@@ -42,13 +43,18 @@ export async function RouteNeoWs(app: FastifyInstance) {
     }
   })
 
+
+
+
+
+
   app.get("/api/neows/lookup", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
-      const dateAsteroids = request.query.id
+      const idAsteroids = request.query.id
 
       // Fazendo a solicitação para a API da NASA
-      const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${dateAsteroids}`, {
+      const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${idAsteroids}`, {
         params: {
           api_key: process.env.CHAVE_NASA,
         },

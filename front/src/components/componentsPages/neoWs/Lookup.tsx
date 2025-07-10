@@ -1,34 +1,34 @@
 "use client"
 
-// import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-// // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-// import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/Button"
+import { Input } from "@/components/ui/Input"
 
-// import { TypeAsteroidsLookup } from "@/components/Types"
-// import { useState } from "react"
-// import axios from "axios"
+import { TypeAsteroidsLookup } from "@/components/Types"
+import { useState } from "react"
+import axios from "axios"
 
 export const Lookup = () => {
-  // const [asteroidsID, setAsteroidsID] = useState('')
-  // const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
-  // // const [closeApproachDate, setCloseApproachDate] = useState(0)
+  const [asteroidsID, setAsteroidsID] = useState('')
+  const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
+  // const [closeApproachDate, setCloseApproachDate] = useState(0)
 
-  // const GetAsteroidsLookup = () => {
-  //   try {
-  //     axios.get(`http://localhost:3333/api/neows/lookup?id=${asteroidsID}`)
-  //       .then((res) => setAsteroidsLookup(res.data))
-  //       .catch((error) => { console.error(error) })
-  //   } catch (error) {
-  //     console.error("", error)
-  //   }
-  // }
+  const GetAsteroidsLookup = () => {
+    try {
+      axios.get(`http://localhost:3333/api/neows/lookup?id=${asteroidsID}`)
+        .then((res) => setAsteroidsLookup(res.data))
+        .catch((error) => { console.error(error) })
+    } catch (error) {
+      console.error("", error)
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center space-y-5 pb-5">
-      {/* <div className="flex w-full max-w-sm items-center space-x-2">
-        <Input type="search" placeholder="enter the ID" onChange={(e) => setAsteroidsID(e.target.value)}/>
+      <div className="flex w-full max-w-sm items-center space-x-2">
+        <Input type="text" placeholder="enter the ID" onChange={(e) => setAsteroidsID(e.target.value)}/>
         <Button onClick={GetAsteroidsLookup}>Search</Button>
         <span>Advanced Information</span>
       </div>
@@ -79,7 +79,7 @@ export const Lookup = () => {
             </CardContent>
           </Card>
 
-          <Card className="h-min w-[500px]">
+          {/* <Card className="h-min w-[500px]">
             <CardHeader>
               <CardTitle>Close Approach</CardTitle>
               <CardDescription>Data on speeds, distances and more</CardDescription>
@@ -112,9 +112,9 @@ export const Lookup = () => {
               <p>---</p>
               <p>Orbiting Body: {asteroidsLookup?.close_approach[0].orbiting_body}</p>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
