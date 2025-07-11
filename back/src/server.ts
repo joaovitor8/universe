@@ -3,7 +3,7 @@ import { fastifyCors } from "@fastify/cors"
 
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
-// import { RouteDonki } from "./routes/donki"
+import { RouteDonki } from "./routes/donki"
 // import { RouteSolarSystem } from "./routes/solar-system"
 import "dotenv/config"
 
@@ -19,7 +19,7 @@ fastify.register(fastifyCors, {
 
 fastify.register(RouteApod)
 fastify.register(RouteNeoWs)
-// fastify.register(RouteDonki)
+fastify.register(RouteDonki)
 // fastify.register(RouteSolarSystem)
 
 const port = process.env.PORT || 4000;

@@ -49,8 +49,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
   app.get("/api/neows/lookup", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
-      //const idAsteroids = request.query.id
-      const idAsteroids = "2314079"
+      const idAsteroids = request.query.id
 
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${idAsteroids}`, {

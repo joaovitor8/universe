@@ -12,9 +12,9 @@ export async function RouteDonki(app: FastifyInstance) {
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/DONKI/CME", {
         params: {
-          api_key: process.env.CHAVE_NASA,
-          startDate: "2024-01-25",
-          endDate: "2024-01-25",
+          api_key: process.env.KEY_NASA,
+          startDate: "2025-06-25",
+          endDate: "2025-06-25",
         },
       })
 
@@ -69,6 +69,8 @@ export async function RouteDonki(app: FastifyInstance) {
     }
   })
 
+  // --------------------------------------------------
+
   app.get("/api/donki/cmea", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
@@ -100,6 +102,8 @@ export async function RouteDonki(app: FastifyInstance) {
       reply.status(500).send("Erro interno do servidor")
     }
   })
+
+  // --------------------------------------------------
 
   app.get("/api/donki/gst", async (request: any, reply) => {
     try {
@@ -133,6 +137,8 @@ export async function RouteDonki(app: FastifyInstance) {
     }
   })
 
+  // --------------------------------------------------
+
   app.get("/api/donki/ips", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
@@ -164,6 +170,8 @@ export async function RouteDonki(app: FastifyInstance) {
       reply.status(500).send("Erro interno do servidor")
     }
   })
+
+  // --------------------------------------------------
 
   app.get("/api/donki/flr", async (request: any, reply) => {
     try {
@@ -197,6 +205,8 @@ export async function RouteDonki(app: FastifyInstance) {
     }
   })
 
+  // --------------------------------------------------
+
   app.get("/api/donki/sep", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
@@ -228,6 +238,8 @@ export async function RouteDonki(app: FastifyInstance) {
       reply.status(500).send("Erro interno do servidor")
     }
   })
+
+  // --------------------------------------------------
 
   app.get("/api/donki/mpc", async (request: any, reply) => {
     try {
@@ -261,6 +273,8 @@ export async function RouteDonki(app: FastifyInstance) {
     }
   })
 
+  // --------------------------------------------------
+
   app.get("/api/donki/rbe", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
@@ -292,6 +306,8 @@ export async function RouteDonki(app: FastifyInstance) {
       reply.status(500).send("Erro interno do servidor")
     }
   })
+
+  // --------------------------------------------------
 
   app.get("/api/donki/hss", async (request: any, reply) => {
     try {
@@ -325,6 +341,8 @@ export async function RouteDonki(app: FastifyInstance) {
     }
   })
 
+  // --------------------------------------------------
+
   app.get("/api/donki/wsaes", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
@@ -356,6 +374,8 @@ export async function RouteDonki(app: FastifyInstance) {
       reply.status(500).send("Erro interno do servidor")
     }
   })
+
+  // --------------------------------------------------
 
   app.get("/api/donki/notf", async (request: any, reply) => {
     try {
