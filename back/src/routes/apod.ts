@@ -36,7 +36,7 @@ export async function RouteApod(app: FastifyInstance) {
     }
   })
 
-  // --------------------------------------------
+  // --------------------------------------------------
 
   app.get("/api/apod/gallery", async (request: any, reply) => {
     try {
