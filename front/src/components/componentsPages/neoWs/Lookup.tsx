@@ -1,8 +1,6 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 
@@ -13,7 +11,6 @@ import axios from "axios"
 export const Lookup = () => {
   const [asteroidsID, setAsteroidsID] = useState('')
   const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
-  // const [closeApproachDate, setCloseApproachDate] = useState(0)
 
   const GetAsteroidsLookup = () => {
     try {

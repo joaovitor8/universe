@@ -18,6 +18,7 @@ export const Header = () => {
         <nav className="hidden md:flex space-x-6">
           <Link href="/apod" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Astronomical Photos</Link>
           <Link href="/neows" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Near Earth Objects</Link>
+
           <Link href="/solar-system" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">Solar System</Link>
           <Link href="/news" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">News</Link>
         </nav>
@@ -34,6 +35,7 @@ export const Header = () => {
           <nav className="flex flex-col space-y-4">
             <Link href="/apod" onClick={toggleMobileMenu} className="hover:text-purple-700">Astronomical Photos</Link>
             <Link href="/neows" onClick={toggleMobileMenu} className="hover:text-purple-700">Near Earth Objects</Link>
+            
             <Link href="/solar-system" onClick={toggleMobileMenu} className="hover:text-purple-700">Solar System</Link>
             <Link href="/news" className="hover:underline decoration-purple-700 decoration-2 underline-offset-4">News</Link>
           </nav>

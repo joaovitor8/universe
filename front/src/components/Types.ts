@@ -20,9 +20,10 @@ export interface TypeApodGallery {
 export interface TypeAsteroidsFeed {
   id: string
   name: string
-  absolute_magnitude: number
+  absolute_magnitude_h: number
   sentry_object: boolean
   potentially_hazardous: boolean
+  nasa_jpl_url: string
 }
 
 export interface TypeAsteroidsLookup {

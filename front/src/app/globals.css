@@ -46,8 +46,7 @@ span {
   color: blue;
 }
 
-
-/* input[type="date"]::-webkit-calendar-picker-indicator {
-  background-color: #8A2BE2;
-  border-radius: 5px;
-} */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #8200db;
+    border-radius: 20%;
+}

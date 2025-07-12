@@ -37,29 +37,34 @@ export async function RouteDonki(app: FastifyInstance) {
           })),
           linkedEvents: dt.linkedEvents,
           cmeAnalyses: dt.cmeAnalyses.map((e) => ({
-            isMostAccurate: e.isMostAccurate,
+            enlilList: e.enlilList,
+            levelOfData: e.levelOfData,
+
             time21_5: e.time21_5,
             latitude: e.latitude,
             longitude: e.longitude,
             halfAngle: e.halfAngle,
             speed: e.speed,
             type: e.type,
-            featureCode: e.featureCode,
-            imageType: e.imageType,
-            measurementTechnique: e.measurementTechnique,
+            isMostAccurate: e.isMostAccurate,
+
             note: e.note,
-            levelOfData: e.levelOfData,
+
+            featureCode: e.featureCode,
+            
+            measurementTechnique: e.measurementTechnique,
+            imageType: e.imageType,
             tilt: e.tilt,
             minorHalfWidth: e.minorHalfWidth,
             speedMeasuredAtHeight: e.speedMeasuredAtHeight,
             submissionTime: e.submissionTime,
+
             link: e.link,
-            enlilList: e.enlilList,
           })),
         }))
 
         // Enviando os dados tratados para o front-end
-        reply.send(processedData)
+        reply.send(data)
       } else {
         reply.status(response.status).send("Erro ao acessar a API da NASA")
       }
@@ -79,7 +84,7 @@ export async function RouteDonki(app: FastifyInstance) {
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/DONKI/CMEAnalysis", {
         params: {
-          api_key: process.env.CHAVE_NASA,
+          api_key: process.env.KEY_NASA,
           startDate: "2022-10-25",
           endDate: "2022-10-25",
         },
@@ -108,14 +113,14 @@ export async function RouteDonki(app: FastifyInstance) {
   app.get("/api/donki/gst", async (request: any, reply) => {
     try {
       // Acessando dados enviados como parâmetros de consulta
-      const aaa = request.query.date
+      const data = request.query.date
 
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/DONKI/GST", {
         params: {
-          api_key: process.env.CHAVE_NASA,
-          //startDate: "2022-10-25",
-          //endDate: "2022-10-25",
+          api_key: process.env.KEY_NASA,
+          startDate: data,
+          endDate: data,
         },
       })
 
@@ -124,10 +129,20 @@ export async function RouteDonki(app: FastifyInstance) {
         const data = response.data
 
         // tratamento dos dados
-        const processedData = data.map((dt) => ({}))
+        const processedData = data.map((dt) => ({
+          gstId: dt.gstId,   // Identificador do GST
+          startTime: dt.startTime, // Hora de início do GST
+          link: dt.link, // Link para mais informações
+
+          allKpIndex: dt.allKpIndex.map((e) => ({   // Mapeando os índices Kp
+            observedTime: e.observedTime, // Hora observada
+            kpIndex: e.kpIndex, // Índice Kp
+            source: e.source, // Fonte do índice Kp
+          })),
+        }))
 
         // Enviando os dados tratados para o front-end
-        reply.send(data)
+        reply.send(processedData)
       } else {
         reply.status(response.status).send("Erro ao acessar a API da NASA")
       }
@@ -147,9 +162,9 @@ export async function RouteDonki(app: FastifyInstance) {
       // Fazendo a solicitação para a API da NASA
       const response = await axios.get("https://api.nasa.gov/DONKI/IPS", {
         params: {
-          api_key: process.env.CHAVE_NASA,
-          startDate: "2022-10-25",
-          endDate: "2022-10-25",
+          api_key: process.env.KEY_NASA,
+          startDate: "2025-05-10",
+          endDate: "2025-07-10",
         },
       })
 

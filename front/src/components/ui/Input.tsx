@@ -10,7 +10,7 @@ export const Input: React.FC<InputProps> = ({ type, onChange, className="", ...p
     <input
       type={type}
       onChange={onChange}
-      className={`px-5 py-2 bg-transparent border border-purple-700 rounded-lg ${className}`}
+      className={`px-5 py-2 bg-transparent border border-purple-700 rounded-lg  ${className}`}
       {...props} // Propaga outras propriedades
     />
   )
