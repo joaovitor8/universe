@@ -1,9 +1,10 @@
-import { Form } from "@/components/ui/Form"
+// import { Form } from "@/components/ui/Form"
+import { NewsAPI } from "@/components/componentsPages/news/NewsAPI";
 
 export default function News() {
   return (
-    <main className="h-screen flex justify-center items-center">
-      <Form />
+    <main className="min-h-screen">
+      <NewsAPI/>
     </main>
   )
 }

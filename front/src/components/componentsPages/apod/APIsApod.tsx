@@ -15,7 +15,7 @@ const formatDate = (date: Date) => {
 
 const getYesterday = () => {
   const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setDate(yesterday.getDate() - 10);
   return formatDate(yesterday);
 };
 
