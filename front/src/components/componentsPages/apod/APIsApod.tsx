@@ -15,7 +15,7 @@ const formatDate = (date: Date) => {
 
 const getYesterday = () => {
   const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 10);
+  yesterday.setDate(yesterday.getDate() - 20);
   return formatDate(yesterday);
 };
 
@@ -24,6 +24,7 @@ export const APIsApod = () => {
 
   const [pictureTheDay, setPictureTheDay] = useState<TypeApod>();
   const [galleryPictureTheDay, setGalleryPictureTheDay] = useState<TypeApodGallery[]>([]);
+
   const [datePhotoDay, setDatePhotoDay] = useState<Date>(today);
   const [dateGallery, setDateGallery] = useState<{ startDate: Date | null; endDate: Date | null }>({
     startDate: null,

@@ -1,143 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { Button } from "@/components/ui/Button";
-
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-type Article = {
-  title: string;
-  imageUrl: string;
-  summary: string;
-  author: string;
-  url: string;
-};
+import { NewsType } from "./NewsTypes";
 
-type Blog = {
-  title: string;
-  imageUrl: string;
-  summary: string;
-  author: string;
-  url: string;
-};
+export function NewsAPI() {
+  const [articles, setArticles] = useState<NewsType[]>([]);
+  const [blogs, setBlogs] = useState<NewsType[]>([]);
+  const [reports, setReports] = useState<NewsType[]>([]);
 
-type Report = {
-  title: string;
-  imageUrl: string;
-  summary: string;
-  author: string;
-  url: string;
-};
-
-export const NewsAPI = () => {
-  const [activeSection, setActiveSection] = useState("");
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [reports, setReports] = useState<Report[]>([]);
-
-  const GetNewsArticles = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:4000/api/news/articles`);
-      setArticles(response.data);
-    } catch (error) {
-      console.error("Error", error)
-    }
-  }
-
-  const GetNewsBlogs = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:4000/api/news/blogs`);
-      setBlogs(response.data);
-    } catch (error) {
-      console.error("Error", error)
-    }
-  }
-
-    const GetNewsReports = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:4000/api/news/reports`);
-      setReports(response.data);
-    } catch (error) {
-      console.error("Error", error)
-    }
-  }
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    GetNewsArticles();
-    GetNewsBlogs();
-    GetNewsReports();
+    async function fetchNews() {
+      try {
+        axios.get("http://127.0.0.1:4000/api/news/articles").then(res => setArticles(res.data));
+        axios.get("http://127.0.0.1:4000/api/news/blogs").then(res => setBlogs(res.data));
+        axios.get("http://127.0.0.1:4000/api/news/reports").then(res => setReports(res.data));
+      } catch (err) {
+        setError(`Error fetching news - ( Tem algo de errado ai! ): ${err instanceof Error ? err.message : String(err)}`);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchNews();
   }, []);
 
-  return (
-    <div className="mx-10">
-      <div className="mb-10 space-x-1">
-        <Button onClick={() => setActiveSection("Articles")}>Articles</Button>
-        <Button onClick={() => setActiveSection("Blogs")}>Blogs</Button>
-        <Button onClick={() => setActiveSection("Reports")}>Reports</Button>
-        <Button onClick={() => setActiveSection("")}>Back</Button>
-
-        <Button onClick={() => setActiveSection("")} className="ml-5">Form</Button>
-      </div>
-
-      {activeSection === "" && (
-        <h2 className="text-center">Find out everything that happens in the universe!</h2>
-      )}
-
-      {activeSection === "Articles" && (
-        <div>
-          {articles.map((article, index) => (
-            <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
-              <h2>{article.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={article.imageUrl} alt={article.title} className="w-[300px]" />
-                <p>{article.summary}</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Author: {article.author}</p>
-                <a href={article.url} target="_blank" className="bg-purple-700 py-1 px-2 rounded hover:bg-purple-950">Read more</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {activeSection === "Blogs" && (
-        <div>
-          {blogs.map((blog, index) => (
-            <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
-              <h2>{blog.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={blog.imageUrl} alt={blog.title} className="w-[300px]" />
-                <p>{blog.summary}</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Author: {blog.author}</p>
-                <a href={blog.url} target="_blank" className="bg-purple-700 py-1 px-2 rounded hover:bg-purple-950">Read more</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-
-      {activeSection === "Reports" && (
-        <div>
-          {reports.map((report, index) => (
-            <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
-              <h2>{report.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={report.imageUrl} alt={report.title} className="w-[300px]" />
-                <p>{report.summary}</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Author: {report.author}</p>
-                <a href={report.url} target="_blank" className="bg-purple-700 py-1 px-2 rounded hover:bg-purple-950">Read more</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return { articles, blogs, reports, loading, error };
 }

@@ -4,7 +4,7 @@ export const Footer = () => {
     <footer className="p-14 mt-10">
       <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center text-sm md:text-base">
         <div className="text-center md:text-left">
-          &copy; {new Date().getFullYear()} Universe. All rights reserved.
+          {/* &copy; {new Date().getFullYear()} Universe. All rights reserved. */}
         </div>
 
         <div className="flex justify-center md:justify-end space-x-4 mb-2">
