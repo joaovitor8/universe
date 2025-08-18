@@ -14,6 +14,9 @@ fastify.register(fastifyCors, {
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
 })
+fastify.register(require('fastify-sqlite'), {
+  dbFile: "DB_News.db",
+})
 
 // https://unyverso.vercel.app
 // http://localhost:3000
