@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
+import axios from 'axios';
+
 const NEWS = [
   { label: "Articles", value: "articles" },
   { label: "Blogs", value: "blogs" },
@@ -34,11 +36,17 @@ export const NewsForm = () => {
       window.alert('Fill in all fields - ( Preencha todos os campos )');
       return;
     }
-    console.log('Informações para receber notícias:', { ...formData, types: selectedTypes });
 
-    window.alert('Registration successful! - ( Cadastro realizado com sucesso! )');
-    
-    setFormData({ name: '', email: '' });
+    axios.post('http://127.0.0.1:4000/db/news/user', { ...formData, types: selectedTypes })
+      .then(() => {
+        //console.log('Informações para receber notícias:', { ...formData, types: selectedTypes });
+        window.alert('Registration successful! - ( Cadastro realizado com sucesso! )');
+        setFormData({ name: '', email: '' });
+      })
+      .catch((error) => {
+        console.error('Error registering for newsletter:', error);
+        window.alert('Registration failed. Please try again later. - ( O cadastro falhou. Por favor, tente novamente mais tarde. )');
+      });
     setSelectedTypes([]);
   };
 

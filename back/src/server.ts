@@ -17,14 +17,15 @@ fastify.register(fastifyCors, {
   methods: ["GET", "POST", "PUT", "DELETE"],
 })
 // Cria a conexão com o banco SQLite
-const db = new sqlite.Database("./src/db/news.db")
+const db = new sqlite.Database("./src/db/newsUsers.db")
 
 // Cria a tabela ao iniciar o servidor
 db.run(`
-  CREATE TABLE IF NOT EXISTS usuarios (
+  CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    news TEXT
   )
 `, (err) => {
   if (err) {
