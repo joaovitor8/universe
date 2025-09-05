@@ -1,85 +1,44 @@
-import { FastifyInstance } from "fastify"
-import sqlite3 from 'sqlite3'
+import { FastifyInstance } from "fastify";
+import sqlite3 from 'sqlite3';
 
 
 export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) {
 
   // Criar um usuário
-  app.post('/db/news/user', async (request: any, reply: any) => {
+  app.post('/db/news/user', (request: any, reply: any) => {
     const { name, email, news } = request.body;
-    db.run( 'INSERT INTO users (name, email, news) VALUES (?, ?, ?)', [name, email, JSON.stringify(news)],
+    const newsToSave = Array.isArray(news) ? JSON.stringify(news) : news;
+
+    db.run('INSERT INTO users (name, email, news) VALUES (?, ?, ?)', [name, email, newsToSave],
       function (err) {
         if (err) {
-          reply.code(500).send({ error: 'Erro ao criar usuário', details: err.message });
+          // Verifica se o erro é de email duplicado (violação UNIQUE)
+          const sqliteErr = err as any; // or use sqlite3.SqliteError if available
+          if (sqliteErr.code === 'SQLITE_CONSTRAINT' && sqliteErr.message.includes('UNIQUE')) {
+            return reply.code(409).send({ error: 'Email já cadastrado.' });
+          }
+          return reply.code(500).send({ error: 'Erro ao criar usuário', details: err.message });
         } else {
-          reply.code(201).send({ message: 'Usuário criado com sucesso', id: this.lastID });
+          return reply.code(201).send({ message: 'Usuário criado com sucesso', id: this.lastID });
         }
       }
     );
-  })
+  });
 
-  // Pegar todos os usuários
-  app.get('/db/news/users', async (request: any, reply: any) => {
-    db.all('SELECT * FROM users', [], (err, rows) => {
+  // Deletar um usuário pelo email
+  app.delete('/db/news/users/:email', (request: any, reply: any) => {
+    const { email } = request.params;
+    if (!email || typeof email !== 'string') {
+      return reply.code(400).send({ error: 'Email inválido' });
+    }
+    db.run('DELETE FROM users WHERE email = ?', [email], function (err) {
       if (err) {
-        reply.code(500).send({ error: 'Erro ao buscar usuários', details: err.message });
-      } else {
-        // Converte o campo de notícias de volta para array
-        const users = rows.map(user => ({
-          ...user,
-          news: user.news ? JSON.parse(user.news) : []
-        }));
-        reply.send(users);
-      }
-    });
-  })
-
-  // Pegar um usuário
-  app.get('/db/news/users/:id', async (request: any, reply: any) => {
-    const { id } = request.params;
-    db.get('SELECT * FROM users WHERE id = ?', [id], (err, row) => {
-      if (err) {
-        reply.code(500).send({ error: 'Erro ao buscar usuário', details: err.message });
-      } else if (!row) {
-        reply.code(404).send({ error: 'Usuário não encontrado' });
-      } else {
-        row.news = row.news ? JSON.parse(row.news) : [];
-        reply.send(row);
-      }
-    });
-  })
-
-  // Atualizar um usuário
-  app.put('/db/news/users/:id', async (request: any, reply: any) => {
-        const { id } = request.params;
-    const { name, email, news } = request.body;
-    db.run(
-      'UPDATE users SET name = ?, email = ?, news = ? WHERE id = ?',
-      [name, email, JSON.stringify(news), id],
-      function (err) {
-        if (err) {
-          reply.code(500).send({ error: 'Erro ao atualizar usuário', details: err.message });
-        } else if (this.changes === 0) {
-          reply.code(404).send({ error: 'Usuário não encontrado' });
-        } else {
-          reply.send({ message: 'Usuário atualizado com sucesso' });
-        }
-      }
-    );
-  })
-
-  // Deletar um usuário
-  app.delete('/db/news/users/:id', async (request: any, reply: any) => {
-    const { id } = request.params;
-    db.run('DELETE FROM users WHERE id = ?', [id], function (err) {
-      if (err) {
-        reply.code(500).send({ error: 'Erro ao deletar usuário', details: err.message });
+        return reply.code(500).send({ error: 'Erro ao deletar usuário', details: err.message });
       } else if (this.changes === 0) {
-        reply.code(404).send({ error: 'Usuário não encontrado' });
+        return reply.code(404).send({ error: 'Usuário não encontrado' });
       } else {
-        reply.send({ message: 'Usuário deletado com sucesso' });
+        return reply.send({ message: 'Usuário deletado com sucesso' });
       }
     });
-  })
-
+  });
 }

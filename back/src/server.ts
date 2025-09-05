@@ -25,7 +25,7 @@ db.run(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    news TEXT
+    news TEXT NOT NULL
   )
 `, (err) => {
   if (err) {

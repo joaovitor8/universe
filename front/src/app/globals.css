@@ -42,9 +42,9 @@ body {
 }
 
 
-span {
+/* span {
   color: blue;
-}
+} */
 
 input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #8200db;
