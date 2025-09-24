@@ -5,7 +5,7 @@ import sqlite3 from 'sqlite3';
 export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) {
 
   // Criar um usuário
-  app.post('/db/news/user', (request: any, reply: any) => {
+  app.post('/db/news/postUser', (request: any, reply: any) => {
     const { name, email, news } = request.body;
     const newsToSave = Array.isArray(news) ? JSON.stringify(news) : news;
 
@@ -25,8 +25,18 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
     );
   });
 
+  // Pegar todos os usuários
+  app.get('/db/news/getUsers', (request: any, reply: any) => {
+    db.all('SELECT * FROM users', [], (err, rows) => {
+      if (err) {
+        return reply.code(500).send({ error: 'Erro ao buscar usuários', details: err.message });
+      }
+      return reply.send(rows);
+    });
+  });
+
   // Deletar um usuário pelo email
-  app.delete('/db/news/users/:email', (request: any, reply: any) => {
+  app.delete('/db/news/deleteUser/:email', (request: any, reply: any) => {
     const { email } = request.params;
     if (!email || typeof email !== 'string') {
       return reply.code(400).send({ error: 'Email inválido' });

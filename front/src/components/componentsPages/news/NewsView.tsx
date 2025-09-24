@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { NewsAPI } from "@/components/componentsPages/news/NewsAPI";
 import { NewsCreateForm } from "@/components/componentsPages/news/NewsCreateForm";
+import { NewsGetForm } from "@/components/componentsPages/news/NewsGetForm";
 
 import { Button } from "@/components/ui/Button";
 
@@ -28,7 +29,10 @@ export const NewsView = () => {
       )}
 
       {activeSection === "Form" && (
-        <div className="flex justify-center"> <NewsCreateForm /> </div>
+        <div className="flex flex-col items-center space-y-10">
+          <NewsCreateForm />
+          <NewsGetForm />
+        </div>
       )}
 
       {activeSection === "Articles" && (

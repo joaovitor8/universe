@@ -50,7 +50,7 @@ export const NewsCreateForm = () => {
 
 		setLoading(true);
 		try {
-			await axios.post('http://127.0.0.1:4000/db/news/user', formData );
+			await axios.post('http://127.0.0.1:4000/db/news/postUser', formData );
 			setMessage('Registration successful!');
 			setFormData({ name: '', email: '', news: [] });
 
