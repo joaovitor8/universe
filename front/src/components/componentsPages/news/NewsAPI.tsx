@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { NewsType } from "./NewsTypes";
+type NewsType = {
+  title: string;
+  imageUrl: string;
+  summary: string;
+  author: string;
+  url: string;
+};
 
 export function NewsAPI() {
   const [articles, setArticles] = useState<NewsType[]>([]);

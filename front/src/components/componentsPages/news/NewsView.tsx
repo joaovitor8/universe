@@ -4,8 +4,8 @@
 import { useState } from "react";
 
 import { NewsAPI } from "@/components/componentsPages/news/NewsAPI";
-import { NewsCreateForm } from "@/components/componentsPages/news/NewsCreateForm";
-import { NewsGetForm } from "@/components/componentsPages/news/NewsGetForm";
+import { NewsForm } from "@/components/componentsPages/news/NewsForm";
+import { NewsFormUsers } from "@/components/componentsPages/news/NewsFormUsers";
 
 import { Button } from "@/components/ui/Button";
 
@@ -30,8 +30,8 @@ export const NewsView = () => {
 
       {activeSection === "Form" && (
         <div className="flex flex-col items-center space-y-10">
-          <NewsCreateForm />
-          <NewsGetForm />
+          <NewsForm />
+          <NewsFormUsers />
         </div>
       )}
 

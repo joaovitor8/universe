@@ -25,6 +25,7 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
     );
   });
 
+
   // Pegar todos os usuários
   app.get('/db/news/getUsers', (request: any, reply: any) => {
     db.all('SELECT * FROM users', [], (err, rows) => {
@@ -35,20 +36,19 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
     });
   });
 
+
   // Deletar um usuário pelo email
   app.delete('/db/news/deleteUser/:email', (request: any, reply: any) => {
     const { email } = request.params;
-    if (!email || typeof email !== 'string') {
-      return reply.code(400).send({ error: 'Email inválido' });
-    }
+
     db.run('DELETE FROM users WHERE email = ?', [email], function (err) {
       if (err) {
         return reply.code(500).send({ error: 'Erro ao deletar usuário', details: err.message });
-      } else if (this.changes === 0) {
-        return reply.code(404).send({ error: 'Usuário não encontrado' });
-      } else {
-        return reply.send({ message: 'Usuário deletado com sucesso' });
       }
+      if (this.changes === 0) {
+        return reply.code(404).send({ error: 'Usuário não encontrado' });
+      }
+      return reply.send({ message: 'Usuário deletado com sucesso' });
     });
   });
 }
