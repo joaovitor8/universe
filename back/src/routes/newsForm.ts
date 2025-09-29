@@ -12,14 +12,14 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
     db.run('INSERT INTO users (name, email, news) VALUES (?, ?, ?)', [name, email, newsToSave],
       function (err) {
         if (err) {
-          // Verifica se o erro é de email duplicado (violação UNIQUE)
-          const sqliteErr = err as any; // or use sqlite3.SqliteError if available
+          // Checa se o erro é de email duplicado
+          const sqliteErr = err as any;
           if (sqliteErr.code === 'SQLITE_CONSTRAINT' && sqliteErr.message.includes('UNIQUE')) {
-            return reply.code(409).send({ error: 'Email já cadastrado.' });
+            return reply.code(409).send({ error: 'Email already registered (Email já cadastrado).' });
           }
-          return reply.code(500).send({ error: 'Erro ao criar usuário', details: err.message });
+          return reply.code(500).send({ error: 'Error creating user (Erro ao criar usuário)', details: err.message });
         } else {
-          return reply.code(201).send({ message: 'Usuário criado com sucesso', id: this.lastID });
+          return reply.code(201).send({ message: 'User created successfully (Usuário criado com sucesso)', id: this.lastID });
         }
       }
     );
@@ -30,7 +30,7 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
   app.get('/db/news/getUsers', (request: any, reply: any) => {
     db.all('SELECT * FROM users', [], (err, rows) => {
       if (err) {
-        return reply.code(500).send({ error: 'Erro ao buscar usuários', details: err.message });
+        return reply.code(500).send({ error: 'Error fetching users (Erro ao buscar usuários)', details: err.message });
       }
       return reply.send(rows);
     });
@@ -43,12 +43,12 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
     
     db.run('DELETE FROM users WHERE email = ?', [email], function (err) {
       if (err) {
-        return reply.code(500).send({ error: 'Erro ao deletar usuário', details: err.message });
+        return reply.code(500).send({ error: 'Error deleting user (Erro ao deletar usuário)', details: err.message });
       }
       if (this.changes === 0) {
-        return reply.code(404).send({ error: 'Usuário não encontrado' });
+        return reply.code(404).send({ error: 'User not found (Usuário não encontrado)' });
       }
-      return reply.send({ message: 'Usuário deletado com sucesso' });
+      return reply.send({ message: 'User deleted successfully (Usuário deletado com sucesso)' });
     });
   });
 }

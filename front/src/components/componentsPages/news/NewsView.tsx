@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-import { NewsAPI } from "@/components/componentsPages/news/NewsAPI";
+import { useNewsAPI } from "@/components/componentsPages/news/NewsAPI";
 import { NewsForm } from "@/components/componentsPages/news/NewsForm";
 import { NewsFormUsers } from "@/components/componentsPages/news/NewsFormUsers";
 
@@ -11,22 +11,23 @@ import { Button } from "@/components/ui/Button";
 
 export const NewsView = () => {
   const [activeSection, setActiveSection] = useState("");
-  const { articles, blogs, reports } = NewsAPI();
+  const { articles, blogs, reports } = useNewsAPI();
 
   return (
     <div className="mx-10">
-      <div className="mb-10 space-x-1">
+      <div className="mb-10 flex flex-wrap gap-2">
         <Button onClick={() => setActiveSection("Articles")}>Articles</Button>
         <Button onClick={() => setActiveSection("Blogs")}>Blogs</Button>
         <Button onClick={() => setActiveSection("Reports")}>Reports</Button>
         <Button onClick={() => setActiveSection("")}>Back</Button>
-
-        <Button onClick={() => setActiveSection("Form")} className="ml-5">Form</Button>
+        
+        <Button onClick={() => setActiveSection("Form")} className="ml-0 md:ml-5">Form</Button>
       </div>
 
       {activeSection === "" && (
         <h2 className="text-center">Find out everything that happens in the universe!</h2>
       )}
+
 
       {activeSection === "Form" && (
         <div className="flex flex-col items-center space-y-10">
@@ -35,13 +36,14 @@ export const NewsView = () => {
         </div>
       )}
 
+
       {activeSection === "Articles" && (
         <div>
           {articles.map((article, index) => (
             <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
               <h2>{article.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={article.imageUrl} alt={article.title} className="w-[300px]" />
+              <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+                <img src={article.imageUrl} alt={article.title} className="w-full md:w-[300px] object-cover" />
                 <p>{article.summary}</p>
               </div>
               <div className="flex justify-between">
@@ -53,13 +55,14 @@ export const NewsView = () => {
         </div>
       )}
 
+
       {activeSection === "Blogs" && (
         <div>
           {blogs.map((blog, index) => (
             <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
               <h2>{blog.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={blog.imageUrl} alt={blog.title} className="w-[300px]" />
+              <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+                <img src={blog.imageUrl} alt={blog.title} className="w-full md:w-[300px] object-cover" />
                 <p>{blog.summary}</p>
               </div>
               <div className="flex justify-between">
@@ -77,8 +80,8 @@ export const NewsView = () => {
           {reports.map((report, index) => (
             <div key={index} className="border border-purple-500 p-4 mb-4 rounded-lg space-y-3">
               <h2>{report.title}</h2>
-              <div className="space-x-4 flex">
-                <img src={report.imageUrl} alt={report.title} className="w-[300px]" />
+              <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+                <img src={report.imageUrl} alt={report.title} className="w-full md:w-[300px] object-cover" />
                 <p>{report.summary}</p>
               </div>
               <div className="flex justify-between">
@@ -89,6 +92,7 @@ export const NewsView = () => {
           ))}
         </div>
       )}
+
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { APIsApod } from "@/components/componentsPages/apod/APIsApod"
+import { ApodView } from "@/components/componentsPages/apod/ApodView"
 
 export default function Apod() {
   return (
-    <APIsApod/>
+    <ApodView/>
   )
 }

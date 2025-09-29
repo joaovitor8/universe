@@ -1,17 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { TypeApod } from "@/components/Types";
 
-interface TypeProps {
-  pictureTheDay: TypeApod | undefined;
-  setDatePhotoDay: React.Dispatch<React.SetStateAction<Date>>;
-  GetApod: () => Promise<void>;
-}
+import { APIsApod } from "./APIsApod";
+import Loading from '@/app/loading';
 
-export const PhotoDay: React.FC<TypeProps> = ({ pictureTheDay, setDatePhotoDay, GetApod }) => {
+
+export const PhotoDay = () => {
+  const { loading, pictureTheDay, setDatePhotoDay, GetApod } = APIsApod();
+
+  if (loading) return <Loading />;
+
   return (
     <div className="flex flex-col items-center p-4 space-y-6">
       <div className="flex items-center space-x-1">

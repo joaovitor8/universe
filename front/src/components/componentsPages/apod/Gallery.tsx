@@ -4,16 +4,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { TypeApodGallery } from "@/components/Types";
-
-type TypeProps = {
-  galleryPictureTheDay: TypeApodGallery[];
-  setDateGallery: (dates: { startDate: Date | null; endDate: Date | null }) => void;
-  GetGalleryApod: () => void;
-};
 
 
-export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGallery, GetGalleryApod }) => {
+import { APIsApod } from "@/components/componentsPages/apod/APIsApod";
+import Loading from '@/app/loading';
+
+
+export const Gallery= () => {
+  const { loading, galleryPictureTheDay, setDateGallery, GetGalleryApod } = APIsApod();
+
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
@@ -25,6 +24,8 @@ export const Gallery: React.FC<TypeProps> = ({ galleryPictureTheDay, setDateGall
     setDateGallery({ startDate, endDate });
     GetGalleryApod();
   };
+
+  if (loading) return <Loading />;
 
   return (
     <div className="min-h-screen flex flex-col items-center">

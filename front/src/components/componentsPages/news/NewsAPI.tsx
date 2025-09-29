@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 type NewsType = {
   title: string;
   imageUrl: string;
@@ -11,7 +12,8 @@ type NewsType = {
   url: string;
 };
 
-export function NewsAPI() {
+
+export const useNewsAPI = () => {
   const [articles, setArticles] = useState<NewsType[]>([]);
   const [blogs, setBlogs] = useState<NewsType[]>([]);
   const [reports, setReports] = useState<NewsType[]>([]);
@@ -19,14 +21,20 @@ export function NewsAPI() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+
   useEffect(() => {
     async function fetchNews() {
       try {
-        axios.get("http://127.0.0.1:4000/api/news/articles").then(res => setArticles(res.data));
-        axios.get("http://127.0.0.1:4000/api/news/blogs").then(res => setBlogs(res.data));
-        axios.get("http://127.0.0.1:4000/api/news/reports").then(res => setReports(res.data));
+        const [articlesRes, blogsRes, reportsRes] = await Promise.all([
+          axios.get("http://127.0.0.1:4000/api/news/articles"),
+          axios.get("http://127.0.0.1:4000/api/news/blogs"),
+          axios.get("http://127.0.0.1:4000/api/news/reports"),
+        ]);
+        setArticles(articlesRes.data);
+        setBlogs(blogsRes.data);
+        setReports(reportsRes.data);
       } catch (err) {
-        setError(`Error fetching news ( Erro ao buscar notícias ): ${err instanceof Error ? err.message : String(err)}`);
+        setError(`Error fetching news: ${err instanceof Error ? err.message : String(err)}`);
       } finally {
         setLoading(false);
       }

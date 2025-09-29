@@ -1,13 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import { Gallery } from "@/components/componentsPages/apod/Gallery";
-import { PhotoDay } from "@/components/componentsPages/apod/PhotoDay";
-import Loading from '@/app/loading';
-import { TypeApod, TypeApodGallery } from "@/components/Types";
-
 import { useState, useEffect } from 'react';
 import axios from "axios";
+
+
+type TypeApod = {
+  hdurl: string
+  url: string
+  title: string
+  date: string
+  explanation: string
+  copyright: string
+  media_type: string
+  // thumbnail_url: string
+}
+
+type TypeApodGallery = {
+  url: string
+  hdurl: string
+  media_type: string
+}
+
 
 const formatDate = (date: Date) => {
   return date.toISOString().split("T")[0];
@@ -18,6 +32,7 @@ const getYesterday = () => {
   yesterday.setDate(yesterday.getDate() - 20);
   return formatDate(yesterday);
 };
+
 
 export const APIsApod = () => {
   const today = new Date();
@@ -75,13 +90,6 @@ export const APIsApod = () => {
     fetchData();
   }, []);
 
-  if (loading) return <Loading />;
 
-  return (
-    <main>
-      <PhotoDay pictureTheDay={pictureTheDay} setDatePhotoDay={setDatePhotoDay} GetApod={GetApod} />
-      <div className="m-20"></div>
-      <Gallery galleryPictureTheDay={galleryPictureTheDay} setDateGallery={setDateGallery} GetGalleryApod={GetGalleryApod} />
-    </main>
-  );
+  return { loading, pictureTheDay, setDatePhotoDay, GetApod, galleryPictureTheDay, setDateGallery, GetGalleryApod};
 };
