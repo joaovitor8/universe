@@ -16,7 +16,7 @@ export const NewsForm = () => {
 	const { formData, loading, message, handleInputChange, handleCheckboxChange, handleSubmit } = NewsAPIForm();
 
 	return (
-		<form onSubmit={handleSubmit} className='border border-purple-700 p-4 rounded-xl shadow-md w-1/2'>
+		<form onSubmit={handleSubmit} className='border border-purple-700 p-4 rounded-xl w-[300px]'>
 			<h2 className='text-lg font-bold mb-4'>Sign up to receive universe news</h2>
 			{message && <div className="mb-4">{message}</div>}
 

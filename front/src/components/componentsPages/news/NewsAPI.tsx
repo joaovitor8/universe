@@ -26,7 +26,7 @@ export function NewsAPI() {
         axios.get("http://127.0.0.1:4000/api/news/blogs").then(res => setBlogs(res.data));
         axios.get("http://127.0.0.1:4000/api/news/reports").then(res => setReports(res.data));
       } catch (err) {
-        setError(`Error fetching news - ( Tem algo de errado ai! ): ${err instanceof Error ? err.message : String(err)}`);
+        setError(`Error fetching news ( Erro ao buscar notícias ): ${err instanceof Error ? err.message : String(err)}`);
       } finally {
         setLoading(false);
       }

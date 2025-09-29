@@ -40,7 +40,7 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
   // Deletar um usuário pelo email
   app.delete('/db/news/deleteUser/:email', (request: any, reply: any) => {
     const { email } = request.params;
-
+    
     db.run('DELETE FROM users WHERE email = ?', [email], function (err) {
       if (err) {
         return reply.code(500).send({ error: 'Erro ao deletar usuário', details: err.message });

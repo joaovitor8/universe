@@ -1,7 +1,8 @@
 "use client"
 
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 type FormData = {
   name: string;
@@ -14,6 +15,7 @@ type NewsUser = {
   email: string;
   news: string[];
 };
+
 
 export const NewsAPIForm = () => {
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', news: [] });
@@ -44,25 +46,20 @@ export const NewsAPIForm = () => {
 		setMessage(null);
 
 		if (!formData.name || !formData.email || formData.news.length === 0) {
-			setMessage('Please fill in all fields.');
+			setMessage('Please fill in all fields ( Por favor preencha todos os campos )');
 			return;
 		}
 
 		setLoading(true);
 		try {
 			await axios.post('http://127.0.0.1:4000/db/news/postUser', formData );
-			setMessage('Registration successful!');
+			setMessage('Registration successful! ( Registro realizado com sucesso! )');
 			setFormData({ name: '', email: '', news: [] });
 
-      console.log(formData);
+			await getUsersForm();
 		} catch (error) {
-			if (axios.isAxiosError(error) && error.response?.data?.error) {
-				console.error('What went wrong?:', error.response.data.error);
-				setMessage(error.response.data.error);
-			} else {
-				console.error('What went wrong?:', error);
-				setMessage(String(error));
-			}
+			console.error('Error submitting form ( Erro ao enviar formulário ):', error);
+			setMessage('Error submitting form ( Erro ao enviar formulário )');
 		} finally {
 			setLoading(false);
 		}
@@ -77,7 +74,7 @@ export const NewsAPIForm = () => {
       const response = await axios.get("http://127.0.0.1:4000/db/news/getUsers");
       setGetForm(response.data);
     } catch (error) {
-      console.error("Front-End: Error trying to get users ", error);
+      console.error("Error trying to get users ( Erro ao buscar usuários )", error);
     }
   };
 
@@ -87,12 +84,12 @@ export const NewsAPIForm = () => {
 
 	const handleDelete = async (email: string) => {
     try {
-      await axios.delete(`http://127.0.0.1:4000/db/news/deleteUser?email=${email}`);
-      alert('User deleted successfully');
-      await getUsersForm(); // Atualiza a lista após deletar
+      await axios.delete(`http://127.0.0.1:4000/db/news/deleteUser/${email}`);
+      alert('User deleted successfully ( Usuário excluído com sucesso )');
+      await getUsersForm();
     } catch (error) {
-      console.error('Error deleting user:', error);
-      alert('Failed to delete user');
+      console.error('Error deleting user ( Erro ao excluir usuário )', error);
+      alert('Error deleting user ( Erro ao excluir usuário )');
     }
   };
 
