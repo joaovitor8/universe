@@ -10,7 +10,7 @@ import { APIsApod } from "@/components/componentsPages/apod/APIsApod";
 import Loading from '@/app/loading';
 
 
-export const Gallery= () => {
+export const Gallery = () => {
   const { loading, galleryPictureTheDay, setDateGallery, GetGalleryApod } = APIsApod();
 
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -37,10 +37,13 @@ export const Gallery= () => {
 
       <div className="w-full flex flex-wrap justify-center">
         {galleryPictureTheDay && galleryPictureTheDay.length > 0 ? (
-          galleryPictureTheDay.map((img, key) => (
-            <a href={img.hdurl} key={key} target="_blank" rel="noopener noreferrer">
-              <img src={img.url} alt={img.media_type} className="m-1 h-[300px] w-[300px] rounded-md object-cover" />
-            </a>
+          galleryPictureTheDay.slice().reverse().map((img, key) => (
+            <div key={key} className="m-2">
+              <a href={img.hdurl} target="_blank" rel="noopener noreferrer">
+                <img src={img.url} alt={img.media_type} className="h-[300px] w-[300px] rounded-md object-cover hover:opacity-50" />
+              </a>
+              <p className="text-center">{img.title}</p>
+            </div>
           ))
         ) : (
           <div className="w-full h-[300px] bg-purple-700 rounded-lg mx-10"></div>

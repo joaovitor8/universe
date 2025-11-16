@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { useState, useEffect } from 'react';
@@ -13,11 +12,12 @@ type TypeApod = {
   explanation: string
   copyright: string
   media_type: string
-  // thumbnail_url: string
+  thumbnail_url: string
 }
 
 type TypeApodGallery = {
   url: string
+  title: string
   hdurl: string
   media_type: string
 }
@@ -29,7 +29,7 @@ const formatDate = (date: Date) => {
 
 const getYesterday = () => {
   const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 20);
+  yesterday.setDate(yesterday.getDate() - 23);
   return formatDate(yesterday);
 };
 
@@ -60,8 +60,6 @@ export const APIsApod = () => {
     }
   };
 
-  // https://universe-back.onrender.com
-  // http://127.0.0.1:4000
 
   const GetGalleryApod = async () => {
     try {
