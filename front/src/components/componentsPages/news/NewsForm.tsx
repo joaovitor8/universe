@@ -15,9 +15,21 @@ const NEWS = [
 export const NewsForm = () => {
 	const { formData, loading, message, handleInputChange, handleCheckboxChange, handleSubmit } = NewsAPIForm();
 
+	// Substituir o onSubmit do form para disparar evento após o cadastro
+	const onSubmit = async (e: any) => {
+		e.preventDefault();
+		// captura os dados atuais antes do hook possivelmente resetar o form
+		const payload = { ...formData };
+		// aguarda o submit original
+		await handleSubmit(e);
+		// notifica demais componentes que um novo registro foi criado
+		const ev = new CustomEvent('news:updated', { detail: payload });
+		window.dispatchEvent(ev);
+	};
+
 	return (
 		<form
-			onSubmit={handleSubmit}
+			onSubmit={onSubmit}
 			className='border border-purple-700 p-4 rounded-xl w-full max-w-md mx-auto shadow-md'
 		>
 			<h2 className='text-lg font-bold mb-4 text-center'>Sign up to receive universe news</h2>

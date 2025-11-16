@@ -27,7 +27,7 @@ db.run(`
     email TEXT NOT NULL UNIQUE,
     news TEXT NOT NULL
   )
-`, (err) => {
+`, (err: any) => {
   if (err) {
     fastify.log.error('Erro ao criar tabela de usuários', err);
   } else {
@@ -46,7 +46,7 @@ RouteNewsForm(fastify, db)
 const port = process.env.PORT || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
-fastify.listen({host: host, port: port }, function (err, address) {
+fastify.listen({host: host, port: port }, function (err: any, address: string) {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
