@@ -16,6 +16,7 @@ fastify.register(fastifyCors, {
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
 })
+
 // Cria a conexão com o banco SQLite
 const db = new sqlite.Database("./src/db/newsUsers.db")
 

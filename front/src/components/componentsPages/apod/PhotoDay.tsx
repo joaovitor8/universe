@@ -15,39 +15,49 @@ export const PhotoDay = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="flex flex-col items-center p-4 space-y-6">
-      <div className="flex items-center space-x-1">
-        <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} className="w-full sm:w-auto"/>
-        
-        <Button onClick={GetApod} className="w-full sm:w-auto">Search</Button>
+    <div className="container mx-auto p-4 md:p-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Astronomy Picture of the Day</h1>
+        <p className="text-muted-foreground mt-2">Select a date to see the picture of that day.</p>
+      </div>
+      
+      <div className="flex justify-center items-center space-x-2 mb-8">
+        <Input type="date" onChange={(e) => setDatePhotoDay(new Date(e.target.value))} className="max-w-xs"/>
+        <Button onClick={GetApod}>Search</Button>
       </div>
 
-      <div className="w-full max-w-4xl space-y-4 flex flex-col items-center lg:space-y-0 lg:flex lg:flex-row lg:items-start lg:space-x-2">
-        <div className="flex justify-center w-[300px] sm:w-[400px] md:w-[500px] lg:w-1/2">
-          {pictureTheDay?.url ? (
-            <img src={pictureTheDay.url} alt={pictureTheDay.title} className="max-w-full h-auto rounded-lg"/>
-          ) : (
-            <div className="w-full h-[300px] bg-purple-700 rounded-lg"></div>
-          )}
-        </div>
+      {pictureTheDay ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="relative aspect-video w-full rounded-lg shadow-lg">
+            {pictureTheDay.media_type === 'image' ? (
+              <img src={pictureTheDay.url} alt={pictureTheDay.title} className="object-contain" />
+            ) : pictureTheDay.media_type === 'video' ? (
+              <iframe src={pictureTheDay.url} title={pictureTheDay.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
+            ) : (
+              <div className="flex items-center justify-center h-full">
+                <p className="text-white">Unsupported media type</p>
+              </div>
+            )}
+          </div>
 
-        {pictureTheDay ? (
-          <Card className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-1/2">
+          <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-bold">{pictureTheDay?.title}</CardTitle>
-              <CardDescription className="text-sm text-gray-500">{pictureTheDay?.date}</CardDescription>
+              <CardTitle>{pictureTheDay.title}</CardTitle>
+              <CardDescription>{pictureTheDay.date}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-justify">{pictureTheDay?.explanation}</p>
+              <p className="text-justify">{pictureTheDay.explanation}</p>
             </CardContent>
             <CardFooter>
-              <p className="text-sm text-gray-400">{pictureTheDay?.copyright}</p>
+              <p className="text-sm text-muted-foreground">{pictureTheDay.copyright}</p>
             </CardFooter>
           </Card>
-        ) : (
-          <div className="w-full h-[300px] bg-purple-700 rounded-lg"></div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="text-center p-12 border-2 border-dashed border-purple-700 rounded-lg mt-8">
+          <p className="text-muted-foreground">ERROR</p>
+        </div>
+      )}
     </div>
   );
 };

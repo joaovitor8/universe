@@ -1,15 +1,34 @@
 
+
 export const Footer = () => {
   return (
-    <footer className="p-14 mt-10">
-      <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center text-sm md:text-base">
-        <div className="text-center md:text-left">
-          {/* &copy; {new Date().getFullYear()} Universe. All rights reserved. */}
-        </div>
+    <footer className="mt-10">
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col-reverse items-center gap-4 md:flex-row md:justify-between">
+          <p className="text-center text-sm text-slate-400">
+            &copy; {new Date().getFullYear()} Universe. Todos os direitos reservados.
+          </p>
 
-        <div className="flex justify-center md:justify-end space-x-4 mb-2">
-          <a href="https://www.linkedin.com/in/joaovitorezequiel/" target="_blank" className="hover:text-purple-700 transition-colors">LinkedIn</a>
-          <a href="https://github.com/joaovitor8" target="_blank" className="hover:text-purple-700 transition-colors">GitHub</a>
+          <div className="flex justify-center space-x-6">
+            <a 
+              href="https://www.linkedin.com/in/joaovitorezequiel/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="LinkedIn" 
+              className="text-slate-400 hover:text-purple-500 transition-colors"
+            >
+              Linkedin
+            </a>
+            <a 
+              href="https://github.com/joaovitor8" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="GitHub" 
+              className="text-slate-400 hover:text-purple-500 transition-colors"
+            >
+              Github
+            </a>
+          </div>
         </div>
       </div>
     </footer>
