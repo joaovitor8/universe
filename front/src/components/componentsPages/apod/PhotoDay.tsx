@@ -28,14 +28,14 @@ export const PhotoDay = () => {
 
       {pictureTheDay ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <div className="relative aspect-video w-full rounded-lg shadow-lg">
+          <div className="relative aspect-video w-full shadow-lg">
             {pictureTheDay.media_type === 'image' ? (
-              <img src={pictureTheDay.url} alt={pictureTheDay.title} className="object-contain" />
+              <img src={pictureTheDay.url} alt={pictureTheDay.title} className="object-contain rounded-lg" />
             ) : pictureTheDay.media_type === 'video' ? (
               <iframe src={pictureTheDay.url} title={pictureTheDay.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
             ) : (
               <div className="flex items-center justify-center h-full">
-                <p className="text-white">Unsupported media type</p>
+                <p className="text-white">Unsupported media type: {pictureTheDay.media_type}</p>
               </div>
             )}
           </div>

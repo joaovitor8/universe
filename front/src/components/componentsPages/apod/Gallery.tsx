@@ -50,14 +50,14 @@ export const Gallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {galleryPictureTheDay && galleryPictureTheDay.length > 0 ? (
           galleryPictureTheDay.slice().reverse().map((item) => (
-            <div key={item.url} className="group relative block overflow-hidden rounded-lg shadow-lg">
+            <div key={item.url} className="group relative block overflow-hidden shadow-lg">
               <a href={item.hdurl || item.url} target="_blank" rel="noopener noreferrer">
                 <div className="aspect-square w-full">
                   {item.media_type === 'image' ? (
-                    <img src={item.url} alt={item.title} className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src={item.url} alt={item.title} className="object-cover rounded-lg transition-transform duration-300 group-hover:scale-105" />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
-                      <p className="text-white">Video</p>
+                      <p className="text-white">{item.media_type}</p>
                     </div>
                   )}
                 </div>

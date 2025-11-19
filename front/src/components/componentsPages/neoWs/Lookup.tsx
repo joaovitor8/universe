@@ -1,119 +1,152 @@
 "use client"
 
+import { useCallback, useState } from "react"
+import { TypeAsteroidsLookup } from "@/components/Types"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Select } from "@/components/ui/Select"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
+import Loading from "@/app/loading"
 
-import { TypeAsteroidsLookup } from "@/components/Types"
-import { useState } from "react"
-import axios from "axios"
+
+const DataRow = ({ label, value }: { label: string; value: React.ReactNode }) => (
+  <div className="py-2 border-b border-slate-800/50 flex justify-between items-center text-sm gap-4">
+    <span className="text-slate-400">{label}</span>
+    <span className="font-medium text-right wrap-break-words">{value || 'N/A'}</span>
+  </div>
+);
 
 export const Lookup = () => {
   const [asteroidsID, setAsteroidsID] = useState('')
-  const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup>()
+  const [asteroidsLookup, setAsteroidsLookup] = useState<TypeAsteroidsLookup | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [selectedApproachDate, setSelectedApproachDate] = useState<string>('')
 
-  const GetAsteroidsLookup = () => {
-    try {
-      axios.get(`http://localhost:3333/api/neows/lookup?id=${asteroidsID}`)
-        .then((res) => setAsteroidsLookup(res.data))
-        .catch((error) => { console.error(error) })
-    } catch (error) {
-      console.error("", error)
+  const GetAsteroidsLookup = useCallback(async () => {
+    if (!asteroidsID) {
+      setError("Please enter an Asteroid ID.");
+      return;
     }
-  }
+    setLoading(true);
+    setError(null);
+    setAsteroidsLookup(null);
+
+    try {
+      const response = await fetch(`http://localhost:3333/api/neows/lookup?id=${asteroidsID}`);
+      if (!response.ok) {
+        throw new Error(`The asteroid ID may be incorrect or the API is unavailable.`);
+      }
+      const data = await response.json();
+      setAsteroidsLookup(data);
+
+      if (data.close_approach?.length > 0) {
+        setSelectedApproachDate(data.close_approach[0].close_approach_date);
+      } else {
+        setSelectedApproachDate('');
+      }
+    } catch (e: any) {
+      setError(e.message || "An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  }, [asteroidsID]);
+
+  const selectedApproachData = asteroidsLookup?.close_approach.find(
+    (approach) => approach.close_approach_date === selectedApproachDate
+  );
 
   return (
-    <div className="min-h-screen flex flex-col items-center space-y-5 pb-5">
-      <div className="flex w-full max-w-sm items-center space-x-2">
-        <Input type="text" placeholder="enter the ID" onChange={(e) => setAsteroidsID(e.target.value)}/>
-        <Button onClick={GetAsteroidsLookup}>Search</Button>
-        <span>Advanced Information</span>
+    <div className="container mx-auto p-4 md:p-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Asteroid Lookup</h1>
+        <p className="text-muted-foreground mt-2">Get detailed information about a specific asteroid by its ID.</p>
       </div>
-      <div className="flex">
-        <Card className="h-min w-[500px]">
-          <CardHeader>
-            <CardTitle>Orbital Data</CardTitle>
-            <CardDescription>Information related to the orbit of a space object</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p><span className="text-violet-700 font-bold">Equinox:</span> {asteroidsLookup?.orbital_data.equinox}</p>
-            <p><span className="text-violet-700 font-bold">Observation date:</span> {asteroidsLookup?.orbital_data.observation_date}</p>
-            <p><span className="text-violet-700 font-bold">Aphelion distance:</span> {asteroidsLookup?.orbital_data.aphelion_distance}</p>
-            <p><span className="text-violet-700 font-bold">Perihelion distance:</span> {asteroidsLookup?.orbital_data.perihelion_distance}</p>
-            <p><span className="text-violet-700 font-bold">Semi major axis:</span> {asteroidsLookup?.orbital_data.semi_major_axis}</p>
-            <p><span className="text-violet-700 font-bold">Mean anomaly:</span> {asteroidsLookup?.orbital_data.mean_anomaly}</p>
-            <p><span className="text-violet-700 font-bold">Mean motion:</span> {asteroidsLookup?.orbital_data.mean_motion}</p>
-            <p><span className="text-violet-700 font-bold">Ascending node longitude:</span> {asteroidsLookup?.orbital_data.ascending_node_longitude}</p>
-            <p><span className="text-violet-700 font-bold">Inclination:</span> {asteroidsLookup?.orbital_data.inclination}</p>
-            <p><span className="text-violet-700 font-bold">Perihelion argument:</span> {asteroidsLookup?.orbital_data.perihelion_argument}</p>
-            <p><span className="text-violet-700 font-bold">Eccentricity:</span> {asteroidsLookup?.orbital_data.eccentricity}</p>
-            <p><span className="text-violet-700 font-bold">Observations used:</span> {asteroidsLookup?.orbital_data.observations_used}</p>
-            <p><span className="text-violet-700 font-bold">Epoch osculation:</span> {asteroidsLookup?.orbital_data.epoch_osculation}</p>
-            <p><span className="text-violet-700 font-bold">Minimum orbit intersection:</span> {asteroidsLookup?.orbital_data.minimum_orbit_intersection}</p>
-            <p><span className="text-violet-700 font-bold">Perihelion time:</span> {asteroidsLookup?.orbital_data.perihelion_time}</p>
-            <p><span className="text-violet-700 font-bold">Orbital period:</span> {asteroidsLookup?.orbital_data.orbital_period}</p>
-            <p><span className="text-violet-700 font-bold">Jupiter tisserand invariant:</span> {asteroidsLookup?.orbital_data.jupiter_tisserand_invariant}</p>
-            <p><span className="text-violet-700 font-bold">Orbit class description:</span> {asteroidsLookup?.orbital_data.orbit_class_description}</p>
-            <p><span className="text-violet-700 font-bold">Orbit class range:</span> {asteroidsLookup?.orbital_data.orbit_class_range}</p>
-            <p><span className="text-violet-700 font-bold">Orbit class type:</span> {asteroidsLookup?.orbital_data.orbit_class_type}</p>
-            <p><span className="text-violet-700 font-bold">Orbit determination date:</span> {asteroidsLookup?.orbital_data.orbit_determination_date}</p>
-            <p><span className="text-violet-700 font-bold">Orbit id:</span> {asteroidsLookup?.orbital_data.orbit_id}</p>
-            <p><span className="text-violet-700 font-bold">Orbit uncertainty:</span> {asteroidsLookup?.orbital_data.orbit_uncertainty}</p>
-          </CardContent>
-        </Card>
 
-        <div className="space-y-1">
-         <Card className="h-min w-[500px]">
+      <div className="flex justify-center items-center gap-2 mb-8">
+        <Input
+          type="text"
+          placeholder="Enter the Asteroid ID"
+          onChange={(e) => setAsteroidsID(e.target.value)}
+          className="max-w-xs"
+        />
+        <Button onClick={GetAsteroidsLookup} disabled={loading}>
+          {loading ? 'Searching...' : 'Search'}
+        </Button>
+      </div>
+
+      {loading && <Loading />}
+      {error && (
+        <div className="text-center p-12 border-2 border-dashed border-red-500 rounded-lg">
+          <p className="text-red-400">{error}</p>
+        </div>
+      )}
+
+      {!loading && !error && !asteroidsLookup && (
+        <div className="text-center p-12 border-2 border-dashed border-slate-700 rounded-lg">
+          <p className="text-muted-foreground">Enter an Asteroid ID to see its detailed information.</p>
+        </div>
+      )}
+
+      {asteroidsLookup && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 animate-fade-in">
+          <Card>
             <CardHeader>
-              <CardTitle>Estimated Diameter</CardTitle>
-              <CardDescription>Diameter information in different measurements</CardDescription>
+              <CardTitle>Orbital Data</CardTitle>
+              <CardDescription>Orbit information for {asteroidsLookup.name}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p><span className="text-violet-700 font-bold">Miles:</span> {asteroidsLookup?.estimated_diameter.miles}</p>
-              <p><span className="text-violet-700 font-bold">Kilometers:</span> {asteroidsLookup?.estimated_diameter.kilometers}</p>
-              <p><span className="text-violet-700 font-bold">Meters:</span> {asteroidsLookup?.estimated_diameter.meters}</p>
-              <p><span className="text-violet-700 font-bold">Feet:</span> {asteroidsLookup?.estimated_diameter.feet}</p>
+              <DataRow label="Orbit Class" value={asteroidsLookup.orbital_data.orbit_class_type} />
+              <DataRow label="Aphelion Distance" value={asteroidsLookup.orbital_data.aphelion_distance} />
+              <DataRow label="Perihelion Distance" value={asteroidsLookup.orbital_data.perihelion_distance} />
+              <DataRow label="Orbital Period" value={`${Math.round(Number(asteroidsLookup.orbital_data.orbital_period))} days`} />
+              <DataRow label="Mean Anomaly" value={asteroidsLookup.orbital_data.mean_anomaly} />
+              <DataRow label="Inclination" value={asteroidsLookup.orbital_data.inclination} />
+              <DataRow label="Equinox" value={asteroidsLookup.orbital_data.equinox} />
             </CardContent>
           </Card>
 
-          {/* <Card className="h-min w-[500px]">
-            <CardHeader>
-              <CardTitle>Close Approach</CardTitle>
-              <CardDescription>Data on speeds, distances and more</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <div className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Estimated Diameter</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <DataRow label="Kilometers" value={`${asteroidsLookup.estimated_diameter.kilometers.estimated_diameter_min.toFixed(3)} - ${asteroidsLookup.estimated_diameter.kilometers.estimated_diameter_max.toFixed(3)}`} />
+                <DataRow label="Meters" value={`${asteroidsLookup.estimated_diameter.meters.estimated_diameter_min.toFixed(3)} - ${asteroidsLookup.estimated_diameter.meters.estimated_diameter_max.toFixed(3)}`} />
+              </CardContent>
+            </Card>
 
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Date" />
-                </SelectTrigger>
-                <SelectContent>
-                  {asteroidsLookup?.close_approach.map((dt, key) => <SelectItem value={dt.close_approach_date} key={key}>{dt.close_approach_date}</SelectItem> )}
-                </SelectContent>
-              </Select>
-
-              <p>Date: {asteroidsLookup?.close_approach[closeApproachDate].close_approach_date_full}</p>
-              <p>---</p>
-              <div>
-                <p>Kilometers per Second: {asteroidsLookup?.close_approach[0].relative_velocity.kilometers_second}</p>
-                <p>Kilometers per Hour: {asteroidsLookup?.close_approach[0].relative_velocity.kilometers_hour}</p>
-                <p>Miles per Hour: {asteroidsLookup?.close_approach[0].relative_velocity.miles_hour}</p>
-              </div>
-              <p>---</p>
-              <div>
-                <p>Astronomical: {asteroidsLookup?.close_approach[0].miss_distance.astronomical}</p>
-                <p>Lunar: {asteroidsLookup?.close_approach[0].miss_distance.lunar}</p>
-                <p>Kilometers: {asteroidsLookup?.close_approach[0].miss_distance.kilometers}</p>
-                <p>Miles: {asteroidsLookup?.close_approach[0].miss_distance.miles}</p>
-              </div>
-              <p>---</p>
-              <p>Orbiting Body: {asteroidsLookup?.close_approach[0].orbiting_body}</p>
-            </CardContent>
-          </Card> */}
+            {selectedApproachData && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Close Approach Data</CardTitle>
+                  <CardDescription>Select a date to see approach details</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <Select
+                    placeholder="Select approach date"
+                    options={asteroidsLookup.close_approach.map(a => ({ value: a.close_approach_date, label: a.close_approach_date }))}
+                    value={selectedApproachDate}
+                    onChange={setSelectedApproachDate}
+                  />
+                  <div>
+                    <h4 className="font-semibold mb-2">Relative Velocity</h4>
+                    <DataRow label="Km/h" value={Number(selectedApproachData.relative_velocity.kilometers_hour).toLocaleString()} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Miss Distance</h4>
+                    <DataRow label="Kilometers" value={Number(selectedApproachData.miss_distance.kilometers).toLocaleString()} />
+                    <DataRow label="Lunar" value={Number(selectedApproachData.miss_distance.lunar).toLocaleString()} />
+                  </div>
+                  <DataRow label="Orbiting Body" value={selectedApproachData.orbiting_body} />
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
-
-// className="text-violet-700 font-bold"

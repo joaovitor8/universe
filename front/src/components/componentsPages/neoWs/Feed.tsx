@@ -1,72 +1,114 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-// import { } from "@/components/ui/Table"
+import { useCallback, useEffect, useState } from "react"
+import axios from "axios"
 
-import { Input } from "@/components/ui/Input"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/Table"
 import { Button } from "@/components/ui/Button"
+import { Input } from "@/components/ui/Input"
+import { ExternalLink } from "lucide-react"
 
 import { TypeAsteroidsFeed } from "@/components/Types"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import Loading from "@/app/loading"
+
 
 export const Feed = () => {
   const [asteroidsFeed, setAsteroidsFeed] = useState<TypeAsteroidsFeed[]>([])
-  const [date, setDate] = useState<Date>()
+  const [date, setDate] = useState<Date>(new Date())
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const GetFeed = () => {
+  const GetFeed = useCallback(() => {
+    setLoading(true)
+    setError(null)
     try {
-      const formatDate = date ? `${date?.getFullYear()}-${String(Number(date?.getMonth())+1).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}` : `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`
+      const formatDate = date.toISOString().split('T')[0];
 
       axios.get(`http://127.0.0.1:4000/api/neows/feed?date=${formatDate}`)
         .then((res) => setAsteroidsFeed(res.data))
-        .catch((error) => { console.error(error) })
+        .catch((err) => {
+          console.error(err)
+          setError("Failed to fetch asteroid data. The API might be down or the date is invalid.")
+          setAsteroidsFeed([])
+        })
+        .finally(() => setLoading(false))
 
-    } catch (error) {
-      console.error("", error)
+    } catch (err) {
+      console.error("Client-side error:", err)
+      setError("An unexpected error occurred.")
+      setLoading(false)
     }
-  }
+  }, [date])
 
   useEffect(() => {
     GetFeed()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(asteroidsFeed)
-
   return (
-    <div className="flex flex-col items-center p-4 space-y-6">
-      <div className="flex items-center space-x-1">
-        <Input type="date" onChange={(e) => setDate(new Date(e.target.value))} className="w-full sm:w-auto"/>
-        
-        <Button onClick={GetFeed} className="w-full sm:w-auto">Search</Button>
+    <div className="container mx-auto p-4 md:p-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Near Earth Objects Feed</h1>
+        <p className="text-muted-foreground mt-2">Browse asteroids based on their closest approach date to Earth.</p>
       </div>
 
-      <table className="border border-purple-700 rounded-lg">
-        <thead className="border border-purple-700">
-          <tr>
-            <th className="p-2 border border-purple-700">ID</th>
-            <th className="p-2 border border-purple-700">Name</th>
-            <th className="p-2 border border-purple-700">Absolute Magnitude</th>
-            <th className="p-2 border border-purple-700">Sentinel Object</th>
-            <th className="p-2 border border-purple-700">Potentially Dangerous</th>
-            <th className="p-2 border border-purple-700">Link JPL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {asteroidsFeed.map((asteroid) => (
-            <tr key={asteroid.id}>
-              <td className="p-2 border border-purple-700">{asteroid.id}</td>
-              <td className="p-2 border border-purple-700">{asteroid.name}</td>
-              <td className="p-2 border border-purple-700">{asteroid.absolute_magnitude_h}</td>
-              <td className="p-2 border border-purple-700">{asteroid.sentry_object ? "Yes" : "No"}</td>
-              <td className="p-2 border border-purple-700">{asteroid.potentially_hazardous ? "Yes" : "No"}</td>
-              <td className="p-2 border border-purple-700">
-                <a href={asteroid.nasa_jpl_url} target="_blank">Link</a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="flex justify-center items-center gap-2 mb-8">
+        <Input
+          type="date"
+          value={date.toISOString().split('T')[0]}
+          onChange={(e) => setDate(new Date(e.target.value))}
+          className="max-w-xs"
+        />
+        <Button onClick={GetFeed} disabled={loading}>
+          {loading ? 'Searching...' : 'Search'}
+        </Button>
+      </div>
+
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <div className="text-center p-12 border-2 border-dashed border-red-500 rounded-lg">
+          <p className="text-red-400">{error}</p>
+        </div>
+      ) : (
+        <div className="border border-slate-800 rounded-lg overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead className="text-center">Magnitude</TableHead>
+                <TableHead className="text-center">Potentially Hazardous</TableHead>
+                <TableHead className="text-right">More Info</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {asteroidsFeed.length > 0 ? (
+                asteroidsFeed.map((asteroid) => (
+                  <TableRow key={asteroid.id}>
+                    <TableCell className="font-medium">{asteroid.name.replace(/[()]/g, '')}</TableCell>
+                    <TableCell className="text-center">{asteroid.absolute_magnitude_h}</TableCell>
+                    <TableCell className={`text-center ${asteroid.potentially_hazardous ? "destructive" : "secondary"}`} >
+                        {asteroid.potentially_hazardous ? "Yes" : "No"}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <a href={asteroid.nasa_jpl_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-purple-400 hover:text-purple-300">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={4} className="h-24 text-center">
+                    No asteroids found for this date.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      )}
     </div>
   )
 }
