@@ -76,7 +76,8 @@ export const Feed = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
+                <TableHead>ID</TableHead>
+                <TableHead className="text-center">Name</TableHead>
                 <TableHead className="text-center">Magnitude</TableHead>
                 <TableHead className="text-center">Potentially Hazardous</TableHead>
                 <TableHead className="text-right">More Info</TableHead>
@@ -86,6 +87,7 @@ export const Feed = () => {
               {asteroidsFeed.length > 0 ? (
                 asteroidsFeed.map((asteroid) => (
                   <TableRow key={asteroid.id}>
+                    <TableCell>{asteroid.id}</TableCell>
                     <TableCell className="font-medium">{asteroid.name.replace(/[()]/g, '')}</TableCell>
                     <TableCell className="text-center">{asteroid.absolute_magnitude_h}</TableCell>
                     <TableCell className={`text-center ${asteroid.potentially_hazardous ? "destructive" : "secondary"}`} >

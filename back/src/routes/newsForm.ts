@@ -37,6 +37,24 @@ export async function RouteNewsForm(app: FastifyInstance, db: sqlite3.Database) 
   });
 
 
+  // Atualizar as preferências de notícias de um usuário pelo email
+  app.put('/db/news/updateUser/:email', (request: any, reply: any) => {
+    const { email } = request.params;
+    const { news } = request.body;
+    const {name} = request.body;
+    const newsToSave = Array.isArray(news) ? JSON.stringify(news) : news;
+
+    db.run('UPDATE users SET news = ?, name = ? WHERE email = ?', [newsToSave, name, email], function (err) {
+      if (err) {
+        return reply.code(500).send({ error: 'Error updating user (Erro ao atualizar usuário)', details: err.message });
+      }
+      if (this.changes === 0) {
+        return reply.code(404).send({ error: 'User not found (Usuário não encontrado)' });
+      }
+      return reply.send({ message: 'User updated successfully (Usuário atualizado com sucesso)' });
+    });
+  });
+
   // Deletar um usuário pelo email
   app.delete('/db/news/deleteUser/:email', (request: any, reply: any) => {
     const { email } = request.params;
