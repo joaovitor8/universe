@@ -10,7 +10,7 @@ export async function RouteNews(app: FastifyInstance) {
       if (response.status === 200) {
         const data = response.data.results
 
-        const processedData = data.map((dt) => ({
+        const processedData = data.map((dt: any) => ({
           id: dt.id,
           title: dt.title,
           author: dt.authors[0].name,
@@ -39,7 +39,7 @@ export async function RouteNews(app: FastifyInstance) {
       if (response.status === 200) {
         const data = response.data.results
 
-        const processedData = data.map((dt) => ({
+        const processedData = data.map((dt: any) => ({
           id: dt.id,
           title: dt.title,
           author: dt.authors[0].name,
@@ -68,7 +68,7 @@ export async function RouteNews(app: FastifyInstance) {
       if (response.status === 200) {
         const data = response.data.results
 
-        const processedData = data.map((dt) => ({
+        const processedData = data.map((dt: any) => ({
           id: dt.id,
           title: dt.title,
           author: dt.news_site,

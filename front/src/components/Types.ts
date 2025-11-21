@@ -1,5 +1,4 @@
 
-
 export interface TypeAsteroidsFeed {
   id: string
   name: string
@@ -9,7 +8,16 @@ export interface TypeAsteroidsFeed {
   nasa_jpl_url: string
 }
 
+
+
 export interface TypeAsteroidsLookup {
+  id: string
+  name: string
+  nasa_jpl_url: string
+  absolute_magnitude_h: number
+  is_potentially_hazardous_asteroid: boolean
+  is_sentry_object: boolean
+
   estimated_diameter: {
     miles: number
     kilometers: number

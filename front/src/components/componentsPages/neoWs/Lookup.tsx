@@ -34,7 +34,7 @@ export const Lookup = () => {
     setAsteroidsLookup(null);
 
     try {
-      const response = await fetch(`http://localhost:3333/api/neows/lookup?id=${asteroidsID}`);
+      const response = await fetch(`http://127.0.0.1:4000/api/neows/lookup?id=${asteroidsID}`);
       if (!response.ok) {
         throw new Error(`The asteroid ID may be incorrect or the API is unavailable.`);
       }
@@ -53,7 +53,7 @@ export const Lookup = () => {
     }
   }, [asteroidsID]);
 
-  const selectedApproachData = asteroidsLookup?.close_approach.find(
+  const selectedApproachData = asteroidsLookup?.close_approach?.find(
     (approach) => approach.close_approach_date === selectedApproachDate
   );
 
@@ -113,8 +113,10 @@ export const Lookup = () => {
                 <CardTitle>Estimated Diameter</CardTitle>
               </CardHeader>
               <CardContent>
-                <DataRow label="Kilometers" value={`${asteroidsLookup.estimated_diameter.kilometers.estimated_diameter_min.toFixed(3)} - ${asteroidsLookup.estimated_diameter.kilometers.estimated_diameter_max.toFixed(3)}`} />
-                <DataRow label="Meters" value={`${asteroidsLookup.estimated_diameter.meters.estimated_diameter_min.toFixed(3)} - ${asteroidsLookup.estimated_diameter.meters.estimated_diameter_max.toFixed(3)}`} />
+                <DataRow label="Miles" value={`${asteroidsLookup.estimated_diameter.miles}`} />
+                <DataRow label="Kilometers" value={`${asteroidsLookup.estimated_diameter.kilometers}`} />
+                <DataRow label="Meters" value={`${asteroidsLookup.estimated_diameter.meters}`} />
+                <DataRow label="Feet" value={`${asteroidsLookup.estimated_diameter.feet}`} />
               </CardContent>
             </Card>
 

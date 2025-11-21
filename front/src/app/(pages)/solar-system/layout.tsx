@@ -8,9 +8,8 @@ export default function SolarSystemLayout({ children }: Readonly<{ children: Rea
         <p className="text-muted-foreground mt-2">Select a celestial body to learn more about it.</p>
       </div>
       <SolarSystemNav />
-      <main className="mt-12">
-{children}
-      </main>
+
+      <main className="mt-12"> {children} </main>
     </section>
   );
 }

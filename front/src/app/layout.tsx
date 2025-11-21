@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body> {/* className={`${geistSans.variable} ${geistMono.variable} antialiased`} */}
+      <body>
         <Stars className="fixed inset-0 -z-10" quantity={100} />
         <Header/>
         {children}
@@ -33,3 +33,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   )
 }
+
+// className={`${geistSans.variable} ${geistMono.variable} antialiased`}

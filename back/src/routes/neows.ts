@@ -64,7 +64,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
 
         const processedData = {
           id: data.id,   // ID do asteroide
-          nome: data.name,   // Nome do asteroide
+          name: data.name,   // Nome do asteroide
           nasa_jpl_url: data.nasa_jpl_url,   // URL do JPL da NASA para o asteroide
           absolute_magnitude_h: data.absolute_magnitude_h,   // Magnitude absoluta do asteroide  
           is_potentially_hazardous_asteroid: data.is_potentially_hazardous_asteroid,   // Indica se o asteroide é potencialmente perigoso
