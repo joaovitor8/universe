@@ -23,7 +23,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
         const data = response.data.near_earth_objects[dateAsteroids]
 
         // tratamento dos dados
-        const processedData = data.map((dt) => ({
+        const processedData = data.map((dt: any) => ({
           id: dt.id,   // ID do asteroide
           name: dt.name,   // Nome do asteroide
           absolute_magnitude_h: `${Number(dt.absolute_magnitude_h).toFixed(2)}`,   // Magnitude absoluta do asteroide
@@ -70,7 +70,7 @@ export async function RouteNeoWs(app: FastifyInstance) {
           is_potentially_hazardous_asteroid: data.is_potentially_hazardous_asteroid,   // Indica se o asteroide é potencialmente perigoso
           is_sentry_object: data.is_sentry_object,   // Indica se o asteroide é um objeto Sentry
 
-          close_approach_data: data.close_approach_data.map((e) => ({
+          close_approach_data: data.close_approach_data.map((e: any) => ({
             close_approach_date: e.close_approach_date,   // Data de aproximação do asteroide
             close_approach_date_full: e.close_approach_date_full,    // Data completa de aproximação do asteroide
             orbiting_body: e.orbiting_body,   // Corpo celeste em órbita do asteroide

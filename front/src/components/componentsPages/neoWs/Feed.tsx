@@ -79,6 +79,7 @@ export const Feed = () => {
                 <TableHead>ID</TableHead>
                 <TableHead className="text-center">Name</TableHead>
                 <TableHead className="text-center">Magnitude</TableHead>
+                {/* <TableHead className="text-center">Sentry Object</TableHead> */}
                 <TableHead className="text-center">Potentially Hazardous</TableHead>
                 <TableHead className="text-right">More Info</TableHead>
               </TableRow>
@@ -90,6 +91,9 @@ export const Feed = () => {
                     <TableCell>{asteroid.id}</TableCell>
                     <TableCell className="font-medium">{asteroid.name.replace(/[()]/g, '')}</TableCell>
                     <TableCell className="text-center">{asteroid.absolute_magnitude_h}</TableCell>
+                    {/* <TableCell className={`text-center ${asteroid.sentry_object ? "destructive" : "secondary"}`} >
+                        {asteroid.sentry_object ? "Yes" : "No"}
+                    </TableCell> */}
                     <TableCell className={`text-center ${asteroid.potentially_hazardous ? "destructive" : "secondary"}`} >
                         {asteroid.potentially_hazardous ? "Yes" : "No"}
                     </TableCell>

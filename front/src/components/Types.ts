@@ -9,7 +9,6 @@ export interface TypeAsteroidsFeed {
 }
 
 
-
 export interface TypeAsteroidsLookup {
   id: string
   name: string
@@ -49,9 +48,9 @@ export interface TypeAsteroidsLookup {
     orbit_id: string
     orbit_uncertainty: string
   }
-  close_approach: [{
-    close_approach_date: string
+  close_approach_data: [{
 		close_approach_date_full: string
+    close_approach_date: string
 		orbiting_body: string
 		relative_velocity: {
 			kilometers_second: string
