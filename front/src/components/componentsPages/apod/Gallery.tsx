@@ -49,8 +49,8 @@ export const Gallery = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {galleryPictureTheDay && galleryPictureTheDay.length > 0 ? (
-          galleryPictureTheDay.slice().reverse().map((item) => (
-            <div key={item.url} className="group relative block overflow-hidden shadow-lg">
+          galleryPictureTheDay.slice().reverse().map((item, key) => (
+            <div key={key} className="group relative block overflow-hidden shadow-lg">
               <a href={item.hdurl || item.url} target="_blank" rel="noopener noreferrer">
                 <div className="aspect-square w-full">
                   {item.media_type === 'image' ? (
