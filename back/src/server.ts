@@ -3,9 +3,9 @@ import { fastifyCors } from "@fastify/cors"
 
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
-import { RouteDonki } from "./routes/donki"
+// import { RouteDonki } from "./routes/donki"
+import { RouteSolarSystem } from "./routes/solar-system"
 import { RouteNews } from "./routes/news"
-// import { RouteSolarSystem } from "./routes/solar-system"
 import { RouteNewsForm } from "./routes/newsForm"
 import "dotenv/config"
 
@@ -39,9 +39,10 @@ db.run(`
 
 fastify.register(RouteApod)
 fastify.register(RouteNeoWs)
-fastify.register(RouteDonki)
+// fastify.register(RouteDonki)
+fastify.register(RouteSolarSystem)
+
 fastify.register(RouteNews)
-// fastify.register(RouteSolarSystem)
 RouteNewsForm(fastify, db)
 
 const port = process.env.PORT || 4000;

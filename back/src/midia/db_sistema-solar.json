@@ -1,337 +1,472 @@
 {
-  "sistema_solar": {
-    "planetas": [
-      {
-        "id": 1,
-        "nome": "Mercúrio",
-        "tipo": "Planeta Rochoso",
-        "apresentacao": "O menor planeta do sistema solar e o mais próximo do Sol, um mundo de extremos de temperatura.",
-        "descricao": "Mercúrio é apenas um pouco maior que a Lua da Terra. Devido à sua proximidade com o Sol, não possui atmosfera significativa para reter calor, o que causa variações brutais de temperatura entre o dia e a noite. Sua superfície é marcada por crateras de impacto, lembrando muito a nossa Lua.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/pluto.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/pluto.png"
-        },
-        "geologia": {
-          "estrutura": "Possui um núcleo metálico enorme que ocupa cerca de 85% do seu raio, parcialmente líquido. O manto e a crosta são finos e compostos de silicatos.",
-          "superficie": "Crivada de crateras, penhascos (escarpas) formados pelo resfriamento e contração do planeta, e planícies vulcânicas suaves."
-        },
-        "atmosfera": {
-          "tipo": "Exosfera (Tênue)",
-          "composicao": ["Oxigênio", "Sódio", "Hidrogênio", "Hélio", "Potássio"],
-          "detalhes": "Não possui uma atmosfera verdadeira, apenas uma exosfera fina criada por átomos explodidos da superfície pelo vento solar e impactos de micrometeoroides."
-        },
-        "satelites_naturais": {
-          "possui": false,
-          "lista": []
-        },
-        "missoes_espaciais": [
-          { "nome": "Mariner 10", "agencia": "NASA", "ano": "1973-1975", "feito": "Primeira a sobrevoar e mapear cerca de 45% da superfície." },
-          { "nome": "MESSENGER", "agencia": "NASA", "ano": "2004-2015", "feito": "Primeira a orbitar Mercúrio, mapeou 100% da superfície e descobriu gelo nos polos." },
-          { "nome": "BepiColombo", "agencia": "ESA/JAXA", "ano": "Lançada em 2018", "feito": "Missão conjunta para estudar o campo magnético e magnetosfera (em andamento)." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "4.879 km",
-          "distancia_media_sol": "57.9 milhões de km",
-          "dia_sideral": "58,6 dias terrestres",
-          "ano_orbital": "88 dias terrestres",
-          "gravidade": "3.7 m/s²",
-          "temperatura_media": "167°C (Varia de -180°C a 430°C)"
-        }
+  "planets": [
+    {
+      "id": 1,
+      "name": "Mercúrio",
+      "type": "Terrestre",
+      "slug": "mercurio",
+      "presentation": "O mensageiro veloz e o planeta mais próximo do Sol.",
+      "earth_comparison": {
+        "size": "0.38x Terra (pouco maior que a Lua)",
+        "gravity": "0.38x Terra (você se sentiria 62% mais leve)",
+        "day_length": "58.6 dias terrestres"
       },
-      {
-        "id": 2,
-        "nome": "Vênus",
-        "tipo": "Planeta Rochoso",
-        "apresentacao": "O planeta mais quente do sistema solar, frequentemente chamado de 'gêmeo maligno' da Terra.",
-        "descricao": "Embora seja o segundo planeta a partir do Sol, é mais quente que Mercúrio devido a um efeito estufa descontrolado. Vênus gira em sentido horário (movimento retrógrado), o oposto da maioria dos planetas.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/venus.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/venus.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo de ferro com cerca de 6.000 km de diâmetro, manto rochoso e crosta sólida.",
-          "superficie": "Uma paisagem infernal seca, dominada por vulcanismo. Possui poucas crateras de impacto pequenas, pois a atmosfera densa destrói meteoros menores. A superfície é geologicamente jovem."
-        },
-        "atmosfera": {
-          "tipo": "Densa e Tóxica",
-          "composicao": ["Dióxido de Carbono (96.5%)", "Nitrogênio (3.5%)", "Nuvens de Ácido Sulfúrico"],
-          "detalhes": "A pressão atmosférica na superfície é 90 vezes maior que a da Terra, equivalente à pressão a 1 km de profundidade no oceano."
-        },
-        "satelites_naturais": {
-          "possui": false,
-          "lista": []
-        },
-        "missoes_espaciais": [
-          { "nome": "Venera (Programa)", "agencia": "URSS", "ano": "1961-1984", "feito": "A Venera 7 foi a primeira sonda a pousar suavemente em outro planeta e transmitir dados." },
-          { "nome": "Magellan", "agencia": "NASA", "ano": "1989-1994", "feito": "Mapeou 98% da superfície de Vênus usando radar para ver através das nuvens." },
-          { "nome": "Akatsuki", "agencia": "JAXA", "ano": "2010", "feito": "Estudo da dinâmica atmosférica e super-rotação." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "12.104 km",
-          "distancia_media_sol": "108.2 milhões de km",
-          "dia_sideral": "243 dias terrestres",
-          "ano_orbital": "225 dias terrestres",
-          "gravidade": "8.87 m/s²",
-          "temperatura_media": "462°C"
-        }
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao deus mensageiro romano, conhecido por sua velocidade.",
+        "astronomical_symbol": "☿"
       },
-      {
-        "id": 3,
-        "nome": "Terra",
-        "tipo": "Planeta Rochoso",
-        "apresentacao": "O nosso lar, o único planeta conhecido até agora que abriga vida.",
-        "descricao": "A Terra é o maior dos planetas rochosos. É o único mundo com água líquida estável na superfície, o que é fundamental para a vida como a conhecemos.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/earth.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/earth.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo interno sólido de ferro/níquel, núcleo externo líquido (gera o campo magnético), manto viscoso e crosta sólida.",
-          "superficie": "71% coberta por água e 29% por terra. A superfície está em constante mudança devido à tectônica de placas, vulcanismo e erosão."
-        },
-        "atmosfera": {
-          "tipo": "Sustentadora de Vida",
-          "composicao": ["Nitrogênio (78%)", "Oxigênio (21%)", "Argônio (0.9%)", "Outros gases"],
-          "detalhes": "Protege o planeta da radiação solar nociva e regula a temperatura global."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Lua"],
-          "detalhes": "A Lua estabiliza a oscilação do eixo da Terra, o que torna o clima mais estável."
-        },
-        "missoes_espaciais": [
-           { "nome": "Programa Apollo", "agencia": "NASA", "ano": "1961-1972", "feito": "Missões tripuladas que levaram humanos à Lua e permitiram ver a Terra do espaço." },
-           { "nome": "Estação Espacial Internacional (ISS)", "agencia": "Multinacional", "ano": "1998-Presente", "feito": "Laboratório contínuo em órbita baixa da Terra." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "12.742 km",
-          "distancia_media_sol": "149.6 milhões de km (1 UA)",
-          "dia_sideral": "23h 56min",
-          "ano_orbital": "365.25 dias",
-          "gravidade": "9.8 m/s²",
-          "temperatura_media": "15°C"
-        }
+      "curiosities": [
+        "Um ano em Mercúrio dura apenas 88 dias terrestres.",
+        "Possui as flutuações de temperatura mais extremas do sistema solar.",
+        "Apesar de ser o mais próximo do Sol, existe gelo em crateras permanentemente sombreadas."
+      ],
+      "description": "Mercúrio é o menor planeta do Sistema Solar. Apesar de sua proximidade com o Sol, não é o planeta mais quente. É um mundo de extremos, com variações drásticas de temperatura entre o dia e a noite. Sua superfície é marcada por crateras profundas, lembrando a Lua da Terra.",
+      "geological_data": {
+        "composition": "Rochoso e metálico. Densidade extremamente alta para seu tamanho.",
+        "core": "Enorme núcleo metálico de ferro, ocupando cerca de 85% do raio do planeta.",
+        "surface": "Crivada de crateras de impacto e grandes escarpas formadas pelo resfriamento do planeta."
       },
-      {
-        "id": 4,
-        "nome": "Marte",
-        "tipo": "Planeta Rochoso",
-        "apresentacao": "O Planeta Vermelho, um mundo desértico e frio com evidências de um passado úmido.",
-        "descricao": "Marte tem uma cor avermelhada devido ao óxido de ferro (ferrugem) no solo. É o planeta mais estudado além da Terra, com planos para futura colonização humana.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/mars.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/mars.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo denso (ferro, níquel, enxofre), manto rochoso e uma crosta espessa.",
-          "superficie": "Abriga o maior vulcão do sistema solar (Olympus Mons) e o maior cânion (Valles Marineris). Possui calotas polares de água e gelo seco."
-        },
-        "atmosfera": {
-          "tipo": "Fina",
-          "composicao": ["Dióxido de Carbono (95%)", "Nitrogênio (2.8%)", "Argônio (2%)"],
-          "detalhes": "Muito rarefeita, não oferece muita proteção contra impactos ou radiação. Tempestades de poeira globais são comuns."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Fobos", "Deimos"],
-          "detalhes": "Provavelmente asteroides capturados pela gravidade de Marte."
-        },
-        "missoes_espaciais": [
-          { "nome": "Viking 1 e 2", "agencia": "NASA", "ano": "1975", "feito": "Primeiros pousos bem-sucedidos com envio de imagens coloridas da superfície." },
-          { "nome": "Curiosity (Rover)", "agencia": "NASA", "ano": "2011-Presente", "feito": "Investigação da habitabilidade passada e geologia." },
-          { "nome": "Perseverance", "agencia": "NASA", "ano": "2020-Presente", "feito": "Busca por sinais de vida microbiana antiga e coleta de amostras." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "6.779 km",
-          "distancia_media_sol": "227.9 milhões de km",
-          "dia_sideral": "24h 37min",
-          "ano_orbital": "687 dias terrestres",
-          "gravidade": "3.71 m/s²",
-          "temperatura_media": "-63°C"
-        }
+      "atmospheric_data": {
+        "summary": "Praticamente inexistente (Exosfera).",
+        "details": "Não possui uma atmosfera tradicional para reter calor. Possui uma fina 'exosfera' de átomos expelidos da superfície pelo vento solar.",
+        "main_components": ["Oxigênio", "Sódio", "Hidrogênio", "Hélio", "Potássio"]
       },
-      {
-        "id": 5,
-        "nome": "Júpiter",
-        "tipo": "Gigante Gasoso",
-        "apresentacao": "O gigante do sistema solar, com massa duas vezes maior que todos os outros planetas juntos.",
-        "descricao": "Júpiter é conhecido por sua Grande Mancha Vermelha, uma tempestade anticiclônica que dura séculos. Ele age como um 'escudo' para os planetas internos, atraindo muitos asteroides com sua gravidade.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/jupiter.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/jupiter.png"
-        },
-        "geologia": {
-          "estrutura": "Provável núcleo rochoso cercado por uma camada profunda de hidrogênio metálico líquido (que conduz eletricidade e gera o campo magnético).",
-          "superficie": "Não possui superfície sólida definida. A atmosfera simplesmente fica mais densa até virar líquido."
-        },
-        "atmosfera": {
-          "tipo": "Espessa e Turbulenta",
-          "composicao": ["Hidrogênio (90%)", "Hélio (10%)", "Traços de metano e amônia"],
-          "detalhes": "Caracterizada por faixas de nuvens coloridas e ventos fortíssimos."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Io", "Europa", "Ganimedes", "Calisto", "+90 outros"],
-          "detalhes": "Ganimedes é a maior lua do sistema solar. Europa possui um oceano subterrâneo que pode abrigar vida."
-        },
-        "missoes_espaciais": [
-          { "nome": "Galileo", "agencia": "NASA", "ano": "1989-2003", "feito": "Orbitou Júpiter por anos e lançou uma sonda na atmosfera." },
-          { "nome": "Juno", "agencia": "NASA", "ano": "2011-Presente", "feito": "Estuda o campo magnético, gravitacional e a estrutura interna profunda." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "139.820 km",
-          "distancia_media_sol": "778 milhões de km",
-          "dia_sideral": "9h 56min",
-          "ano_orbital": "11.8 anos terrestres",
-          "gravidade": "24.79 m/s²",
-          "temperatura_media": "-110°C (nas nuvens)"
-        }
+      "natural_satellites": {
+        "has_satellites": false,
+        "count": 0,
+        "list": []
       },
-      {
-        "id": 6,
-        "nome": "Saturno",
-        "tipo": "Gigante Gasoso",
-        "apresentacao": "A joia do sistema solar, famoso por seu complexo sistema de anéis.",
-        "descricao": "Saturno é o planeta menos denso; se houvesse uma piscina grande o suficiente, ele flutuaria. Seus anéis são feitos de pedaços de gelo, poeira e rocha.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/saturn.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/saturn.png"
+      "space_missions": [
+        {
+          "name": "Mariner 10",
+          "agency": "NASA",
+          "year": "1974-1975",
+          "feat": "Primeira sonda a visitar Mercúrio, mapeou 45% da superfície."
         },
-        "geologia": {
-          "estrutura": "Semelhante a Júpiter, com núcleo rochoso, hidrogênio metálico líquido e hidrogênio molecular.",
-          "superficie": "Gasosa/Líquida, sem superfície sólida."
-        },
-        "atmosfera": {
-          "tipo": "Espessa",
-          "composicao": ["Hidrogênio (96%)", "Hélio (3%)", "Metano"],
-          "detalhes": "Possui uma tempestade hexagonal única em seu polo norte."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Titã", "Encélado", "Mimas", "+140 outros"],
-          "detalhes": "Titã é a única lua com atmosfera densa e lagos de metano líquido na superfície."
-        },
-        "missoes_espaciais": [
-          { "nome": "Cassini-Huygens", "agencia": "NASA/ESA/ASI", "ano": "1997-2017", "feito": "Cassini orbitou Saturno por 13 anos; Huygens pousou na lua Titã." },
-          { "nome": "Voyager 1 e 2", "agencia": "NASA", "ano": "1980-1981", "feito": "Sobrevoos que revelaram a complexidade dos anéis." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "116.460 km",
-          "distancia_media_sol": "1.4 bilhão de km",
-          "dia_sideral": "10h 34min",
-          "ano_orbital": "29.4 anos terrestres",
-          "gravidade": "10.44 m/s²",
-          "temperatura_media": "-140°C"
+        {
+          "name": "MESSENGER",
+          "agency": "NASA",
+          "year": "2004-2015",
+          "feat": "Primeira a orbitar o planeta, mapeou 100% da superfície."
         }
-      },
-      {
-        "id": 7,
-        "nome": "Urano",
-        "tipo": "Gigante de Gelo",
-        "apresentacao": "O planeta inclinado, girando 'deitado' em sua órbita.",
-        "descricao": "Urano tem uma cor azul-esverdeada devido ao metano em sua atmosfera. É o planeta mais frio do sistema solar (mesmo não sendo o mais distante).",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/uranus.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/uranus.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo rochoso pequeno, cercado por um manto de 'gelos' fluidos (água, amônia, metano).",
-          "superficie": "Sem superfície sólida."
-        },
-        "atmosfera": {
-          "tipo": "Glacial",
-          "composicao": ["Hidrogênio (83%)", "Hélio (15%)", "Metano (2%)"],
-          "detalhes": "Atmosfera muito fria e com pouca atividade visível comparada aos outros gigantes."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Miranda", "Titânia", "Oberon", "Ariel", "Umbriel", "+22 outros"],
-          "detalhes": "Suas luas receberam nomes de personagens das obras de William Shakespeare e Alexander Pope."
-        },
-        "missoes_espaciais": [
-          { "nome": "Voyager 2", "agencia": "NASA", "ano": "1986", "feito": "Única sonda espacial a visitar Urano (sobrevoo), descobrindo novas luas e anéis." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "50.724 km",
-          "distancia_media_sol": "2.9 bilhões de km",
-          "dia_sideral": "17h 14min",
-          "ano_orbital": "84 anos terrestres",
-          "gravidade": "8.69 m/s²",
-          "temperatura_media": "-195°C"
-        }
-      },
-      {
-        "id": 8,
-        "nome": "Netuno",
-        "tipo": "Gigante de Gelo",
-        "apresentacao": "O planeta dos ventos supersônicos, o mais distante do Sol.",
-        "descricao": "Netuno é escuro, frio e açoitado por ventos que chegam a 2.000 km/h. Foi o primeiro planeta previsto pela matemática antes de ser observado.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/neptune.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/neptune.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo rochoso (tamanho da Terra), manto de água quente, amônia e metano.",
-          "superficie": "Sem superfície sólida."
-        },
-        "atmosfera": {
-          "tipo": "Dinâmica",
-          "composicao": ["Hidrogênio (80%)", "Hélio (19%)", "Metano (1.5%)"],
-          "detalhes": "Possui tempestades escuras (Manchas Escuras) que aparecem e desaparecem."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Tritão", "Proteu", "Nereida", "+11 outros"],
-          "detalhes": "Tritão é geologicamente ativo e cospe nitrogênio líquido (criovulcanismo)."
-        },
-        "missoes_espaciais": [
-          { "nome": "Voyager 2", "agencia": "NASA", "ano": "1989", "feito": "Única sonda a visitar Netuno, confirmou a existência de anéis e a Grande Mancha Escura." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "49.244 km",
-          "distancia_media_sol": "4.5 bilhões de km",
-          "dia_sideral": "16h 06min",
-          "ano_orbital": "165 anos terrestres",
-          "gravidade": "11.15 m/s²",
-          "temperatura_media": "-200°C"
-        }
-      },
-       {
-        "id": 9,
-        "nome": "Plutão",
-        "tipo": "Planeta Anão",
-        "apresentacao": "O rei do Cinturão de Kuiper, reclassificado em 2006.",
-        "descricao": "Plutão é um mundo complexo com montanhas de gelo de água e geleiras de nitrogênio. Tem uma órbita muito elíptica e inclinada.",
-        "images": {
-          "svg": "https://api-solar-system.up.railway.app/files/planets/pluto.svg",
-          "png": "https://api-solar-system.up.railway.app/files/planets/pluto.png"
-        },
-        "geologia": {
-          "estrutura": "Núcleo rochoso cercado por manto de gelo de água.",
-          "superficie": "Gelo de nitrogênio, metano e monóxido de carbono. Possui uma região famosa em forma de coração (Tombaugh Regio)."
-        },
-        "atmosfera": {
-          "tipo": "Sazonal",
-          "composicao": ["Nitrogênio", "Metano", "Monóxido de Carbono"],
-          "detalhes": "A atmosfera expande quando Plutão está perto do Sol e congela/cai na superfície quando se afasta."
-        },
-        "satelites_naturais": {
-          "possui": true,
-          "lista": ["Caronte", "Nix", "Hidra", "Cérbero", "Estige"],
-          "detalhes": "Caronte é tão grande em relação a Plutão que eles orbitam um ponto fora de ambos (sistema binário)."
-        },
-        "missoes_espaciais": [
-          { "nome": "New Horizons", "agencia": "NASA", "ano": "2015", "feito": "Primeiro e único sobrevoo próximo, revelou a complexidade geológica do planeta anão." }
-        ],
-        "dados_tecnicos": {
-          "diametro": "2.377 km",
-          "distancia_media_sol": "5.9 bilhões de km",
-          "dia_sideral": "153 horas",
-          "ano_orbital": "248 anos terrestres",
-          "gravidade": "0.62 m/s²",
-          "temperatura_media": "-229°C"
-        }
+      ],
+      "technical_data": {
+        "diameter_km": 4879,
+        "distance_from_sun_au": 0.4,
+        "distance_from_sun_km": 57910000,
+        "gravity_ms2": 3.7,
+        "avg_temperature_c": 167,
+        "orbital_period": "88 dias terrestres",
+        "rotation_period": "59 dias terrestres"
       }
-    ]
-  }
+    },
+    {
+      "id": 2,
+      "name": "Vênus",
+      "type": "Terrestre",
+      "slug": "venus",
+      "presentation": "O gêmeo infernal da Terra e o objeto mais brilhante do céu noturno depois da Lua.",
+      "earth_comparison": {
+        "size": "0.95x Terra (tamanho quase idêntico)",
+        "gravity": "0.90x Terra (muito similar à da Terra)",
+        "day_length": "243 dias terrestres (mais longo que seu ano)"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem à deusa romana do amor e da beleza.",
+        "astronomical_symbol": "♀"
+      },
+      "curiosities": [
+        "Gira na direção oposta (retrógrada) à maioria dos planetas.",
+        "Um dia em Vênus é mais longo que um ano em Vênus.",
+        "É o planeta mais quente do sistema solar devido ao efeito estufa."
+      ],
+      "description": "Vênus é frequentemente chamado de gêmeo da Terra devido ao tamanho e massa semelhantes, mas sua evolução tomou um caminho drasticamente diferente. É envolto em nuvens espessas que criam um efeito estufa descontrolado.",
+      "geological_data": {
+        "composition": "Rochoso (silicatos) com núcleo metálico.",
+        "core": "Provavelmente similar ao núcleo de ferro-níquel da Terra, mas sem gerar campo magnético.",
+        "surface": "Geologicamente jovem, coberta por vulcões, planícies de lava e montanhas deformadas."
+      },
+      "atmospheric_data": {
+        "summary": "Extremamente densa e tóxica.",
+        "details": "A pressão na superfície é 90 vezes a da Terra. Nuvens de ácido sulfúrico cobrem o planeta permanentemente.",
+        "main_components": ["Dióxido de Carbono (96%)", "Nitrogênio (3.5%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": false,
+        "count": 0,
+        "list": []
+      },
+      "space_missions": [
+        {
+          "name": "Série Venera",
+          "agency": "União Soviética",
+          "year": "1961-1984",
+          "feat": "Primeiro pouso suave em outro planeta e primeiras fotos da superfície."
+        },
+        {
+          "name": "Magellan",
+          "agency": "NASA",
+          "year": "1989-1994",
+          "feat": "Mapeou 98% da superfície de Vênus usando radar."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 12104,
+        "distance_from_sun_au": 0.7,
+        "distance_from_sun_km": 108200000,
+        "gravity_ms2": 8.87,
+        "avg_temperature_c": 465,
+        "orbital_period": "225 dias terrestres",
+        "rotation_period": "243 dias terrestres (retrógrada)"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Terra",
+      "type": "Terrestre",
+      "slug": "terra",
+      "presentation": "O Pálido Ponto Azul, nosso lar e o único mundo conhecido a abrigar vida.",
+      "earth_comparison": {
+        "size": "1.00x Terra (O padrão)",
+        "gravity": "1.00x Terra (9.8 m/s²)",
+        "day_length": "23h 56m"
+      },
+      "culture": {
+        "name_origin": "O nome 'Terra' tem pelo menos 1.000 anos, derivado de palavras germânicas que significam 'o solo'.",
+        "astronomical_symbol": "⊕"
+      },
+      "curiosities": [
+        "É o único planeta com água líquida em sua superfície.",
+        "É o único planeta não nomeado em homenagem a uma divindade grega ou romana.",
+        "Possui um poderoso campo magnético que protege a vida da radiação solar."
+      ],
+      "description": "A Terra é o maior dos planetas rochosos. Sua atmosfera rica em nitrogênio e oxigênio e seu campo magnético protetor criam as condições ideais para a biosfera. É o único planeta com placas tectônicas ativas.",
+      "geological_data": {
+        "composition": "Silicatos, óxidos e núcleo metálico.",
+        "core": "Núcleo interno sólido e núcleo externo líquido que gera a magnetosfera.",
+        "surface": "71% coberta por água líquida. Crosta dividida em placas tectônicas."
+      },
+      "atmospheric_data": {
+        "summary": "Ideal para a vida, rica em oxidantes.",
+        "details": "Camadas protegem da radiação UV e meteoroides. Mantém a temperatura via efeito estufa natural.",
+        "main_components": ["Nitrogênio (78%)", "Oxigênio (21%)", "Argônio (0.9%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 1,
+        "list": ["Lua"]
+      },
+      "space_missions": [
+        {
+          "name": "Programa Apollo",
+          "agency": "NASA",
+          "year": "1961-1972",
+          "feat": "Humanos pousaram na Lua e viram a Terra à distância."
+        },
+        {
+          "name": "ISS",
+          "agency": "Internacional",
+          "year": "1998-Presente",
+          "feat": "Laboratório contínuo em órbita baixa."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 12742,
+        "distance_from_sun_au": 1.0,
+        "distance_from_sun_km": 149600000,
+        "gravity_ms2": 9.8,
+        "avg_temperature_c": 15,
+        "orbital_period": "365.25 dias",
+        "rotation_period": "23h 56m"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Marte",
+      "type": "Terrestre",
+      "slug": "marte",
+      "presentation": "O Planeta Vermelho, um mundo desértico e frio com um passado aquático.",
+      "earth_comparison": {
+        "size": "0.53x Terra (cerca da metade do tamanho)",
+        "gravity": "0.38x Terra (você pularia 3x mais alto)",
+        "day_length": "24h 37m (muito similar à Terra)"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao deus romano da guerra devido à sua cor vermelho-sangue.",
+        "astronomical_symbol": "♂"
+      },
+      "curiosities": [
+        "O pôr do sol em Marte é azul.",
+        "Abriga o Monte Olimpo, um vulcão 3x mais alto que o Everest.",
+        "Possui o maior sistema de cânions do sistema solar, Valles Marineris."
+      ],
+      "description": "Marte é um mundo empoeirado e frio com uma atmosfera muito fina. É famoso por sua cor avermelhada causada pelo óxido de ferro (ferrugem). Existem fortes evidências geológicas de que já teve rios e lagos de água líquida.",
+      "geological_data": {
+        "composition": "Basalto vulcânico rico em ferro.",
+        "core": "Núcleo denso de ferro, níquel e enxofre, possivelmente inativo.",
+        "surface": "Apresenta calotas polares, vulcões extintos, dunas de areia e leitos de rios secos."
+      },
+      "atmospheric_data": {
+        "summary": "Muito rarefeita e tóxica.",
+        "details": "A pressão atmosférica é menos de 1% da terrestre. Tempestades de poeira globais podem durar meses.",
+        "main_components": ["Dióxido de Carbono (95%)", "Nitrogênio (2.8%)", "Argônio (2%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 2,
+        "list": ["Fobos", "Deimos"]
+      },
+      "space_missions": [
+        {
+          "name": "Viking 1 & 2",
+          "agency": "NASA",
+          "year": "1975",
+          "feat": "Primeiros pousos bem-sucedidos enviando imagens coloridas."
+        },
+        {
+          "name": "Perseverance",
+          "agency": "NASA",
+          "year": "2021-Presente",
+          "feat": "Buscando sinais de vida antiga e coletando amostras."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 6779,
+        "distance_from_sun_au": 1.5,
+        "distance_from_sun_km": 227940000,
+        "gravity_ms2": 3.71,
+        "avg_temperature_c": -63,
+        "orbital_period": "687 dias terrestres",
+        "rotation_period": "24h 37m"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Júpiter",
+      "type": "Gigante Gasoso",
+      "slug": "jupiter",
+      "presentation": "O Rei dos Planetas, um gigante massivo que protege o sistema solar interno.",
+      "earth_comparison": {
+        "size": "11x Terra (diâmetro)",
+        "gravity": "2.5x Terra (gravidade esmagadora)",
+        "day_length": "9h 55m (o dia mais curto de todos os planetas)"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao rei dos deuses romanos.",
+        "astronomical_symbol": "♃"
+      },
+      "curiosities": [
+        "A Grande Mancha Vermelha é uma tempestade maior que a Terra que dura séculos.",
+        "Atua como um 'aspirador de pó', atraindo cometas e asteroides para longe da Terra.",
+        "Possui anéis tênues, embora difíceis de ver."
+      ],
+      "description": "Júpiter é o maior planeta do sistema solar, com mais que o dobro da massa de todos os outros planetas combinados. É um gigante gasoso composto principalmente de hidrogênio e hélio.",
+      "geological_data": {
+        "composition": "Hidrogênio metálico líquido nas camadas profundas.",
+        "core": "Provavelmente um núcleo rochoso denso cercado por hidrogênio metálico sob pressão extrema.",
+        "surface": "Sem superfície sólida. A transição de gás para líquido é gradual."
+      },
+      "atmospheric_data": {
+        "summary": "Turbulenta e colorida.",
+        "details": "Faixas de nuvens de amônia e água giram em direções opostas, criando tempestades massivas.",
+        "main_components": ["Hidrogênio (90%)", "Hélio (10%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 95,
+        "list": ["Io", "Europa", "Ganimedes", "Calisto"]
+      },
+      "space_missions": [
+        {
+          "name": "Galileo",
+          "agency": "NASA",
+          "year": "1989-2003",
+          "feat": "Primeira sonda a orbitar Júpiter."
+        },
+        {
+          "name": "Juno",
+          "agency": "NASA",
+          "year": "2011-Presente",
+          "feat": "Estudando a estrutura profunda e o campo magnético do planeta."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 139820,
+        "distance_from_sun_au": 5.2,
+        "distance_from_sun_km": 778500000,
+        "gravity_ms2": 24.79,
+        "avg_temperature_c": -108,
+        "orbital_period": "11.8 anos terrestres",
+        "rotation_period": "9h 55m"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Saturno",
+      "type": "Gigante Gasoso",
+      "slug": "saturno",
+      "presentation": "A Jóia do Sistema Solar, famoso por seu complexo sistema de anéis.",
+      "earth_comparison": {
+        "size": "9x Terra (diâmetro)",
+        "gravity": "1.06x Terra (surpreendentemente similar à Terra)",
+        "day_length": "10h 33m"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao deus romano da agricultura e riqueza.",
+        "astronomical_symbol": "♄"
+      },
+      "curiosities": [
+        "É o planeta menos denso; flutuaria em uma banheira gigante.",
+        "Possui uma tempestade em formato hexagonal em seu polo norte.",
+        "Seus anéis são feitos de pedaços de gelo variando de poeira a pedregulhos do tamanho de casas."
+      ],
+      "description": "Saturno é o segundo maior planeta e inconfundível devido aos seus milhares de anéis feitos de gelo e rocha. Como Júpiter, é uma bola massiva feita principalmente de hidrogênio e hélio.",
+      "geological_data": {
+        "composition": "Similar a Júpiter, mas menos denso.",
+        "core": "Pequeno núcleo rochoso cercado por hidrogênio metálico e hélio líquido.",
+        "surface": "Gasosa/Líquida sem limite definido."
+      },
+      "atmospheric_data": {
+        "summary": "Ventos supersônicos e tempestades douradas.",
+        "details": "Ventos na atmosfera superior podem chegar a 1.800 km/h. Cor amarelo-pálido devido a cristais de amônia.",
+        "main_components": ["Hidrogênio (96%)", "Hélio (3%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 146,
+        "list": ["Titã", "Encélado", "Reia", "Mimas"]
+      },
+      "space_missions": [
+        {
+          "name": "Cassini-Huygens",
+          "agency": "NASA/ESA",
+          "year": "1997-2017",
+          "feat": "Orbitou Saturno por 13 anos; pousou uma sonda em Titã."
+        },
+        {
+          "name": "Voyager 1 & 2",
+          "agency": "NASA",
+          "year": "1980-1981",
+          "feat": "Sobrevôos revelaram a complexidade dos anéis e novas luas."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 116460,
+        "distance_from_sun_au": 9.5,
+        "distance_from_sun_km": 1434000000,
+        "gravity_ms2": 10.44,
+        "avg_temperature_c": -139,
+        "orbital_period": "29.4 anos terrestres",
+        "rotation_period": "10h 33m"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Urano",
+      "type": "Gigante de Gelo",
+      "slug": "urano",
+      "presentation": "O Planeta Deitado, um mundo azul-esverdeado de mistérios gelados.",
+      "earth_comparison": {
+        "size": "4x Terra (diâmetro)",
+        "gravity": "0.89x Terra (mais fraca que a da Terra)",
+        "day_length": "17h 14m"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao deus grego do céu (o único planeta com nome de deus grego).",
+        "astronomical_symbol": "♅"
+      },
+      "curiosities": [
+        "Gira deitado, rolando como uma bola ao redor do Sol.",
+        "Foi o primeiro planeta descoberto com um telescópio.",
+        "Suas luas têm nomes de personagens de Shakespeare e Alexander Pope."
+      ],
+      "description": "Urano é único porque gira 'de lado', com uma inclinação axial de quase 98 graus. Isso causa estações extremas que duram 20 anos. É um Gigante de Gelo, composto de fluidos densos de materiais 'gelados'.",
+      "geological_data": {
+        "composition": "Manto de gelo (fluidos de água, amônia, metano).",
+        "core": "Pequeno núcleo rochoso.",
+        "surface": "Sem superfície sólida; a atmosfera se funde com o manto de gelo."
+      },
+      "atmospheric_data": {
+        "summary": "Fria e calma (aparentemente).",
+        "details": "O metano absorve a luz vermelha, dando-lhe a cor azul-esverdeada. Possui a atmosfera planetária mais fria.",
+        "main_components": ["Hidrogênio (83%)", "Hélio (15%)", "Metano (2%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 27,
+        "list": ["Titânia", "Oberon", "Miranda", "Ariel"]
+      },
+      "space_missions": [
+        {
+          "name": "Voyager 2",
+          "agency": "NASA",
+          "year": "1986",
+          "feat": "Única sonda a visitar Urano. Descobriu 10 novas luas."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 50724,
+        "distance_from_sun_au": 19.2,
+        "distance_from_sun_km": 2871000000,
+        "gravity_ms2": 8.69,
+        "avg_temperature_c": -220,
+        "orbital_period": "84 anos terrestres",
+        "rotation_period": "17h 14m (retrógrada)"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Netuno",
+      "type": "Gigante de Gelo",
+      "slug": "netuno",
+      "presentation": "O Planeta dos Ventos, o mundo principal mais distante do Sol.",
+      "earth_comparison": {
+        "size": "3.9x Terra (muito similar a Urano)",
+        "gravity": "1.14x Terra (ligeiramente mais forte)",
+        "day_length": "16h 06m"
+      },
+      "culture": {
+        "name_origin": "Nomeado em homenagem ao deus romano do mar.",
+        "astronomical_symbol": "♆"
+      },
+      "curiosities": [
+        "Possui os ventos mais rápidos do sistema solar (mais de 2.000 km/h).",
+        "Foi descoberto pela matemática antes de ser visto por telescópio.",
+        "Sua grande lua Tritão orbita para trás."
+      ],
+      "description": "Netuno é escuro, frio e açoitado por ventos supersônicos. Sua cor azul vívida é mais intensa que a de Urano. Foi o primeiro planeta localizado através de cálculos matemáticos.",
+      "geological_data": {
+        "composition": "Similar a Urano, rico em água, amônia e metano.",
+        "core": "Núcleo rochoso sólido do tamanho da Terra.",
+        "surface": "Fluida, transição gradual de gás para oceano supercrítico."
+      },
+      "atmospheric_data": {
+        "summary": "Dinâmica e tempestuosa.",
+        "details": "Apresenta sistemas de tempestades escuras. Nuvens brancas de metano congelado flutuam na alta atmosfera.",
+        "main_components": ["Hidrogênio (80%)", "Hélio (19%)", "Metano (1.5%)"]
+      },
+      "natural_satellites": {
+        "has_satellites": true,
+        "count": 14,
+        "list": ["Tritão", "Proteus", "Nereida"]
+      },
+      "space_missions": [
+        {
+          "name": "Voyager 2",
+          "agency": "NASA",
+          "year": "1989",
+          "feat": "Única sonda a visitar Netuno. Confirmou anéis e 6 luas."
+        }
+      ],
+      "technical_data": {
+        "diameter_km": 49244,
+        "distance_from_sun_au": 30.1,
+        "distance_from_sun_km": 4495000000,
+        "gravity_ms2": 11.15,
+        "avg_temperature_c": -214,
+        "orbital_period": "165 anos terrestres",
+        "rotation_period": "16h 06m"
+      }
+    }
+  ]
 }
