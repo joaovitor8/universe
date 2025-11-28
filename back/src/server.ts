@@ -17,7 +17,7 @@ const fastify = require('fastify')({ logger: true })
 const sqlite = require("sqlite3")
 
 fastify.register(fastifyCors, {
-  origin: "*",
+  origin: "https://universe-main.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
 })
 

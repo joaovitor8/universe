@@ -29,6 +29,9 @@ export const FormAPI = () => {
 
 	const [getForm, setGetForm] = useState<NewsUser[]>([]);
 
+	const apiOff = "http://127.0.0.1:4000"
+  const apiOn = "api-universe-back.vercel.app"
+
 
 	// -----------------------------------------------------------
 
@@ -57,7 +60,7 @@ export const FormAPI = () => {
 
 		setLoading(true);
 		try {
-			await axios.post('http://127.0.0.1:4000/db/news/postUser', formData );
+			await axios.post(`http://${apiOn}/db/news/postUser`, formData );
 			setMessage({ text: 'Registration successful!', type: 'success' });
 			setFormData({ name: '', email: '', news: [] });
 
@@ -76,7 +79,7 @@ export const FormAPI = () => {
 
   const getUsersForm = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:4000/db/news/getUsers");
+      const response = await axios.get(`http://${apiOn}/db/news/getUsers`);
       const usersWithParsedNews = response.data.map((user: NewsUser) => {
         // O backend pode enviar `news` como uma string JSON. Precisamos fazer o parse.
         if (typeof user.news === 'string') {
@@ -107,7 +110,7 @@ export const FormAPI = () => {
 		setLoading(true);
 		setMessage(null);
 		try {
-			await axios.put(`http://127.0.0.1:4000/db/news/updateUser/${email}`, data);
+			await axios.put(`http://${apiOn}/db/news/updateUser/${email}`, data);
 			setMessage({ text: 'User updated successfully!', type: 'success' });
 			await getUsersForm();
 		} catch (error) {
@@ -124,7 +127,7 @@ export const FormAPI = () => {
 
 	const handleDelete = async (email: string) => {
     try {
-      await axios.delete(`http://127.0.0.1:4000/db/news/deleteUser/${email}`);
+      await axios.delete(`http://${apiOn}/db/news/deleteUser/${email}`);
       setMessage({ text: 'User deleted successfully', type: 'success' });
       // getUsersForm will be called by the component to refresh the list
     } catch (error) {

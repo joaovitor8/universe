@@ -33,6 +33,10 @@ export const Lookup = () => {
   const [error, setError] = useState<string | null>(null)
   const [selectedApproachDate, setSelectedApproachDate] = useState<string>('')
 
+  const apiOff = "http://127.0.0.1:4000"
+  const apiOn = "api-universe-back.vercel.app"
+
+
   const GetAsteroidsLookup = useCallback(async () => {
     if (!asteroidsID) {
       setError("Please enter an Asteroid ID.");
@@ -43,7 +47,7 @@ export const Lookup = () => {
     setAsteroidsLookup(null);
 
     try {
-      const response = await fetch(`http://127.0.0.1:4000/api/neows/lookup?id=${asteroidsID}`);
+      const response = await fetch(`http://${apiOn}/api/neows/lookup?id=${asteroidsID}`);
       if (!response.ok) {
         throw new Error(`The asteroid ID may be incorrect or the API is unavailable.`);
       }

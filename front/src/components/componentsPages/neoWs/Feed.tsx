@@ -19,13 +19,17 @@ export const Feed = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
+  const apiOff = "http://127.0.0.1:4000"
+  const apiOn = "api-universe-back.vercel.app"
+
+
   const GetFeed = useCallback(() => {
     setLoading(true)
     setError(null)
     try {
       const formatDate = date.toISOString().split('T')[0];
 
-      axios.get(`http://127.0.0.1:4000/api/neows/feed?date=${formatDate}`)
+      axios.get(`http://${apiOn}/api/neows/feed?date=${formatDate}`)
         .then((res) => setAsteroidsFeed(res.data))
         .catch((err) => {
           console.error(err)
