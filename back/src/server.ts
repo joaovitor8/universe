@@ -1,13 +1,17 @@
 // import { fastify } from "fastify"
 import { fastifyCors } from "@fastify/cors"
+import "dotenv/config"
 
 import { RouteApod } from "./routes/apod"
 import { RouteNeoWs } from "./routes/neows"
 // import { RouteDonki } from "./routes/donki"
+
 import { RouteSolarSystem } from "./routes/solar-system"
+
 import { RouteNews } from "./routes/news"
 import { RouteNewsForm } from "./routes/newsForm"
-import "dotenv/config"
+
+
 
 const fastify = require('fastify')({ logger: true })
 const sqlite = require("sqlite3")
@@ -37,9 +41,11 @@ db.run(`
 });
 
 
+
 fastify.register(RouteApod)
 fastify.register(RouteNeoWs)
 // fastify.register(RouteDonki)
+
 fastify.register(RouteSolarSystem)
 
 fastify.register(RouteNews)

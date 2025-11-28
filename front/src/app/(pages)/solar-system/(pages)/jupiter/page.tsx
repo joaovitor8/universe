@@ -3,7 +3,7 @@ import { ComponentPage } from "@/components/componentsPages/solarSystem/Componen
 export default function Jupiter() {
   return (
     <main>
-      <ComponentPage/>
+      <ComponentPage planetSlug="jupiter" />
     </main>
   )
 }

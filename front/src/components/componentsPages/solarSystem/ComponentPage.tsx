@@ -1,39 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-
 "use client"
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
-import { ExternalLink } from "lucide-react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-// Componente para exibir dados em linhas
-const DataRow = ({ label, value }: { label: string; value: React.ReactNode }) => (
-  <div className="py-2 border-b border-slate-800/50 flex justify-between items-center text-sm">
-    <span className="text-slate-400">{label}</span>
-    <span className="font-medium">{value || 'N/A'}</span>
-  </div>
-);
+import { Button } from "@/components/ui/Button";
+import { DataRow, SectionCard } from "@/components/ui/Section";
+import { ExternalLink } from "lucide-react";
 
-// Componente para seções de conteúdo
-const SectionCard = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <Card>
-    <CardHeader>
-      <CardTitle>{title}</CardTitle>
-      {description && <CardDescription>{description}</CardDescription>}
-    </CardHeader>
-    <CardContent>
-      {children}
-    </CardContent>
-  </Card>
-);
+import Loading from "@/app/loading";
+
 
 interface PlanetData {
   name: string;
   type: string;
   presentation: string;
   description: string;
+  ui_theme: {
+    primary_color: string;
+    secondary_color: string;
+  };
   earth_comparison: {
     size: string;
     gravity: string;
@@ -76,13 +62,20 @@ interface PlanetData {
   };
 }
 
-export const ComponentPage = () => {
+
+export const ComponentPage = ({ planetSlug }: { planetSlug: string }) => {
   const [planet, setPlanet] = useState<PlanetData>();
 
   const GetPlanet = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:4000/api/solar-system`);
-      setPlanet(response.data[4]);
+
+      for (let i=0; i<response.data.length; i++) {
+        if (response.data[i].slug === planetSlug) {
+          setPlanet(response.data[i]);
+        }
+      }
+
     } catch (error) {
       console.error("Error fetching planet data", error)
     }
@@ -93,7 +86,7 @@ export const ComponentPage = () => {
   }, []);
 
   if (!planet) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
@@ -103,7 +96,10 @@ export const ComponentPage = () => {
         <div className="space-y-6">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-500">
+              <h1 
+                className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text"
+                style={{ backgroundImage: `linear-gradient(to right, ${planet.ui_theme.primary_color}, ${planet.ui_theme.secondary_color})`}}
+              >
                 {planet.name}
               </h1>
               <span className="text-4xl">{planet.culture.astronomical_symbol}</span>
@@ -123,9 +119,9 @@ export const ComponentPage = () => {
 
         <div className="relative">
           <img 
-            src={`/planets/jupiter.png`} 
+            src={`/planets/${planetSlug}.png`} 
             alt={planet.name} 
-            className="w-full h-auto rounded-lg shadow-2xl border border-purple-500/20"
+            className="w-full h-auto"
           />
         </div>
       </div>
@@ -269,15 +265,15 @@ export const ComponentPage = () => {
         <p className="text-slate-400">Learn more about {planet.name} from these resources:</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button className="flex items-center gap-2 px-6">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href={`https://en.wikipedia.org/wiki/${planet.name}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               Wikipedia <ExternalLink className="h-4 w-4" />
             </a>
           </Button>
-          <Button className="flex items-center gap-2 px-6" variant="outline">
+          {/* <Button className="flex items-center gap-2 px-6" variant="outline">
             <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               NASA <ExternalLink className="h-4 w-4" />
             </a>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </main>
