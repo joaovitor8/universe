@@ -22,16 +22,17 @@ export const useNewsAPI = () => {
   const [error, setError] = useState<string | null>(null);
 
 
-
   const apiOff = "http://127.0.0.1:4000"
-  const apiOn = "api-universe-back.vercel.app"
+  const apiOn = "https://api-universe-back.vercel.app"
+
+
   useEffect(() => {
     async function fetchNews() {
       try {
         const [articlesRes, blogsRes, reportsRes] = await Promise.all([
-          axios.get(`http://${apiOn}/api/news/articles`),
-          axios.get(`http://${apiOn}/api/news/blogs`),
-          axios.get(`http://${apiOn}/api/news/reports`),
+          axios.get(`${apiOn}/api/news/articles`),
+          axios.get(`${apiOn}/api/news/blogs`),
+          axios.get(`${apiOn}/api/news/reports`),
         ]);
         setArticles(articlesRes.data);
         setBlogs(blogsRes.data);

@@ -49,7 +49,7 @@ export const APIsApod = () => {
   const [loading, setLoading] = useState(true);
 
   const apiOff = "http://127.0.0.1:4000"
-  const apiOn = "api-universe-back.vercel.app"
+  const apiOn = "https://api-universe-back.vercel.app"
 
 
   const GetApod = async () => {
@@ -57,7 +57,7 @@ export const APIsApod = () => {
       if (datePhotoDay > today) {
         throw new Error("Select dates before or equal to today.");
       }
-      const response = await axios.get(`http://${apiOn}/api/apod?date=${formatDate(datePhotoDay)}`);
+      const response = await axios.get(`${apiOn}/api/apod?date=${formatDate(datePhotoDay)}`);
       setPictureTheDay(response.data);
     } catch (error) {
       console.error("Error when searching for image", error)
@@ -74,7 +74,7 @@ export const APIsApod = () => {
         throw new Error("Select dates before or equal to today.");
       }
 
-      const response = await axios.get(`http://${apiOn}/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`);
+      const response = await axios.get(`${apiOn}/api/apod/gallery?start_date=${formtDateFrom}&end_date=${formatDateTo}`);
       if (response.data.length > 100) {
         throw new Error("Maximum request limit reached! (maximum 40)");
       }

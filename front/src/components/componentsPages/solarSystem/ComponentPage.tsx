@@ -67,10 +67,11 @@ export const ComponentPage = ({ planetSlug }: { planetSlug: string }) => {
   const [planet, setPlanet] = useState<PlanetData>();
 
   const apiOff = "http://127.0.0.1:4000"
-  const apiOn = "api-universe-back.vercel.app"
+  const apiOn = "https://api-universe-back.vercel.app"
+
   const GetPlanet = async () => {
     try {
-      const response = await axios.get(`http://${apiOn}/api/solar-system`);
+      const response = await axios.get(`${apiOn}/api/solar-system`);
 
       for (let i=0; i<response.data.length; i++) {
         if (response.data[i].slug === planetSlug) {
